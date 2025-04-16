@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="40" height="40"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.5 35H37.5V37.5H2.5V35ZM33.75 13.75C34.0815 13.75 34.3995 13.6183 34.6339 13.3839C34.8683 13.1495 35 12.8315 35 12.5V8.74999C34.9999 8.49309 34.9206 8.24248 34.773 8.03223C34.6254 7.82199 34.4166 7.66233 34.175 7.57499L20.425 2.57499C20.1504 2.4757 19.8496 2.4757 19.575 2.57499L5.825 7.57499C5.58341 7.66233 5.3746 7.82199 5.22698 8.03223C5.07937 8.24248 5.00011 8.49309 5 8.74999V12.5C5 12.8315 5.1317 13.1495 5.36612 13.3839C5.60054 13.6183 5.91848 13.75 6.25 13.75H7.5V30H5V32.5H35V30H32.5V13.75H33.75ZM7.5 9.62499L20 5.07499L32.5 9.62499V11.25H7.5V9.62499ZM22.5 30H17.5V13.75H22.5V30ZM10 13.75H15V30H10V13.75ZM30 30H25V13.75H30V30Z" fill="#F8F8F8"></path>
+</svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+@media (prefers-color-scheme: dark) { :root { filter: none; } }
+</style></svg>
