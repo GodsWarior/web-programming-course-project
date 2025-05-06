@@ -34,10 +34,16 @@ body {
   margin: 0 auto;         /* Автоматические боковые margin для центрирования */
 }
 
+.left-header-container {
+  display: flex;
+  align-items: center; /* Выравнивание по вертикали */
+  gap: 140px; /* Расстояние между лого и текстом */
+}
 
 .logo {
   display: inline-flex; /* Используем flex для выравнивания */
   height: 54px; /* Общая высота как у изображения */
+  gap: 0px;
 }
 
 .logo img {
@@ -51,7 +57,7 @@ body {
   margin: 0;
   padding: 10px 0px;
   line-height: 1;
-  color: #274C5B;
+  color: --secondary-color;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   font-size: 2.3rem; /* Фиксированный размер шрифта */
@@ -60,4 +66,8 @@ body {
   /* Убираем flex-стили из span, так как теперь flex на родителе */
   display: inline;
   vertical-align: middle;
+}
+
+.navigation p {
+  white-space: nowrap; /* Запрет переноса текста */
 }
