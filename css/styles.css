@@ -6,7 +6,12 @@
   --white-color: #FFFFFF;
   --light-gray: #FAFAFA;
   --border-color: #D4D4D4;
+  --header-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  --dropdown-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  --nav-font-size: 18px; /* Увеличенный размер текста */
+  --logo-font-size: 28px; /* Увеличенный размер логотипа */
 }
+
 
 * {
   margin: 0;
@@ -21,8 +26,9 @@ body {
 }
 
 .header {
-  display: flex;
-  width: 100%;
+  background-color: var(--white-color);
+  padding: 0px 0;
+  font-family: 'Roboto', sans-serif;
 }
 
 .header-container {
@@ -68,6 +74,104 @@ body {
   vertical-align: middle;
 }
 
-.navigation p {
-  white-space: nowrap; /* Запрет переноса текста */
+/* Навигация */
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 50px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list li {
+  position: relative;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: var(--secondary-color);
+  font-weight: 750;
+  font-size: var(--nav-font-size);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-list a:hover {
+  color: var(--primary-color);
+}
+
+/* Выпадающее меню */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--white-color);
+  box-shadow: var(--dropdown-shadow);
+  border-radius: 8px;
+  padding: 20px 0;
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropdown-menu li {
+  padding: 8px 25px;
+}
+
+.dropdown-menu a {
+  padding: 8px 0;
+  font-size: 16px;
+}
+
+/* Иконка стрелки */
+.fas.fa-chevron-down {
+  font-size: 14px;
+  transition: transform 0.3s ease;
+}
+
+.dropdown:hover .fa-chevron-down {
+  transform: rotate(180deg);
+  color: var(--primary-color);
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+  :root {
+      --nav-font-size: 16px;
+      --logo-font-size: 24px;
+  }
+  
+  .left-header-container {
+      gap: 40px;
+  }
+  
+  .nav-list {
+      gap: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .left-header-container {
+      flex-direction: column;
+      gap: 20px;
+  }
+  
+  .nav-list {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+  }
+  
+  .dropdown-menu {
+      min-width: 160px;
+  }
 }
