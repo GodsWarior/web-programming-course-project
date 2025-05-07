@@ -141,7 +141,6 @@ body {
   font-size: 16px;
 }
 
-/* Иконка стрелки */
 .fas.fa-chevron-down {
   font-size: 14px;
   transition: transform 0.3s ease;
@@ -156,7 +155,7 @@ body {
   display: flex;
   border-radius: var(--search-radius);
   background: var(--light-gray);
-  width: 160%;
+  width: 130%;
   max-width: 376px;
   height: var(--search-height);
   overflow: hidden;
