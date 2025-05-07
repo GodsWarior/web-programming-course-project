@@ -1,23 +1,20 @@
-/* Global Styles */
 :root {
-  /* Ваши существующие переменные */
   --primary-color: #7EB693;
   --secondary-color: #274C5B;
   --text-color: #525C60;
   --white-color: #FFFFFF;
   --light-gray: #FAFAFA;
   --border-color: #D4D4D4;
-  --header-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  --dropdown-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  --nav-font-size: 20px;
-  --header-gap: 130px;
-  
-  /* Добавленные переменные для поиска */
-  --search-height: 66px;
-  --search-button-size: 56px;
-  --search-icon-size: 50px;
+  --header-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --dropdown-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --nav-font-size: clamp(14px, 2vw, 20px);
+  --logo-font-size: clamp(20px, 2.3vw, 36px);
+  --header-gap: clamp(20px, 8vw, 130px);
+  --search-height: clamp(50px, 8vw, 66px);
+  --search-button-size: clamp(40px, 6vw, 56px);
+  --search-icon-size: clamp(20px, 5vw, 50px);
   --search-radius: 36px;
-  --search-padding: 25px;
+  --search-padding: clamp(12px, 3vw, 25px);
   --placeholder-color: #B1B1B1;
 }
 
@@ -35,65 +32,56 @@ body {
 
 .header {
   background-color: var(--white-color);
-  padding: 0px 0;
   font-family: 'Roboto', sans-serif;
+  padding: 0;
 }
 
 .header-container {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  max-width: 1650px;      /* Фиксированная максимальная ширина */
-  width: 100%;
   gap: var(--header-gap);
-  padding: 74px 18px;     /* Уменьшенные отступы: 10px сверху/снизу, 20px слева/справа */
-  margin: 0 auto;         /* Автоматические боковые margin для центрирования */
+  padding-block: 20px;
+  padding-inline: clamp(16px, 5vw, 100px);
+  max-width: 1650px;
+  margin: auto;
 }
 
 .left-header-container {
   display: flex;
-  align-items: center; /* Выравнивание по вертикали */
-  gap: 140px; /* Расстояние между лого и текстом */
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(20px, 8vw, 140px);
 }
 
 .logo {
-  display: inline-flex; /* Используем flex для выравнивания */
-  height: 54px; /* Общая высота как у изображения */
-  gap: 0px;
+  display: inline-flex;
+  align-items: center;
+  height: auto;
+  gap: 0;
 }
 
 .logo img {
-  display: block;
-  width: 60px;
-  height: 55px;
+  width: clamp(40px, 5vw, 60px);
+  height: clamp(40px, 5vw, 55px);
   object-fit: contain;
 }
 
 .logo span {
-  margin: 0;
-  padding: 10px 0px;
-  line-height: 1;
-  color: --secondary-color;
-  font-family: 'Roboto', sans-serif;
+  color: var(--secondary-color);
   font-weight: 700;
-  font-size: 2.3rem; /* Фиксированный размер шрифта */
+  font-size: var(--logo-font-size);
   white-space: nowrap;
-  
-  /* Убираем flex-стили из span, так как теперь flex на родителе */
-  display: inline;
-  vertical-align: middle;
 }
 
-/* Навигация */
 .nav-list {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(15px, 4vw, 40px);
   list-style: none;
-  gap: 40px;
-  margin: 0;
   padding: 0;
-}
-
-.nav-list li {
-  position: relative;
+  margin: 0;
 }
 
 .nav-list a {
@@ -111,7 +99,6 @@ body {
   color: var(--primary-color);
 }
 
-/* Выпадающее меню */
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -119,8 +106,8 @@ body {
   background: var(--white-color);
   box-shadow: var(--dropdown-shadow);
   border-radius: 8px;
-  padding: 20px 0;
-  min-width: 200px;
+  padding: 16px 0;
+  min-width: 180px;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
@@ -133,12 +120,11 @@ body {
 }
 
 .dropdown-menu li {
-  padding: 8px 25px;
+  padding: 8px 20px;
 }
 
 .dropdown-menu a {
-  padding: 8px 0;
-  font-size: 16px;
+  font-size: clamp(14px, 1.5vw, 16px);
 }
 
 .fas.fa-chevron-down {
@@ -153,9 +139,10 @@ body {
 
 .search-container {
   display: flex;
+  align-items: center;
   border-radius: var(--search-radius);
   background: var(--light-gray);
-  width: 130%;
+  width: 100%;
   max-width: 376px;
   height: var(--search-height);
   overflow: hidden;
@@ -188,7 +175,7 @@ body {
   border: none;
   background: var(--primary-color);
   border-radius: 50%;
-  margin: calc((var(--search-height) - var(--search-button-size)) / 2);
+  margin: auto;
   cursor: pointer;
   transition: background 0.3s ease;
   display: grid;
@@ -202,71 +189,86 @@ body {
 .search-icon {
   width: var(--search-icon-size);
   height: var(--search-icon-size);
-  object-fit: contain; /* Делаем иконку белой */
+  object-fit: contain;
 }
 
-/* Адаптивность */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 200;
+}
+
+.burger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: var(--secondary-color);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Анимация "крестика" */
+.burger.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+}
+
+.burger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
+/* Мобильное меню */
 @media (max-width: 768px) {
-  .search-container {
-    --search-height: 56px;
-    --search-button-size: 46px;
-    --search-icon-size: 18px;
-    --search-padding: 15px;
+  .burger {
+    display: flex;
+    margin-left: auto;
   }
-}
 
-/* Адаптивность */
-@media (max-width: 1200px) {
-  :root {
-      --nav-font-size: 16px;
-      --logo-font-size: 24px;
-  }
-  
-  .left-header-container {
-      gap: 40px;
-  }
-  
   .nav-list {
-      gap: 25px;
+    flex-direction: column;
+    gap: 20px;
+    background: var(--white-color);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    padding: 20px 0;
+    display: none;
+    box-shadow: var(--dropdown-shadow);
+    z-index: 150;
+  }
+
+  .nav-list.active {
+    display: flex;
   }
 }
 
+
+/* Media Queries */
 @media (max-width: 768px) {
-  .left-header-container {
-      flex-direction: column;
-      gap: 20px;
-  }
-  
-  .nav-list {
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-  }
-  
-  .dropdown-menu {
-      min-width: 160px;
-  }
-}
-
-@media (max-width: 1200px) {
-  :root {
-    --header-gap: 40px;
-  }
-}
-
-@media (max-width: 992px) {
-  :root {
-    --header-gap: 30px;
-  }
-}
-
-@media (max-width: 768px) {
-  :root {
-    --header-gap: 20px;
-  }
-  
   .header-container {
     flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .left-header-container {
+    flex-direction: column;
     gap: 15px;
+  }
+
+  .dropdown-menu {
+    min-width: 160px;
   }
 }
