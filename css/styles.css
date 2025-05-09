@@ -16,6 +16,7 @@
   --search-radius: 36px;
   --search-padding: clamp(12px, 3vw, 25px);
   --placeholder-color: #B1B1B1;
+  --settings-icon-size: 40px;
 
 }
 
@@ -110,6 +111,12 @@ body {
   visibility: hidden;
   transition: all 0.3s ease;
   z-index: 100;
+}
+
+.settings-icon{
+  width: var(--settings-icon-size);
+  height: var(--settings-icon-size);
+  object-fit: contain;
 }
 
 .right-header-container {
