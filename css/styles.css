@@ -1563,16 +1563,7 @@ label{
   padding: 0.61225rem 23.875rem 0.63775rem 0rem;
 }
 
-.ninth-block .view-more-block a{
-  text-decoration: none;
-  color: #274C5B;
-  font-family: Roboto;
-  font-size: 1.25rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.75rem; 
-  letter-spacing: 0.0225rem;
-}
+
 
 .ninth-block .view-more-block a:hover
 {
