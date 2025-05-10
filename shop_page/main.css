@@ -211,9 +211,9 @@ label{
 /* Конец header ---------------------------------------- */
 
 .first-block{
-  background: url('./assets/IMAGE.png') top / cover;
+  background: url('./assets/Banner.png') top / cover;
   position: relative; 
-  height: 913px;
+  height: 450px;
   max-width: 1440px;
   min-width: 320px;
 }
@@ -224,56 +224,6 @@ label{
   height: 913px;
 }
 
-.first-block .text-overlay{
-  position: absolute;
-  left: 30px;
-  top: 221px;
-}
-
-
-.first-block .text-overlay i {
-  max-width: 241px;
-  color: #7EB693;
-  font-family: 'Yellowtail';
-  font-size: 36px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 64.8px; /* 180% */
-  letter-spacing: 0.36px;
-  text-transform: capitalize;
-}
-
-.first-block .text-overlay h1{
-  max-width: 31rem;
-  height: 15.75rem;
-  color: #274C5B;
-  text-align: left; 
-  font-family: 'Roboto', sans-serif;
-  font-size: 70px;
-  line-height: 5.25rem;
-  margin-top: 0.8125rem;
-  margin-bottom: 1.875rem;
-  letter-spacing: 0.0225rem;
-}
-
-.first-block .yellow-button{ 
-  background-image: url('./assets/explore_now_button_image.png');
-  width: 13.6875rem;
-  height: 5.125rem;
-  text-indent: -2.6875rem;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.1875rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 2rem;
-  letter-spacing: 0.0225rem;
-  text-transform: capitalize;
-  border-radius: 0.9375rem;
-  border: none;
-  padding: 1.5625rem 1.25rem;
-  cursor: pointer; /* Указатель при наведении */
-  transition: background-color 0.3s; /* Плавный переход фона */
-}
 
 @media screen and (min-width: 320px) and (max-width: 767px){
   .first-block .text-overlay h1{
@@ -289,189 +239,7 @@ label{
 
 /* Конец 1 блока -------------------------------------------- */
 
-.second-block{
-  max-width: 1440px;
-  width: 100%;
-  min-height: 658px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 50px;
-  justify-content: center;
-}
-
-.second-block .second-block-first-picture{
-  background-image: url(./assets/natural_image.png);
-  background-size: cover;
-  position: relative;
-  width: 665px;
-  height: 378px;
-  flex-shrink: 0;
-  margin-top: 140px;
-}
-
-.second-block-first-picture .second-block-text-overlay{
-  position: absolute;
-  left: 55px;
-  top: 105px;
-}
-
-.second-block-first-picture .second-block-text-overlay i{
-  color: #FFF;
-  font-family: 'Yellowtail';
-  font-size: 36px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 64.8px;
-  letter-spacing: 0.36px;
-}
-
-.second-block-first-picture .second-block-text-overlay h1{
-  margin-top: 0px;
-  max-width: 219px;
-  color: #FFF;
-  font-family: Roboto;
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 52px; /* 130% */
-  letter-spacing: 0.36px;
-}
-
-
-.second-block .second-block-second-picture{
-  background-image: url(./assets/other_image.png);
-  position: relative;
-  width: 665px;
-  height: 378px;
-  flex-shrink: 0;
-  margin-top: 140px;
-}
-
-.second-block-second-picture .second-block-text-overlay{
-  position: absolute;
-  left: 55px;
-  top: 105px;
-}
-
-.second-block-second-picture .second-block-text-overlay i{
-  color: #7EB693;
-  font-family: Yellowtail;
-  font-size: 36px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 64.8px;
-  letter-spacing: 0.36px;
-}
-
-.second-block-second-picture .second-block-text-overlay h1{
-  margin-top: 0px;
-  max-width: 264px;
-  color: #274C5B;
-  font-family: Roboto;
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 52px;
-  letter-spacing: 0.36px;
-}
-
-@media screen and (min-width: 768px) and (max-width: 1439px) {
-  .second-block{
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-  }
-  
-  .second-block .second-block-first-picture{
-      margin-top: 70px;
-  }
-  .second-block .second-block-second-picture{
-      margin-top: 0%;
-      margin-bottom: 70px;
-  }
-}
-
-@media screen and (min-width: 320px) and (max-width: 767px) {
-  .second-block{
-      gap: 20px;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: auto;
-      height: auto;
-  }
-  
-  .second-block .second-block-first-picture{
-      margin-top: 35px;
-  }
-  .second-block .second-block-second-picture{
-      margin-top: 0%;
-      margin-bottom: 35px;
-  }
-
-  .second-block .no-br{
-      display: none;
-  }
-
-  .second-block .second-block-first-picture, .second-block .second-block-second-picture{
-      width: 300px;
-      margin-right: 10px;
-      margin-left: 10px;
-      height: auto;
-      min-height: 180px;
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-  }
-
-  .second-block-first-picture .second-block-text-overlay, .second-block-second-picture .second-block-text-overlay{
-      width: auto;
-      top: 15px; 
-      left: 20px;
-  }
-  
-  .second-block-first-picture .second-block-text-overlay h1, .second-block-second-picture .second-block-text-overlay h1{
-      line-height: 2.5rem;
-      font-size: 2rem;
-      margin-top: -5px;
-  }
-  .second-block-first-picture .second-block-text-overlay i, .second-block-second-picture .second-block-text-overlay i{
-      font-size: 1.75rem;
-  }
-}
-
-/* Конец 2 блока -------------------------------------------- */
-
-.third-block
-{
-  max-width: 1440px;
-  width: 100%;
-  min-height: 1006px;
-  background-color: #F9F8F8;
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Две колонки */
-  gap: 30px;
-}
-
-.third_block_image{
-  max-width: 675px;
-  height: auto;
-  margin-left: 30px;
-  margin-top: 177px;
-}
-
-.third-block-text-sections{
-  max-width: 705px;
-  width: 100%;
-}
-
-.third-block-text-sections .first-subsection{
-  display: grid;
-  margin-top: 130px;
-  max-width: 705px;
-}
-
-.third-block-text-sections .first-subsection i, .our-products-label i, .fifth-block i, .sixth-block i, .seventh-block i, .ninth-block i{
+.first-subsection i, .our-products-label i{
   max-width: 122px;
   color: #7EB693;
   font-family: Yellowtail;
@@ -496,12 +264,12 @@ label{
   text-transform: capitalize;
 }
 
-.third-block-text-sections .first-subsection h1{
+.first-subsection h1{
   margin-top: -1px;
   margin-bottom: 23px;
 }
 
-.third-block-text-sections .first-subsection h2{
+.first-subsection h2{
   width: 100%;
   color: #525C60;
   font-family: Open Sans;
@@ -592,7 +360,7 @@ label{
   margin-top: 14px;
 }
 
-.shop-now-button, .view-all-products-button, .ninth-block-label-button, .subscribe-button{
+.shop-now-button, .view-all-products-button, .subscribe-button{
   width: 12.4375rem;
   height: 5.125rem;
   color: #FFF;
@@ -621,101 +389,14 @@ label{
   background-color: gray;
 }
 
-@media (max-width: 1439px) {
-  .third-block .h2-no-br, .third-block .p-no-br{
-      display: none;
-  }
-
-  .third-block{
-      gap: 15px;
-  }
-
-  .third-block-text-sections{
-      min-width: 550px;
-      width: 94%;
-  }
-
-  .third-block .second-subsection{
-      gap: 70px
-  }
-
-  .third-block .shop-now-button{
-      margin-top: 0%;
-  }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1280px){
-  .third-block{
-      grid-template-columns: 1fr;
-      justify-items: center;
-      padding-bottom: 3rem;
-  }
-
-  .third_block_image{
-      margin: 0;
-  }
-
-  .third-block-text-sections .first-subsection{
-      margin-top: 15px;
-      justify-items: center;
-      text-align: center;
-  }
-
-  .third-block .second-subsection{
-      width: auto;
-      justify-items: center;
-  }
-}
-
 @media screen and (min-width: 320px) and (max-width: 767px){
-  .third_block_image{
-      max-width: 320px;
-      margin-left: 0;
-      margin-top: 20px;
-  }
-
-  .third-block{
-      grid-template-columns: 1fr;
-      justify-items: center;
-      padding-bottom: 3rem;
-  }
-
-  .third-block-text-sections{
-      min-width: auto;
-      width: auto;
-  }
-
-  .third-block-text-sections .first-subsection i{
-      max-width: none;
-      text-align: center;
-  }
-
-  .third-block-text-sections .first-subsection{
-      text-align: center;
-      padding: 0 10px 0 10px;
-      margin-top: 10px;
-  }
-
-  .third-block .second-subsection{
-      width: 100%;
-      justify-items: center;
-      padding: 0 10px 0 10px;
-  }
-
   .second-subsection .organic-foods, .second-subsection .quality-standards{
       height: auto;
       align-items: normal;
   }
 }
 
-/* Конец 3 блока -------------------------------------------- */
-
-.fourth-block{
-  min-height: 1382px;
-  margin-bottom: 7.4rem;
-  max-width: 1440px;
-  width: 100%;
-}
+/* Конец 2 блока -------------------------------------------- */
 
 .our-products-label{
   width: 95.8333%;
@@ -921,625 +602,9 @@ label{
   }
 }
 
-/* Конец 4 блока -------------------------------------------- */
+/* Конец 3 блока -------------------------------------------- */
 
-.fifth-block{
-  position: relative;
-  min-height: 1248px;
-  width: 100%;
-  background: url(./assets/fifth_block_background_image.png) top / cover;
-  border-top: 1px solid transparent;
-  
-}
-
-.fifth-block-first-section-overlay{
-  display: grid;
-  justify-items: center;
-  margin: 8.1rem auto 0%;
-}
-
-.fifth-block i{
-  max-width: 150px;
-}
-
-.fifth-block-first-section-overlay h3{
-  color: #274C5B;
-  text-align: center;
-  font-family: Roboto;
-  font-size: 2.8125rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 3.65625rem;
-  letter-spacing: 0.0225rem;
-  text-transform: capitalize;
-}
-
-.fifth-block-second-section-overlay{
-  display: grid;
-  justify-items: center;
-  width: 76.3889%;
-  height: auto;
-  margin-top: 3.67rem;
-  margin-left: 11.8%;
-}
-
-.fifth-block-five-star-image{
-  width: 7.6875rem;
-  height: 1.6875rem;
-  margin-top: 1.1rem;
-}
-
-.fifth-block-second-section-overlay .fifth-block-quote{
-  margin-top: 2rem;
-  max-width: 58.875rem;
-  color: #525C60;
-  text-align: center;
-  font-family: "Open Sans";
-  font-size: 1.125rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 2.025rem;
-  letter-spacing: 0.0225rem;
-}
-
-.fifth-block-second-section-overlay h3{
-  margin-top: 1.2rem;
-  color: #274C5B;
-  text-align: center;
-  font-family: Roboto;
-  font-size: 1.625rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 145%;
-  letter-spacing: 0.0225rem;
-}
-
-.fifth-block-consumer{
-  margin-top: -0.1rem;
-  width: 4.5625rem;
-  color: #525C60;
-  text-align: center;
-  font-family: "Open Sans";
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.6875rem;
-  letter-spacing: 0.0225rem;
-}
-
-.fifth-block-line{
-  /* position: absolute; */
-  margin-top: 6.1rem;
-  margin-left: 14.81rem;
-  width: 67.0833%;
-  height: 2px;
-  background-color: #E0E0E0;
-}
-
-.fifth-block-round-group{
-  max-width: 1104px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.62rem;
-  margin: 6.2rem auto 0;
-}
-
-.fifth-block .outer-round{
-  width: 15.625rem;
-  height: 15.625rem;
-  border-radius: 12.5rem;
-  border: 6px solid #7EB693;
-  background: #F1F1F1;
-}
-
-.fifth-block .outer-round:first-child{
-  margin-left: 0.81rem;
-}
-
-.outer-round .base-round{
-  width: 15rem;
-  height: 15rem;
-  border-radius: 12.5rem;
-  border: 5px solid #FFF;
-}
-
-.outer-round .base-round h3{
-  margin-top: 4.5rem;
-  color: #274C5B;
-  text-align: center;
-  font-family: Roboto;
-  font-size: 2.625rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 3.4125rem; /* 130% */
-  letter-spacing: 0.0225rem; 
-}
-
-.outer-round .base-round p{
-  color: #274C5B;
-  text-align: center;
-  font-family: "Open Sans";
-  font-size: 1.125rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 2.025rem; /* 180% */
-  letter-spacing: 0.0225rem;
-}
-
-@media (max-width: 1439px){
-  .fifth-block .p-no-br{
-      display: none;
-  }
-}
-
-@media screen and (min-width: 320px) and (max-width: 1280px){
-  .fifth-block-round-group{
-      justify-content: center;
-  }
-
-  .fifth-block{
-      padding-bottom: 1.875rem;
-  }
-
-  .fifth-block-line{
-      margin-left: 50%;
-      transform: translate(-50%);
-  }
-  .fifth-block-first-section-overlay h3{
-      padding: 0 10px 0 10px;
-  }
-  .fifth-block-second-section-overlay{
-      margin-left: 50%;
-      transform: translate(-50%);
-  }
-}
-/* Конец 5 блока -------------------------------------------- */
-
-.sixth-block{
-  border-top: 1px solid transparent;
-  max-width: 1440px;
-  width: 100%;
-  position: relative;
-  min-height: 1060px;
-  height: auto;
-  background-color: #274C5B;
-}
-
-.sixth-section-label{
-  display: flex;
-  position: relative;
-  width: 95.82%;
-  max-width: 1380px;
-  height: 16.0604%;
-  margin-top: 8.77rem;
-  margin-left: 1.88rem;
-}
-
-.sixth-block h3{
-  color: #FFF;
-  font-family: Roboto;
-  font-size: 2.8125rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 3.65625rem;
-  letter-spacing: 0.0225rem;
-  text-transform: capitalize;
-}
-
-.sixth-block .view-all-products-button{
-  margin-left: 36.375rem;
-  margin-top: 2.7rem;
-  width: 16.6875rem;
-  height: 5.125rem;
-  color: #335B6B;
-  background-color: #EFD372;
-  font-size: 1.25rem;
-  line-height: 2rem;
-  letter-spacing: 0.0225rem;
-  padding-left: 1.44rem;
-  padding-top: 0.7rem;
-  background-size: 3.4rem 2.9rem;
-  background-position: 97% 46%;
-}
-
-.view-all-products-button:hover{
-  background-color: gold;
-}
-
-.sixth-block-products-list{
-  max-width: 1400px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.25rem;
-  height: 55.6604%;
-  margin: 2.8rem auto 0;
-}
-
-.sixth-block .no-br{
-  display: none;
-}
-
-@media (max-width: 1439px){
-  .sixth-block .view-all-products-button {
-      margin-left: auto;
-  }
-  .sixth-block-products-list:last-child{
-      padding-bottom: 10rem;
-  } 
-}
-
-@media screen and (min-width: 880px) and (max-width: 1280px){
-  
-  .sixth-block .view-all-products-button{
-      margin-right: 1rem;
-  }
-}
-
-@media screen and (min-width: 768px) and (max-width: 880px){
-  
-  .sixth-block .view-all-products-button{
-      margin-right: 1rem;
-  }
-  .sixth-section-label{
-      margin-left: 1.5rem;
-  }
-  .sixth-section-label-text .no-br{
-      display: block;
-  }
-}
-
-@media screen and (min-width: 320px) and (max-width: 767px){
-  
-  .sixth-section-label{
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      margin-left: 50%;
-      transform: translate(-50%);
-      padding: 0 10px 0 10px;
-  }
-  .sixth-block .view-all-products-button{
-      margin-left: 0;
-  }
-
-  .sixth-block-products-list{
-      padding: 0 10px 0 10px;
-  }
-
-}
-
-/* Конец шестого блока --------------------------------------------*/
-
-.seventh-block{
-  background: url(./assets/eco_image.png);
-  background-position: left;
-  background-repeat: no-repeat;
-  border-top: 1px solid transparent;
-  position: relative;
-  height: 704px;
-  width: 100%;
-  max-width: 1440px;
-  color: #274C5B;
-  font-family: Roboto;
-  font-style: normal;
-  letter-spacing: 0.0225rem;
-  text-transform: capitalize;
-}
-
-.seventh-block-white-rectangle{
-  margin-right: 3.7rem;
-  margin-left: auto;
-  margin-top: 2.54rem;
-  width: 45rem;
-  min-height: 38.9375rem;
-  height: auto;
-  border-radius: 1.875rem 0rem 0rem 1.875rem;
-  background-color: #FFF;
-  padding-left: 3.75rem;
-  padding-top: 2.44rem;
-}
-
-.seventh-block h2{
-  font-size: 2.75rem;
-  font-weight: 700;
-  line-height: 3.65625rem; /* 132.955% */
-  margin-bottom: 1.85rem;
-}
-
-.seventh-block h3{
-  font-size: 1.4375rem;
-  font-weight: 700;
-  line-height: 2.0125rem;
-  margin-bottom: 0.25rem;
-}
-
-.seventh-block p{
-  color: #525C60;
-  font-family: "Open Sans";
-  /* width: 37.875rem; */
-  width: auto;
-  font-size: 1.125rem;
-  font-weight: 400;
-  line-height: 2.025rem; /* 180% */
-  margin-bottom: 0.63rem;
-  text-transform: none;
-}
-
-.seventh-block i{
-  max-width: none;
-  width: auto;
-}
-
-@media screen and (min-width: 768px) and (max-width: 1000px){
-  .seventh-block{
-      background-size: cover;
-  }
-  .seventh-block-white-rectangle{
-      display: grid;
-      justify-items: center;
-      text-align: center;
-      padding-left: 0;
-      margin-right: 0;
-      margin-left: 50%;
-      transform: translate(-50%);
-      border-radius: 1.875rem;
-  }
-}
-
-@media screen and (min-width: 320px) and (max-width: 767px){
-
-  .seventh-block {
-      background-size: cover;
-      height: auto;
-      padding-bottom: 2.54rem;
-  }
-
-  .seventh-block-white-rectangle{
-      display: grid;
-      justify-items: center;
-      text-align: center;
-      width: 93.75%;
-      margin-left: 50%;
-      transform: translate(-50%);
-      padding: 2.44rem 10px 2.44rem 10px;
-      border-radius: 1.875rem;
-  }
-
-  .seventh-block h2{
-      font-size: 2.5rem;
-  }
-}
-
-/* Конец 7 блока --------------------------------------------*/
-
-
-.eighth-block{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding-top: 8.95rem;
-  gap: 1.87rem;
-  min-height: 860px;
-  height: auto;
-  background-color: #EFF6F1;
-}
-
-.eighth-block-fruit-juice{
-  background-image: url(./assets/fruit_juice.png);
-}
-
-.eighth-block-nuts-cookies{
-  background-image: url(./assets/nuts-cookies.png);
-}
-
-.eighth-block-organic-food{
-  background-image: url(./assets/organic_food.png);
-}
-
-.eighth-block-fruit-juice, .eighth-block-nuts-cookies, .eighth-block-organic-food{
-  width: 460px;
-  height: 580px;
-  flex-shrink: 0; 
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-
-.eighth-block p{
-  position: absolute;
-  top: 15.1rem;
-  padding-top: 1.9rem;
-  height: 5.9375rem;
-  border-radius: 1.25rem;
-  background: #FFF;
-  color: #274C5B;
-  text-align: center;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 2.1875rem;
-  letter-spacing: 0.0225rem;
-}
-
-.eighth-block-fruit-juice, .eighth-block-nuts-cookies, .eighth-block-organic-food{
-  position: relative;
-}
-
-.eighth-block-fruit-juice p{
-  width: 17.5625rem;
-  margin-left: 5.62rem;
-  font-size: 1.5625rem;
-}
-
-.eighth-block-organic-food p{
-  width: 19.5625rem;
-  margin-left: 4.56rem;
-  font-size: 1.5625rem;
-}
-
-.eighth-block-nuts-cookies p{
-  width: 19.5rem;
-  margin-left: 4.62rem;
-  font-size: 1.5rem;
-  padding-top: 1.95rem;
-  padding-left: 0.2rem;
-}
-
-@media (max-width: 1439px){
-  .eighth-block{
-      padding-bottom: 8.75rem;
-  }
-}
-
-@media screen and (min-width: 320px) and (max-width: 767px){
-
-  .eighth-block{
-      width: 100%;
-  }
-
-  .eighth-block-fruit-juice, .eighth-block-nuts-cookies, .eighth-block-organic-food{
-      min-width: 320px;
-      max-width: 460px;
-      width: 100%;
-  }
-
-  .eighth-block p{
-      
-      margin: 0;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-  }
-}
-
-/* Конец 8 блока --------------------------------------------*/
-
-.ninth-block
-{
-  position: relative;
-  width: 100%;
-  min-height: 1485px; /* 93.48rem */
-  height: auto;
-  padding-top: 8.13rem;
-}
-
-.ninth-block-label h2 br{
-  display: none;
-}
-
-.ninth-block-label{
-  display: flex;
-  margin-left: 1.88rem;
-  min-height: 190px;
-  height: auto;
-}
-
-.ninth-block-label h2{
-  margin-top: 0.06rem;
-  color: #274C5B;
-  font-family: Roboto;
-  font-size: 2.8125rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 3.65625rem; /* 130% */
-  letter-spacing: 0.0225rem;
-  text-transform: capitalize;
-}
-
-.ninth-block-label-button{
-  margin-top: 4rem;
-  margin-left: 3.8rem;
-  background-size: 3.125rem 3.125rem;
-  background-position: 98% 45%;
-  width: 13.125rem;
-  height: 5.125rem;
-  background-color: #FFF;
-  border:0.0625rem solid #274C5B;
-  color: #274C5B;
-  font-size: 1.25rem;
-}
-
-.ninth-block-label-button:hover {
-  background-color: rgb(231, 228, 228); /* Цвет фона при наведении */
-}
-
-.ninth-block-second-section{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.87rem;
-  margin-top: 3.9rem;
-  margin-left: 1.25rem;
-  width: 97.2222%;
-  min-height: 36.6875rem;
-  height: auto; 
-  justify-content: center;
-  row-gap: 7rem;
-}
-
-.ninth-block-first-picture, .ninth-block-second-picture{
-  background-image: url(./assets/sorrel_image.png);
-  background-position: top;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative;
-  width: 670px;
-  height: 515px;
-  border-radius: 30px;
-}
-
-.ninth-block-second-picture{
-  background-image: url(./assets/tomato_image.png);
-}
-
-.ninth-block-content-overlay{
-  position: absolute;
-  top: 15.62rem;
-  left: 1.88rem;
-  width: 91.0448%;
-  height: 65.4369%;
-  border-radius: 1.875rem;
-  background-color: #FFF;
-  box-shadow: 0px 2px 18px 0px rgba(0, 0, 0, 0.14);
-}
-
-.ninth-block-people-icon{
-  position: absolute;
-  top: 3.31rem;
-  left: 3.12rem;
-}
-
-.ninth-block-content-overlay .author-name{
-  position: absolute;
-  top: 3.4rem;
-  left: 4.88rem;
-  color: #274C5B;
-  font-family: Roboto;
-  font-size: 1.0625rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.4625rem;
-  letter-spacing: 0.0225rem;
-}
-
-.ninth-block-second-picture .author-name{
-  font-size: 1.125rem;
-}
-
-.ninth-block-content-overlay h3{
-  position: absolute;
-  top: 5.59rem;
-  left: 3.13rem;
-  color: #274C5B;
-  font-family: Roboto;
-  font-size: 1.5625rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 2.1875rem; /* 140% */
-  letter-spacing: 0.0225rem;
-}
-
-.ninth-block .quote-text{
+.quote-text{
   position: absolute;
   top: 10.21rem;
   left: 3.13rem;
@@ -1552,7 +617,7 @@ label{
   letter-spacing: 0.0225rem;
 }
 
-.ninth-block .view-more-block{
+.view-more-block{
   position: absolute;
   display: flex;
   align-items: center;
@@ -1563,7 +628,7 @@ label{
   padding: 0.61225rem 23.875rem 0.63775rem 0rem;
 }
 
-.ninth-block .view-more-block a{
+.view-more-block a{
   text-decoration: none;
   color: #274C5B;
   font-family: Roboto;
@@ -1574,17 +639,7 @@ label{
   letter-spacing: 0.0225rem;
 }
 
-.ninth-block .view-more-block a:hover
-{
-  color: #19a5dc;
-}
-
-.ninth-block .view-more-block img{
-  width: 1.7rem;
-  height: 1.7rem;
-}
-
-.ninth-block-subscribe-our-newsletter{
+.block-subscribe-our-newsletter{
   border-top: 1px solid transparent;
   min-height: 320px;
   max-width: 1380px;
@@ -1598,7 +653,7 @@ label{
   margin-right: 1.88rem;
 }
 
-.ninth-block-subscribe-our-newsletter .content-overlay{
+.block-subscribe-our-newsletter .content-overlay{
   display: flex;
   flex-wrap: wrap;
   width: 89.855%;
@@ -1606,7 +661,7 @@ label{
   margin: 6.3rem 4.4rem 0;
 }
 
-.ninth-block-subscribe-our-newsletter .content-overlay h2{
+.block-subscribe-our-newsletter .content-overlay h2{
   min-width: 325px;
   color: #FFF;
   font-family: Roboto;
@@ -1618,7 +673,7 @@ label{
   text-transform: capitalize;
 }
 
-.ninth-block-subscribe-our-newsletter .content-overlay > :nth-child(2){
+.block-subscribe-our-newsletter .content-overlay > :nth-child(2){
   margin-left: 21.87rem;
   margin-top: 1.2rem;
   margin-right: 0.63rem;
@@ -1639,7 +694,7 @@ label{
   background: #FFF;
 }
 
-.ninth-block .subscribe-button{
+.subscribe-button{
   margin-top: 1.2rem;
   padding-left: 1.65rem;
   padding-top: 0.55rem;
@@ -1652,55 +707,34 @@ label{
   background-position: 95% 45%;
 }
 
-.ninth-block .subscribe-button:hover{
+.subscribe-button:hover{
   background-color: gray;
 }
 
 @media (max-width: 1439px){
 
-  .ninth-block-label-text{
-      max-width: 1100px;
-  }
-
-  .ninth-block-label > :nth-child(2){
-      min-width: 210px;
-  }
-
-  .ninth-block-label h2{
-      padding-right: 20px;
-  }
-
-  .ninth-block-label{
-      padding-bottom: 3.625rem;
-      align-items: center;
-  }
-
-  .ninth-block-subscribe-our-newsletter .content-overlay > :nth-child(2){
+  .block-subscribe-our-newsletter .content-overlay > :nth-child(2){
       margin-left: auto;
-  }
-  .ninth-block-label-button{
-      margin-right: 20px;
-      margin-top: 0;
   }
 
 }
 
 @media screen and (min-width: 320px) and (max-width: 1100px){
 
-  .ninth-block-subscribe-our-newsletter .no-br
+  .block-subscribe-our-newsletter .no-br
   {
       display: none;
   }
   
-  .ninth-block-subscribe-our-newsletter .content-overlay > :nth-child(2){
+  .block-subscribe-our-newsletter .content-overlay > :nth-child(2){
       margin: 0;
   }
 
-  .ninth-block-subscribe-our-newsletter .content-overlay h2{
+  .block-subscribe-our-newsletter .content-overlay h2{
       text-align: center;
   }
   
-  .ninth-block-subscribe-our-newsletter .content-overlay{
+  .block-subscribe-our-newsletter .content-overlay{
       width: auto;
       flex-direction: column;
       gap: 30px;
@@ -1712,121 +746,32 @@ label{
       margin-top: 50px;
   
   }
-  .ninth-block-subscribe-our-newsletter .content-overlay:last-child{
+  .block-subscribe-our-newsletter .content-overlay:last-child{
       padding-bottom: 50px;
-  }
-  
-  .ninth-block .subscribe-button{
-      margin: 0%;
-  }
-
-  .ninth-block-second-section{
-      margin: 3.9rem auto 0 auto;
   }
   
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px){
-  .ninth-block-label{
-      flex-direction: column;
-      gap: 2.7rem;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-  }
 
-  .ninth-block-label h2{
-      padding-left: 20px;
-      font-size: 2.5rem;
-      margin: 0;
-  }
-
-  .ninth-block-label-button{
-      margin: 0;
-  }
-
-  .ninth-block-second-section{
-      margin-left: 50%;
-      transform: translate(-50%);
-      
-  }
-
-  .ninth-block-first-picture, .ninth-block-second-picture{
-      min-width: 300px;
-      max-width: 670px;
-      min-height: 515px;
-      width: calc(100% - 20px);
-  }
-
-  .ninth-block-content-overlay{
-      min-height: 337px;
-      top: 48.5436%;
-      left: 50%;
-      transform: translate(-50%);
-  }
-
-  .ninth-block-second-section .no-br{
-      display: none;
-  }
-
-  .ninth-block .ninth-block-people-icon{
-      width: auto;
-      top: 15.727%;
-      left: 8.1967%;
-  }
-
-  .ninth-block-content-overlay .author-name{
-      top: 16%;
-      left: 17%;
-  }
-
-  .ninth-block-content-overlay h3{
-      top: 26.4094%;
-      left: 8.1967%;
-      font-size: 1.3125rem;
-      line-height: 2rem;
-      padding-right: 20px;
-  }
-  
-  .ninth-block .quote-text{
-      left: 8.1967%;
-      top: 55%;
-      padding-right: 20px;
-  }
-
-  .ninth-block .view-more-block{
-      padding: 0;
-      width: auto;
-      top: 85%;
-      left: 8.1967%;
-  }
-
-  .ninth-block-second-picture .ninth-block-content-overlay h3{
-      padding-right: 20px;
-  }
-
-  .ninth-block .view-more-block a{
-      font-size: 1.125rem;
-  }
-
-  .ninth-block-subscribe-our-newsletter .content-overlay{
+  .block-subscribe-our-newsletter .content-overlay{
       margin-left: 0;
       transform: none;
   }
 
-  .ninth-block-subscribe-our-newsletter .content-overlay h2{
+  .block-subscribe-our-newsletter .content-overlay h2{
       min-width: auto;
       font-size: 2.5rem;
       padding-left: 10px;
       padding-right: 10px;
   }
 
-  .ninth-block-subscribe-our-newsletter .content-overlay > :nth-child(2){
+  .block-subscribe-our-newsletter .content-overlay > :nth-child(2){
       max-width: 350px;
      width: calc(100% - 20px);
   }
 
-  .ninth-block-subscribe-our-newsletter{
+  .block-subscribe-our-newsletter{
       min-width: 300px;
       max-width: 670px;
       width: calc(100% - 20px);
@@ -1837,7 +782,7 @@ label{
 }
 
 
-/* Конец 9 (последнего) блока --------------------------------------------*/
+/* Конец 3 блока --------------------------------------------*/
 
 footer{
   width: 100%;
