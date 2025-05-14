@@ -21,9 +21,9 @@
             </label>
              <div class="contacts active-burger-menu">
                 <nav>
-                    <a href="#" class="contacts-home-button">Home</a>
+                    <a href="/main_page/index.html" class="contacts-home-button">Home</a>
                     <a href="#">About Us</a>
-                    <a href="#">Shop</a>
+                    <a href="/shop_page/shop_page.html">Shop</a>
                     <a href="#" class="contacts-use-bigger-size">Pages</a>
                     <a href="#" class="contacts-use-bigger-size">Contact Us</a>
                 </nav>
@@ -44,62 +44,33 @@
                 <i>Organic</i>
                 <p>Our Products</p>
             </div>
-            <section class="list-of-products">
-                <div class="base-rectangle calabrese-broccoli">
-                    <img src="./assets/calabrese_broccoli.jpg" class="product-image" alt="">
-                    <p class="product_category">Vegetable</p>
-                    <p class="product_name">Calabrese Broccoli</p>
-                    <div class="rectangle-line"></div>
-                    <p class="price-line-through">$ 25.00 USD</p>
-                    <p class="current-price">$ 21.00 USD</p>
-                    <img src="./assets/five_star.png" class="five-star-image" alt="five_star">
-                </div>
-                <div class="base-rectangle Fresh-Corn">
-                    <img src="./assets/fresh-corn.jpg" class="product-image" alt="">
-                    <p class="product_category">Vegetable</p>
-                    <p class="product_name">Fresh Corn</p>
-                    <div class="rectangle-line"></div>
-                    <p class="price-line-through">$ 21.23 USD</p>
-                    <p class="current-price">$ 18.00 USD</p>
-                    <img src="./assets/five_star.png" class="five-star-image" alt="five_star">
-                </div>
-                <div class="base-rectangle Dried-Pistachio">
-                    <img src="./assets/dried_pistachio.jpg" class="product-image" alt="">
-                    <p class="product_category">Mill</p>
-                    <p class="product_name">Dried Pistachio</p>
-                    <div class="rectangle-line"></div>
-                    <p class="price-line-through">$ 61.00 USD</p>
-                    <p class="current-price">$ 48.00 USD</p>
-                    <img src="./assets/five_star.png" class="five-star-image" alt="five_star">
-                </div>
-                <div class="base-rectangle Vegan-Red-Tomato">
-                    <img src="./assets/vegan_red_tomato.jpg" class="product-image" alt="">
-                    <p class="product_category">Vegetable</p>
-                    <p class="product_name">Vegan Red Tomato</p>
-                    <div class="rectangle-line"></div>
-                    <p class="price-line-through">$ 14.00 USD</p>
-                    <p class="current-price">$ 9.37 USD</p>
-                    <img src="./assets/five_star.png" class="five-star-image" alt="five_star">
-                </div>
-                <div class="base-rectangle organic-almonds">
-                    <img src="./assets/organic_almonds.jpg" class="product-image" alt="">
-                    <p class="product_category">Fru</p>
-                    <p class="product_name">Organic Almonds</p>
-                    <div class="rectangle-line"></div>
-                    <p class="price-line-through">$ 21.00 USD</p>
-                    <p class="current-price">$ 18.00 USD</p>
-                    <img src="./assets/five_star.png" class="five-star-image" alt="five_star">
-                </div>
-                <div class="base-rectangle brown-hazelnut">
-                    <img src="./assets/brown_hazelnut.jpg" class="product-image" alt="">
-                    <p class="product_category">Mill</p>
-                    <p class="product_name">Brown Hazelnut</p>
-                    <div class="rectangle-line"></div>
-                    <p class="price-line-through">$ 43.00 USD</p>
-                    <p class="current-price">$ 34.00 USD</p>
-                    <img src="./assets/five_star.png" class="five-star-image" alt="five_star">
-                </div>
+            <section class="list-of-products" id="products-container">
             </section>
+            <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('http://localhost:3000/products')
+                .then(response => response.json())
+                .then(products => {
+                    const container = document.getElementById('products-container');
+                    
+                    products.forEach(product => {
+                        const productElement = document.createElement('div');
+                        productElement.className = 'base-rectangle';
+                        productElement.innerHTML = `
+                            <img src="${product.image}" class="product-image" alt="${product.name}">
+                            <p class="product_category">${product.category}</p>
+                            <p class="product_name">${product.name}</p>
+                            <div class="rectangle-line"></div>
+                            <p class="price-line-through">$ ${product.oldPrice.toFixed(2)} USD</p>
+                            <p class="current-price">$ ${product.price.toFixed(2)} USD</p>
+                            <img src="${product.ratingImage}" class="five-star-image" alt="Rating ${product.rating}">
+                        `;
+                        container.appendChild(productElement);
+                    });
+                })
+                .catch(error => console.error('Error loading products:', error));
+        });
+    </script>
         </section>
         <section class="block-subscribe-our-newsletter">
             <div class="content-overlay">
