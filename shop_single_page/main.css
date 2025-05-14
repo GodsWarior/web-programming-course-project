@@ -1,0 +1,1012 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html{
+  font-size: 100%;
+}
+
+html, body {
+  /* height: 10447px; /* 652,9375rem */
+  max-width: 1440px;
+  margin: auto;
+}
+
+header {
+  background-color: #ffffff;
+  height: 152px;
+  padding-top: 1.3125rem;
+}
+
+.container {
+  height: 80%; 
+  width: 100%;
+  max-width: 1440px;
+  display: flex;
+  align-items: center;
+  padding-left: 1.875rem;
+  padding-top: 0.5625rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center; 
+  max-width: 13.888%; /* 200px */
+  height: 53.4402%;
+  margin-right: 11.9375rem;
+}
+
+.container .contacts{
+  width: 46.111%;
+  height: 68.7088%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -0.2rem;
+  
+}
+
+.container .contacts:first-child{
+  margin-right: 179px;
+}
+
+.contacts nav, .contacts a{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 42px;
+  flex-shrink: 0; 
+  text-decoration: none;
+  color: #274C5B;
+  font-family: 'Roboto', sans-serif;
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 0.36px;
+}
+
+.contacts-home-button{
+  color: #7EB693 !important;
+  font-size: larger;
+
+}
+
+.contacts .contacts-use-bigger-size{
+  font-size: 1.25rem;
+}
+
+header .cart{
+  display: flex;
+  align-items: center;
+  padding-left: 0.6rem;
+  gap: 0.6rem;
+  margin-left: 11.6rem;
+  width: 9.9375rem;
+  height: 4.375rem;
+  border-radius: 2.0625rem;
+  border: 1px solid #D4D4D4;
+}
+
+header .cart .cart-dark-round{
+  position: relative;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 6.25rem;
+  background: #274C5B;
+}
+
+header .cart .cart-dark-round img{
+  position: absolute;
+  top: 1rem;
+  left: 0.94rem;
+  width: 1.6rem;
+  height: 1.4rem;
+}
+
+.cart a{
+  white-space: pre;
+  color: #274C5B;
+  font-family: Roboto;
+  font-size: 1.0625rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.8rem;
+  letter-spacing: 0.0225rem;
+  text-decoration: none;
+}
+
+label{
+  display: none;
+}
+
+#menu-toggle{
+  display: none;
+}
+
+@media (max-width: 1439px) {
+  header .cart {
+      margin-left: 8rem;
+  }
+  
+}
+
+@media screen and (min-width: 320px) and (max-width: 1245px){
+  
+  label{
+      display: block;
+      position: relative;
+      order: 3;
+      width: 40px;
+      height: 25px;
+      z-index: 5;
+      cursor: pointer;
+      align-items: center;
+      margin-left: auto;
+      margin-right: 1.875rem;
+  }
+  
+  .menu-icon::after, .menu-icon::before, .menu-icon span{
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: black;
+      transition: .3s ease;
+  }
+  
+  .menu-icon::before{
+      top: 0;
+  }
+
+  .menu-icon::after{
+      bottom: 0;
+  }
+
+  .menu-icon span{
+      top: 11px;
+  }
+
+  #menu-toggle:checked ~ label::after{
+      transform: rotate(45deg);
+      bottom: 10px;
+  }
+
+  #menu-toggle:checked ~ label::before{
+      transform: rotate(-45deg);
+      top: 12px;
+  }
+
+  #menu-toggle:checked ~ label span{
+      transform: rotate(-45deg);
+      top: 12px;
+  }
+
+  #menu-toggle:checked ~ body .lock{
+      overflow: hidden;
+  }
+
+  #menu-toggle:checked ~ header .cart{
+      display: flex;
+      right: 0%;
+  }
+
+  header .cart{
+      display: none;
+  }
+
+}
+
+@media screen and (min-width: 320px) and (max-width: 1000px){
+  header .container .contacts{
+      display: none;
+  }
+  header .container{
+      padding-left: 15px;
+  }
+}
+
+/* Конец header ---------------------------------------- */
+
+.first-block{
+  background: url('./assets/Banner.png') top / cover;
+  position: relative; 
+  height: 450px;
+  max-width: 1440px;
+  min-width: 320px;
+}
+
+.first-block-bg-image{
+  width: 100%;
+  /* max-width: 1440px; */
+  height: 913px;
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 767px){
+  .first-block .text-overlay h1{
+      width: 100%;
+      height: auto;
+      font-size: 3rem;
+      line-height: normal;
+  }
+  .first-block .text-overlay h1 .no-br{
+      display: none;
+  }
+}
+
+/* Конец 1 блока -------------------------------------------- */
+
+.first-subsection i, .our-products-label i{
+  max-width: 122px;
+  color: #7EB693;
+  font-family: Yellowtail;
+  font-size: 2.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 4.05rem; /* 180% */
+  letter-spacing: 0.0225rem;
+  text-transform: capitalize;
+}
+
+.base-middle-lable
+{
+  /* max-width: 512px; */
+  color: #274C5B;
+  font-family: Roboto;
+  font-size: 2.8125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 3.65625rem;
+  letter-spacing: 0.0225rem;
+  text-transform: capitalize;
+}
+
+.first-subsection h1{
+  margin-top: -1px;
+  margin-bottom: 23px;
+}
+
+.first-subsection h2{
+  width: 100%;
+  color: #525C60;
+  font-family: Open Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32.4px; /* 180% */
+  letter-spacing: 0.36px;
+  margin-bottom: 0px;
+}
+
+.second-subsection{
+  display: grid;
+  gap: 30px;
+}
+
+.organic-foods, .quality-standards{
+  height: 104px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 56px;
+}
+
+.quality-standards{
+  margin-top: 0px;
+}
+
+.white_rect{
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-color: #FFF;
+  border-radius: 20px;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.vector_plate{
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  z-index: 2;
+  left: 31px;
+  top: 27px;
+}
+
+.organic-food-text{
+  padding-top: 8px;
+  height: 100%;
+}
+
+.organic-food-text h3, .quality-standards-text h3{ 
+  max-width: 225px;
+  color: #274C5B;
+  font-family: Roboto;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 35px; /* 140% */
+  letter-spacing: 0.36px;
+  margin-top: -8px;
+  margin-bottom: 0% ;
+}
+
+.organic-food-text p, .quality-standards-text p{ 
+  max-width: 552px;
+  color: #525C60;
+  font-family: "Open Sans";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32.4px; /* 180% */
+  letter-spacing: 0.36px;
+  padding-top: 10px;
+}
+
+.vector_box{
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  z-index: 2;
+  left: 26px;
+  top: 24px;
+} 
+
+.quality-standards-text{
+  margin-top: 14px;
+}
+
+.shop-now-button, .view-all-products-button, .subscribe-button{
+  width: 12.4375rem;
+  height: 5.125rem;
+  color: #FFF;
+  background-color: #274C5B;
+  background-image: url('./assets/arrow_to_button.png');
+  background-repeat: no-repeat;
+  background-size: 3.125rem 3.125rem;
+  background-position: 97% 40%;
+  text-indent: -2.5625rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2rem;
+  letter-spacing: 0.0225rem;
+  text-transform: capitalize;
+  border-radius: 0.9375rem;
+  border: none;
+  padding: 0.625rem 1.25rem;
+  margin-top: 1.3125rem;
+  cursor: pointer; /* Указатель при наведении */
+  transition: background-color 0.3s; /* Плавный переход фона */
+}
+
+.shop-now-button:hover {
+  background-color: gray;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px){
+  .second-subsection .organic-foods, .second-subsection .quality-standards{
+      height: auto;
+      align-items: normal;
+  }
+}
+
+/* Конец 2 блока -------------------------------------------- */
+
+.our-products-label{
+  width: 95.8333%;
+  height: 8.8337%;
+  text-align: center;
+  margin-top: 7.4rem;
+  margin-left: 1.875rem;
+}
+
+.list-of-products{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  row-gap: 0;
+  width: 96%;
+  min-height: 1220px;
+  height: 88.2714%;
+  margin-top: 2.5rem;
+  margin-left: 1.875rem;
+}
+
+.base-rectangle{
+  position: relative;
+  min-width: 320px;
+  width: 447px;
+  height: 48.3967%;
+  min-height: 590px;
+  border-radius: 1.875rem;
+  background: #F9F8F8;
+}
+
+.rectangle-line{
+  position: absolute;
+  bottom: 13.2966%;
+  left: 1.875rem;
+  width: 86.5011%;
+  height: 0.1695%;
+  background-color: #D4D4D4;
+}
+
+.base-rectangle .product-image{
+  position: absolute;
+  width: 86.577%;
+  height: 64.0678%;
+  top: 4.1875rem;
+  left: 1.875rem;
+}
+
+.base-rectangle .product_category{
+  position: absolute;
+  top: 1.95rem;
+  left: 1.88rem;
+  text-align: center;
+  padding-top: 0.31rem;
+  width: 26.3982%;
+  height: 6.2711%;
+  border-radius: 0.5rem;
+  background: #274C5B;
+  color: #FFF;
+  font-family: "Open Sans";
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.6875rem;
+  letter-spacing: 0.0225rem;
+}
+
+.base-rectangle .product_name{
+  position: absolute;
+  width: 43.4%;
+  height: 6.101%;
+  top: 29.1rem;
+  left: 1.88rem;
+  right: 14.19rem;
+  bottom: 5.63rem;
+  color: #274C5B;
+  font-family: Roboto;
+  font-size: 1.375rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.2rem;
+  letter-spacing: 0.0225rem;
+}
+
+.base-rectangle .price-line-through{
+  position: absolute;
+  width: 6.5625rem;
+  height: 2.0625rem;
+  top: 32.75rem;
+  left: 1.88rem;
+  text-decoration: line-through;
+  color: #B8B8B8;
+  font-family: "Open Sans";
+  font-size: 1.0625rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.025rem; 
+  letter-spacing: 0.0225rem;
+}
+
+.base-rectangle .current-price{
+  position: absolute;
+  width: 6.6875rem;
+  height: 2.0625rem;
+  top: 32.6875rem;
+  left: 9.06rem;
+  color: #274C5B;
+  font-family: "Open Sans";
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2.025rem;
+  letter-spacing: 0.0225rem;
+}
+
+.base-rectangle .five-star-image{
+  position: absolute;
+  width: 5.3125rem;
+  height: 1.1875rem;
+  flex-shrink: 0;
+  top: 33.06rem;
+  left: 20.75rem;
+}
+
+.Dried-Pistachio .product_category, .brown-hazelnut .product_category{
+  width: 5.75rem;
+  height: 2.3125rem;
+  flex-shrink: 0;
+  text-align: left;
+  padding-left: 1.25rem;
+}
+
+.Vegan-Red-Tomato .product_name{
+  font-size: 1.3125rem;
+}
+
+
+.organic-almonds .product_category{
+  width: 5.25rem;
+  height: 2.3125rem;
+  flex-shrink: 0;
+  text-align: left;
+  padding-left: 1.25rem;
+}
+
+@media (max-width: 1439px){
+  .list-of-products{
+      margin: 2.5rem 0 0;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      height: auto;
+      row-gap: 1.25rem;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .our-products-label{
+      margin-left: 0;
+  }
+  .list-of-products .product-image{
+      height: auto;
+  }
+  .base-rectangle{
+      min-width: auto;
+      max-width: 300px;
+      min-height: auto;
+      height: 420px;
+  }
+  .base-rectangle .product_category{
+      padding-top: 0;
+      font-size: 0.75rem;
+  }
+
+  .base-rectangle .product_name{
+      font-size: 1.2rem;
+      width: 195px;
+      top: 20.5rem;
+  }
+
+  .rectangle-line{
+      left: 50%;
+      transform: translate(-50%);
+  }
+
+  .base-rectangle .price-line-through{
+      top: 22.75rem;
+  }
+
+  .base-rectangle .current-price{
+      top: 22.75rem;
+      font-size: 1.1rem;
+  }
+
+  .base-rectangle .five-star-image{
+      top: 2rem;
+      left: 12rem;
+  }
+
+  .Dried-Pistachio .product_category, .brown-hazelnut .product_category, .organic-almonds .product_category{
+      width: 26.3982%;
+      height: 6.2711%
+  }
+}
+
+/* Конец 3 блока -------------------------------------------- */
+
+.quote-text{
+  position: absolute;
+  top: 10.21rem;
+  left: 3.13rem;
+  color: #525C60;
+  font-family: "Open Sans";
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.025rem; /* 180% */
+  letter-spacing: 0.0225rem;
+}
+
+.view-more-block{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  top: 14.95rem;
+  left: 3.12rem;
+  width: 35rem;
+  padding: 0.61225rem 23.875rem 0.63775rem 0rem;
+}
+
+.view-more-block a{
+  text-decoration: none;
+  color: #274C5B;
+  font-family: Roboto;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.75rem; 
+  letter-spacing: 0.0225rem;
+}
+
+.block-subscribe-our-newsletter{
+  border-top: 1px solid transparent;
+  min-height: 320px;
+  max-width: 1380px;
+  border-radius: 30px;
+  background-image: url(./assets/last_picture.png);
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  margin-top: 9.84rem;
+  margin-left: 1.88rem;
+  margin-right: 1.88rem;
+}
+
+.block-subscribe-our-newsletter .content-overlay{
+  display: flex;
+  flex-wrap: wrap;
+  width: 89.855%;
+  height: 25%;
+  margin: 6.3rem 4.4rem 0;
+}
+
+.block-subscribe-our-newsletter .content-overlay h2{
+  min-width: 325px;
+  color: #FFF;
+  font-family: Roboto;
+  font-size: 3.125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 3.75rem; /* 120% */
+  letter-spacing: 0.0225rem;
+  text-transform: capitalize;
+}
+
+.block-subscribe-our-newsletter .content-overlay > :nth-child(2){
+  margin-left: 21.87rem;
+  margin-top: 1.2rem;
+  margin-right: 0.63rem;
+  padding-top: 1.6rem;
+  padding-left: 1.8rem;
+  align-items: center;
+  width: 21.875rem;
+  height: 5.125rem;
+  color: #525C60;
+  font-family: "Open Sans";
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.8rem; /* 160% */
+  letter-spacing: 0.0225rem;
+  border-radius: 1rem;
+  border: 1px solid #CCC;
+  background: #FFF;
+}
+
+.subscribe-button{
+  margin-top: 1.2rem;
+  padding-left: 1.65rem;
+  padding-top: 0.55rem;
+  width: 12.3125rem;
+  font-family: "Open Sans";
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.8rem; /* 160% */
+  background-size: 3.1rem 2.6rem;
+  background-position: 95% 45%;
+}
+
+.subscribe-button:hover{
+  background-color: gray;
+}
+
+@media (max-width: 1439px){
+
+  .block-subscribe-our-newsletter .content-overlay > :nth-child(2){
+      margin-left: auto;
+  }
+
+}
+
+@media screen and (min-width: 320px) and (max-width: 1100px){
+
+  .block-subscribe-our-newsletter .no-br
+  {
+      display: none;
+  }
+  
+  .block-subscribe-our-newsletter .content-overlay > :nth-child(2){
+      margin: 0;
+  }
+
+  .block-subscribe-our-newsletter .content-overlay h2{
+      text-align: center;
+  }
+  
+  .block-subscribe-our-newsletter .content-overlay{
+      width: auto;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+      justify-content: center;
+      margin: 0%;
+      margin-left: 50%;
+      transform: translate(-50%);
+      margin-top: 50px;
+  
+  }
+  .block-subscribe-our-newsletter .content-overlay:last-child{
+      padding-bottom: 50px;
+  }
+  
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px){
+
+  .block-subscribe-our-newsletter .content-overlay{
+      margin-left: 0;
+      transform: none;
+  }
+
+  .block-subscribe-our-newsletter .content-overlay h2{
+      min-width: auto;
+      font-size: 2.5rem;
+      padding-left: 10px;
+      padding-right: 10px;
+  }
+
+  .block-subscribe-our-newsletter .content-overlay > :nth-child(2){
+      max-width: 350px;
+     width: calc(100% - 20px);
+  }
+
+  .block-subscribe-our-newsletter{
+      min-width: 300px;
+      max-width: 670px;
+      width: calc(100% - 20px);
+      margin-right: 0;
+      margin-left: 50%;
+      transform: translate(-50%);
+  }
+}
+
+
+/* Конец 3 блока --------------------------------------------*/
+
+footer{
+  width: 100%;
+  height: 630px;
+  margin-top: 1.8rem;
+}
+
+footer .contacts{
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  padding-top: 7.1rem;
+  padding-left: 6rem;
+}
+
+footer .contacts h2{
+  color: #274C5B;
+  font-family: Roboto;
+  font-size: 1.875rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2.625rem;
+  letter-spacing: 0.0225rem;
+}
+
+footer .contacts p{
+  width: 16.8125rem;
+  color: #525C60;
+  font-family: "Open Sans";
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.8rem; /* 160% */
+  letter-spacing: 0.0225rem;
+}
+
+.contacts-first-column h3{
+  color: #525C60;
+  font-family: "Open Sans";
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.4625rem; /* 130% */
+  letter-spacing: 0.0225rem;
+}
+
+.contacts-first-column h2, .contacts-first-column p, .contacts-first-column h3{
+  text-align: right;
+}
+
+.contacts-first-column h2{
+  margin-bottom: 2.23rem;
+}
+.contacts-first-column h3{
+  margin-bottom: 0.32rem;
+}
+.contacts-first-column p{
+  margin-bottom: 2.37rem;
+}
+
+.contacts-second-column{
+  text-align: center;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+footer .contacts-second-column p{
+  width: 35.4375rem;
+  line-height: 2.025rem; /* 180% */
+  margin-bottom: 3.75rem;
+  margin-left: -0.07rem;
+}
+
+.contacts-second-column .organic_logo{
+  width: 12.5rem;
+  height: 3.5rem;
+  margin-bottom: 2.6rem;
+  margin-left: -0.2rem;
+}
+
+.contacts-second-column .icon-group{
+  max-width: 558px;
+  display: flex;
+  gap: 1.25rem;
+  margin-left: 8.15rem;
+}
+
+footer .contacts .icon-group-round{
+  position: relative;
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 6.25rem;
+  background: #EFF6F1;
+}
+
+footer .contacts .icon-group-round img{
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 1.2rem;
+  margin-left: 0.25rem;
+}
+
+footer .contacts .contacts-third-column{
+  margin-left: -0.15rem;
+}
+footer .contacts .contacts-third-column h2{
+  margin-bottom: 1.25rem;
+}
+footer .contacts .contacts-third-column p{
+  margin-bottom: 1.52rem;
+}
+
+.vertical-line{
+  width: 0.0625rem;
+  height: 23.0625rem;
+  background-color: #D5D5D5;
+}
+
+.copyright .full-line{
+  margin-top: 9.18rem;
+  margin-bottom: 1.4rem;
+  width: 100%;
+  height: 0.0625rem;
+  background-color: #D5D5D5;
+}
+
+.copyright p{
+  min-width: 637px;
+  white-space: pre;
+  padding-left: 28.5889%;
+  color: #525C60;
+  /* text-align: center; */
+  font-family: "Open Sans";
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.025rem; /* 180% */
+  letter-spacing: 0.0225rem;
+}
+
+@media (max-width: 1439px){
+
+  footer{
+      margin-top: 0;
+  }
+
+  .first-vertical-line{
+      display: none;
+  }
+
+  footer .contacts{
+      padding-left: 0;
+      align-items: center;
+      width: 100%;
+  }
+
+  .contacts-second-column .icon-group{
+      justify-content: center;
+      margin: 0%;
+  }
+
+
+  .contacts-second-column{
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      order: 1;
+      width: 100%;
+      margin-bottom: 3rem;        
+  }
+
+  .contacts-first-column h2, .contacts-first-column p, .contacts-first-column h3{
+      text-align: center;
+  }
+  .contacts-first-column{
+      max-width: 270px;
+      order: 2;
+      margin: auto;
+  }
+
+  .second-vertical-line{
+      order: 3;
+  }
+  
+  footer .contacts .contacts-third-column{
+      order: 4;
+      max-width: 335px;
+      text-align: center;
+      margin: auto;
+  }
+
+  .copyright p{
+      padding: 0;
+      margin-left: 50%;
+      transform: translate(-50%);
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 660px)
+{
+  footer .contacts-first-column{
+      max-width: none;
+      width: 100%;
+      text-align: center;
+  }
+  
+  .second-vertical-line{
+      display: none;
+  }
+
+  footer .contacts p{
+      width: auto;
+  }
+
+  .copyright p{
+      min-width: auto;
+      width: auto;
+      margin: 0;
+      transform: none;
+      text-align: center;
+      height: auto;
+      white-space: normal;
+      padding: 0 10px 0 10px;
+  }
+}
