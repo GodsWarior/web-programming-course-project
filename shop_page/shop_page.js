@@ -1,19 +1,26 @@
-// Загружаем header и инициализируем корзину
+// Загружаем header
 fetch('/templates/header.html')
     .then(response => response.text())
     .then(html => {
         document.getElementById('header-container').innerHTML = html;
-        updateCartCounter();
         
-        // Добавляем обработчик ПОСЛЕ загрузки header
+        // Обработчик клика по корзине → переход на purchase_page.html
         document.getElementById('cart-button').addEventListener('click', function(e) {
             e.preventDefault();
-            window.location.href = '../shop_single_page/single_shop_page.html';
+            window.location.href = '../purchase_page/purchase_page.html';
         });
+        
+        // Инициализация корзины (если её нет)
+        if (!localStorage.getItem('cart')) {
+            localStorage.setItem('cart', JSON.stringify([]));
+        }
+        
+        // Обновляем счётчик (пока скрыт)
+        updateCartCounter();
     })
     .catch(error => console.error('Error loading header:', error));
 
-// Остальной код (загрузка товаров) остается без изменений
+// Загрузка товаров
 document.addEventListener('DOMContentLoaded', function() {
     fetch('http://localhost:3000/products')
         .then(response => response.json())
@@ -33,21 +40,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     <img src="${product.ratingImage}" class="five-star-image" alt="Rating ${product.rating}">
                 `;
                 
+                // Клик на товар → переход на single_shop_page.html с ID товара
                 productElement.addEventListener('click', function() {
-                    addToCart(product.id);
+                    window.location.href = `../shop_single_page/single_shop_page.html?id=${product.id}`;
                 });
                 
                 container.appendChild(productElement);
             });
         })
         .catch(error => console.error('Error loading products:', error));
-
-    if (!localStorage.getItem('cart')) {
-        localStorage.setItem('cart', JSON.stringify([]));
-    }
-    updateCartCounter();
 });
 
+// Функция добавления в корзину (оставлена для будущего использования)
 function addToCart(productId) {
     const cart = JSON.parse(localStorage.getItem('cart'));
     cart.push(productId);
@@ -55,7 +59,12 @@ function addToCart(productId) {
     updateCartCounter();
 }
 
+// Функция обновления счётчика (пока скрыта, но работает)
 function updateCartCounter() {
     const cart = JSON.parse(localStorage.getItem('cart'));
-    document.getElementById('cart-counter').textContent = cart.length;
+    const counter = document.getElementById('cart-counter');
+    if (counter) {
+        counter.textContent = cart.length;
+        // Позже можно будет показать счётчик: counter.style.display = "inline";
+    }
 }
