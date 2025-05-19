@@ -1,5 +1,20 @@
+// Загружаем header и инициализируем корзину
+fetch('/templates/header.html')
+    .then(response => response.text())
+    .then(html => {
+        document.getElementById('header-container').innerHTML = html;
+        updateCartCounter();
+        
+        // Добавляем обработчик ПОСЛЕ загрузки header
+        document.getElementById('cart-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = '../shop_single_page/single_shop_page.html';
+        });
+    })
+    .catch(error => console.error('Error loading header:', error));
+
+// Остальной код (загрузка товаров) остается без изменений
 document.addEventListener('DOMContentLoaded', function() {
-    // Загружаем товары
     fetch('http://localhost:3000/products')
         .then(response => response.json())
         .then(products => {
@@ -27,18 +42,10 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => console.error('Error loading products:', error));
 
-    // Инициализация корзины
     if (!localStorage.getItem('cart')) {
         localStorage.setItem('cart', JSON.stringify([]));
     }
-    
     updateCartCounter();
-
-    // Обработчик клика по корзине
-    document.getElementById('cart-button').addEventListener('click', function(e) {
-    e.preventDefault();
-    window.location.href = '../shop_single_page/single_shop_page.html';
-    });
 });
 
 function addToCart(productId) {

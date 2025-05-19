@@ -10,32 +10,7 @@
     <link rel="stylesheet" href="./main.css">
 </head>
 <body class="lock">
-    <header>
-        <div class="container">
-            <span class="logo">
-                <img src="./assets/organik_logo.png" alt="image-preview">
-            </span>
-            <input type="checkbox" id="menu-toggle">
-            <label class="menu-icon active-burger-menu" for="menu-toggle">
-                <span></span>
-            </label>
-             <div class="contacts active-burger-menu">
-                <nav>
-                    <a href="/main_page/index.html" class="contacts-home-button">Home</a>
-                    <a href="#">About Us</a>
-                    <a href="/shop_page/shop_page.html">Shop</a>
-                    <a href="#" class="contacts-use-bigger-size">Pages</a>
-                    <a href="#" class="contacts-use-bigger-size">Contact Us</a>
-                </nav>
-            </div>
-            <span class="cart">
-                <div class="cart-dark-round">
-                     <img src="./assets/cort_button_image.png" alt="cort_button_image">
-                </div>
-                 <a href="#">Cart  0</a>
-            </span>
-        </div>
-    </header>
+    <div id="header-container"></div>
     <main>
         <section class="first-block">
             <div class="text-overlay">
@@ -44,37 +19,9 @@
         </section>
         <section class="second-block">
             <div class="base-middle-lable our-products-label">
-                <i>Organic</i>
-                <p>Our Products</p>
+                <p>Related Products</p>
             </div>
-            <section class="list-of-products">
-                <div class="base-rectangle calabrese-broccoli">
-                    <img src="./assets/calabrese_broccoli.jpg" class="product-image" alt="">
-                    <p class="product_category">Vegetable</p>
-                    <p class="product_name">Calabrese Broccoli</p>
-                    <div class="rectangle-line"></div>
-                    <p class="price-line-through">$ 25.00 USD</p>
-                    <p class="current-price">$ 21.00 USD</p>
-                    <img src="./assets/five_star.png" class="five-star-image" alt="five_star">
-                </div>
-                <div class="base-rectangle Fresh-Corn">
-                    <img src="./assets/fresh-corn.jpg" class="product-image" alt="">
-                    <p class="product_category">Vegetable</p>
-                    <p class="product_name">Fresh Corn</p>
-                    <div class="rectangle-line"></div>
-                    <p class="price-line-through">$ 21.23 USD</p>
-                    <p class="current-price">$ 18.00 USD</p>
-                    <img src="./assets/five_star.png" class="five-star-image" alt="five_star">
-                </div>
-                <div class="base-rectangle Dried-Pistachio">
-                    <img src="./assets/dried_pistachio.jpg" class="product-image" alt="">
-                    <p class="product_category">Mill</p>
-                    <p class="product_name">Dried Pistachio</p>
-                    <div class="rectangle-line"></div>
-                    <p class="price-line-through">$ 61.00 USD</p>
-                    <p class="current-price">$ 48.00 USD</p>
-                    <img src="./assets/five_star.png" class="five-star-image" alt="five_star">
-                </div>
+            <section class="list-of-products" id="products-container">
             </section>
         </section>
         <section class="block-subscribe-our-newsletter">
@@ -130,5 +77,6 @@
             <p>Copyright © Organick | Designed by  VictorFlow -  Powered by  WebFlow</p>
         </div>
     </footer>
+<script src="shop_single_page.js"></script>
 </body>
 </html>
