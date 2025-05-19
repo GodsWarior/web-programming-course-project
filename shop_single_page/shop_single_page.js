@@ -71,41 +71,33 @@ function updateCartCounter() {
 
 // Получаем ID товара из URL
 const urlParams = new URLSearchParams(window.location.search);
-const productId = parseInt(urlParams.get('id'));
+const productId = urlParams.get('id');
 
-// Загружаем данные товара
 if (productId) {
-    fetch('http://localhost:3000/products')
+    fetch(`http://localhost:3000/products/${productId}`)
         .then(response => response.json())
-        .then(products => {
-            // Находим нужный товар по ID
-            const product = products.find(p => p.id === productId);
+        .then(product => {
+            // Заполняем карточку товара (левая часть)
+            document.querySelector('.product-image').src = product.image;
+            document.querySelector('.product_category').textContent = product.category;
+            document.querySelector('.product_name').textContent = product.name;
+            document.querySelector('.price-line-through').textContent = `$${product.oldPrice.toFixed(2)} USD`;
+            document.querySelector('.current-price').textContent = `$${product.price.toFixed(2)} USD`;
+            document.querySelector('.five-star-image').src = product.ratingImage;
             
-            if (product) {
-                // Вставляем данные товара в HTML
-                document.querySelector('.product-title').textContent = product.name;
-                document.querySelector('.product-category').textContent = product.category;
-                document.querySelector('.product-image').src = product.image;
-                document.querySelector('.product-rating').src = product.ratingImage;
-                document.querySelector('.old-price').textContent = `$${product.oldPrice.toFixed(2)}`;
-                document.querySelector('.current-price').textContent = `$${product.price.toFixed(2)}`;
-                
-                // Описание можно добавить в db.json или использовать фиксированное
-                document.querySelector('.product-description').textContent = 
-                    product.description || "Premium quality product from our organic farm.";
-            }
+            // Заполняем детали товара (правая часть)
+            document.querySelector('.product-title').textContent = product.name;
+            document.querySelector('.old-price').textContent = `$${product.oldPrice.toFixed(2)}`;
+            document.querySelector('.current-price').textContent = `$${product.price.toFixed(2)}`;
         })
-        .catch(error => console.error('Ошибка загрузки товара:', error));
+        .catch(error => console.error('Error loading product:', error));
 }
 
-// Обработчик кнопки "Add To Cart"
-document.querySelector('.add-to-cart-btn').addEventListener('click', function() {
-    if (!productId) return;
-    
-    const quantity = parseInt(document.querySelector('.product-quantity input').value);
+// Обработчик кнопки "Add to Cart"
+document.querySelector('.add-to-cart').addEventListener('click', function() {
+    const quantity = parseInt(document.querySelector('.quantity-selector input').value);
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     
-    // Добавляем товар N раз в соответствии с количеством
     for (let i = 0; i < quantity; i++) {
         cart.push(productId);
     }

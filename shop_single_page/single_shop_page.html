@@ -11,41 +11,39 @@
 </head>
 <body class="lock">
     <div id="header-container"></div>
-    <main>
         <section class="first-block">
             <div class="text-overlay">
                 <h1>Shop Single</h1>
             </div>
         </section>
 
-        <div class="product-container">
-            <div class="product-image-wrapper">
-                <img class="product-image" src="" alt="Product Image">
-            </div>
+        <div class="single-product-container">
+            <div class="single-product-view">
+                <!-- Левая часть - изображение товара -->
+                <div class="product-gallery">
+                    <div class="single-product-rectangle">
+                        <img class="product-image" src="" alt="Product Image">
+                        <p class="product_category"></p>                    
+                    </div>
+                </div>
             
-            <div class="product-info">
-                <h1 class="product_title">Product Name</h1>
-                <p class="product_category">Category</p>
-                
-                <div class="price-section">
-                    <span class="old-price">$0.00</span>
-                    <span class="current-price">$0.00</span>
+                <!-- Правая часть - детали товара -->
+                <div class="product-details">
+                    <p class="product_name"></p>
+                    <p class="price-line-through"></p>
+                    <p class="current-price"></p>
+                    <img class="five-star-image" src="" alt="Rating">
+                    <p class="product-description">
+                        This premium organic product is carefully grown and harvested to ensure 
+                        the highest quality standards. Rich in nutrients and flavor.
+                    </p>
+                    
+                    <div class="quantity-selector">
+                        <input type="number" value="1" min="1">
+                    </div>
+                    
+                    <button class="add-to-cart">Add To Cart</button>
                 </div>
-                
-                <div class="rating">
-                    <img class="product-rating" src="" alt="Rating">
-                </div>
-                
-                <p class="product-description">
-                    Product description will be loaded here...
-                </p>
-                
-                <div class="product-quantity">
-                    <label>Quantity:</label>
-                    <input type="number" value="1" min="1">
-                </div>
-                
-                <button class="add-to-cart-btn">Add To Cart</button>
             </div>
         </div>
 
