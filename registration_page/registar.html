@@ -3,247 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/header-foter.css">
-    <link rel="stylesheet" href="/css/registar.css">
-    <script src="/js/baseElements/baseElements.js" type="module"></script>
-    <script src="/js/register/createNewUser.js" type="module"></script>
-    <script src="/js/register/modal.js" type="module"></script>
+    <title>Organik</title>
+    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./registar.css">
+    <script src="registration.js"></script>
 </head>
-<body>
-    <div class="preloader">
-        <div class="preloader-content"></div>
+<body class="lock">
+    <div id="preloader">
+        <div class="loader"></div>
     </div>
-    <header>
-        <div class="header-logo-container">
-            <img src="/img/Logo.svg" alt="logo" class="logo logo-light">
-            <img src="/img/Logo_black.svg" alt="logo" class="logo logo-dark">
-            <div class="header-img-container">
-                <img src="/img/phone.png" alt="phone">
-                <p>Call Us - (+22) 123 456 7890</p>
-            </div>
-        </div>
-        <div class="header-auth-buttons">
-            <label class="theme-toggle">
-                <input type="checkbox" hidden>  
-                <img class="sun" src="/img/sun.png" alt="sun">
-                <img class="moon" src="/img/moon.png" alt="moon">
-            </label>
-            <button class="visually-impaired-button">
-                <img src="/img/eye.png" alt="eye">
-                version for the visually impaired
-            </button>
-            <div class="language-selector">
-                <input type="checkbox" id="lang-switch" class="language-checkbox" hidden>
-                <label for="lang-switch" class="language-toggle">
-                  <span class="language-option ru">RU</span>
-                  <span class="language-option en">EN</span>
-                </label>
-            </div>
-            <nav>
-                <a href="">Log in</a>
-                <a href="./homepage.html">Home</a>
-                <a href="">Pages</a>
-                <a href="">About</a>
-                <a href="">Services</a>
-                <a href="">Contact</a>
-            </nav>
-            <button class="burger-menu">
-                <span></span>
-            </button>
-            <button class="reserv-button">
-                <img src="/img/reservetionLogo.png" alt="">
-                RESERVATION
-            </button>
-            <a href="./cart.html" id="basket-link">
-                <img class="basket" src="/img/basket.png" alt="basket">
-            </a>
-        </div>
-    </header>
-    <main>
-        <section class="register-container">
-    <div>
-        <h3>Enter into Beauty</h3>
-        <h2>Check in</h2>
-    </div>
-    <div class="register-container-window">
-        <div class="input-wrapper">
-            <div class="password-wrapper">
-                <img class="icon" src="/img/user-register.svg" alt="user icon">
-                <input class="card-input" type="text" placeholder="Nickname" id="nickname">
-                <button class="generate-button generate-nickname">Generate Nickname</button>
-            </div>
-            <span class="error-message"></span>
-        </div>
-        <div class="input-wrapper">
-            <div class="password-wrapper">
-                <img class="icon" src="/img/user-register.svg" alt="user icon">
-                <input class="card-input" type="text" placeholder="Name" id="name">
-            </div>
-            <span class="error-message"></span>
-        </div>
-        <div class="input-wrapper">
-            <div class="password-wrapper">
-                <img class="icon" src="/img/user-register.svg" alt="user icon">
-                <input class="card-input" type="text" placeholder="Second Name" id="second_name">
-            </div>
-            <span class="error-message"></span>
-        </div>
-        <div class="input-wrapper">
-            <div class="password-wrapper">
-                <img class="icon" src="/img/user-register.svg" alt="user icon">
-                <input class="card-input" type="text" placeholder="Surname" id="surname">
-            </div>
-            <span class="error-message"></span>
-        </div>
-        <div class="input-wrapper">
-            <div class="password-wrapper">
-                <img class="icon" src="/img/mail-register.svg" alt="email icon">
-                <input class="card-input" type="email" placeholder="Email" id="email">
-            </div>
-            <span class="error-message"></span>
-        </div>
-        <div class="input-wrapper">
-            <div class="password-wrapper">
-                <img class="icon" src="/img/phone-register.svg" alt="phone icon">
-                <input class="card-input" type="tel" placeholder="Phone" id="phone">
-            </div>
-            <span class="error-message"></span>
-        </div>
-        <div class="input-wrapper">
-            <div class="password-wrapper">
-                <img class="icon" src="/img/book-register.svg" alt="calendar icon">
-                <input class="card-input" type="text" placeholder="Date of birth" id="date_of_birth">
-            </div>
-            <span class="error-message"></span>
-        </div>
-        <div class="input-wrapper">
-            <div class="password-wrapper">
-                <img class="icon" src="/img/book-register.svg" alt="lock icon">
-                <input class="card-input" type="password" placeholder="Password" id="password">
-                <button class="generate-button generate-password">Generate Password</button>
-            </div>
-            <span class="error-message"></span>
-        </div>
-        <div class="input-wrapper">
-            <div class="password-wrapper">
-                <img class="icon" src="/img/book-register.svg" alt="lock icon">
-                <input class="card-input" type="password" placeholder="Repeat Password" id="password_repeat" onpaste="return false;">
-            </div>
-            <span class="error-message"></span>
-        </div>
-        <button class="check-in-button" id="submit-button">Check in</button>
-        <label class="agree-label">
-            <div>
-                <input type="checkbox" name="agree" id="agree">
-                 I agree to <a href="#" id="terms-link">terms of use</a>
-            </div>
-            <span class="error-message agree-error"></span>
-        </label>
-        <h3><a href="login.html" id="toggle-form">Login in</a></h3>
-    </div>
-</section>
+    <div id="header-container"></div>
 
-<div class="modal" id="terms-modal">
-    <div class="modal-content">
-        <span class="modal-close">&times;</span>
-        <h2>Terms of Use</h2>
-        <div class="modal-body">
-            <p>Welcome to our website. By using our services, you agree to the following terms and conditions:</p>
-            <ul>
-                <li>You must be at least 16 years old to register.</li>
-                <li>All personal information provided must be accurate and up-to-date.</li>
-                <li>You are responsible for maintaining the confidentiality of your account and password.</li>
-                <li>We reserve the right to suspend or terminate accounts that violate these terms.</li>
-                <li>Our services are provided "as is" without warranties of any kind.</li>
-                <li>We may collect and use your personal data in accordance with our Privacy Policy.</li>
-                <li>You agree not to use our services for any unlawful or prohibited activities.</li>
-            </ul>
-            <p>If you have any questions, please contact us at support@doctors.com.</p>
-        </div>
-        <button class="modal-close-button">Close</button>
-    </div>
-</div>
+    <main>
     </main>
+
     <footer>
-        <div class="footer-top-container">
-            <div class="footer-top-logo-container">
-                <img class="footer-logo-img" src="/img/Logo_black.svg" alt="logo">
-                <div class="footer-img-container">
-                    <div class="footer-img">
-                        <img src="/img/facebook_white.png" alt="facebook">
+        <section class="contacts">
+            <div class="contacts-first-column">
+                <h2>Contact Us</h2>
+                <h3>Email</h3>
+                <p>needhelp@organick.com</p>
+                <h3>Phone</h3>
+                <p>123 (1254) 1452</p>
+                <h3>Address</h3>
+                <p>88 Road, Brooklyn Street, USA</p>
+            </div>
+            <div class="vertical-line first-vertical-line"></div>
+            <div class="contacts-second-column">
+                <img src="./assets/organik_logo.png" class="organic_logo" alt="organik_logo">
+                <p>We are a popular and farming company aspiring to be a leader <br> in the Organic food industry.</p>
+                <div class="icon-group">
+                    <div class="icon-group-round">
+                        <img src="./assets/facebook_icon.png" alt="facebook_icon">
                     </div>
-                    <div class="footer-img">
-                        <img src="/img/X_white.png" alt="X">
+                    <div class="icon-group-round">
+                        <img src="./assets/twitter_icon.png" alt="twitter_icon">
                     </div>
-                    <div class="footer-img">
-                        <img src="/img/in_white.png" alt="in">
+                    <div class="icon-group-round">
+                        <img src="./assets/instagram_icon.png" alt="instagram_icon">
                     </div>
-                    <div class="footer-img">
-                        <img src="/img/instagram_white.png" alt="instagram">
+                    <div class="icon-group-round">
+                        <img src="./assets/patreon_icon.png" alt="patreon_icon">
                     </div>
                 </div>
             </div>
-            <hr class="footer-line">
-            <div class="footer-links">
-                <div class="footer-column">
-                    <h4>Explore</h4>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Appointments</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Utility Pages</h4>
-                    <ul>
-                        <li><a href="#">Start here</a></li>
-                        <li><a href="#">Style guide</a></li>
-                        <li><a href="#">404 not found</a></li>
-                        <li><a href="#">Password protected</a></li>
-                        <li><a href="#">Licenses</a></li>
-                        <li><a href="#">Changelog</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Keep in Touch</h4>
-                    <ul>
-                        <li>
-                            <div class="footer-column-text">
-                                <span>Address:</span>
-                                <span>24A Kingston St, Los Vegas NC 28202, USA.</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="footer-column-text">
-                                <span>Mail:</span>
-                                <span>support@doctors.com</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="footer-column-text">
-                                <span>Phone:</span>
-                                <span>(+22) 123 - 4567 - 900</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Working Hours</h4>
-                    <ul>
-                        <li><span>Mon to Fri: 7am - 6pm</span></li>
-                        <li><span>Sat: 9am - 7pm</span></li>
-                        <li><span>Sun: 9am - 6pm</span></li>
-                    </ul>
-                </div>
+            <div class="vertical-line second-vertical-line"></div>
+            <div class="contacts-third-column">
+                <h2>Utility Pages</h2>
+                <p>Style Guide</p>
+                <p>Protected</p>
+                <p>Page Not Found</p>
+                <p>Changelog</p>
+                <p>Licenses</p>
             </div>
-        </div>
-        <div class="footer-button-container">
-            <p>Copyright 2021. Drafted by Victor Themes.</p>
+        </section>
+        <div class="copyright">
+            <div class="full-line"></div>
+            <p>Copyright © Organick | Designed by  VictorFlow -  Powered by  WebFlow</p>
         </div>
     </footer>
 </body>
