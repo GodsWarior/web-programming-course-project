@@ -61,10 +61,14 @@ function addToCart(productId) {
 
 // Функция обновления счётчика (пока скрыта, но работает)
 function updateCartCounter() {
-    const cart = JSON.parse(localStorage.getItem('cart'));
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalItems = cart.reduce((sum, item) => sum + item.amount, 0);
     const counter = document.getElementById('cart-counter');
+    
     if (counter) {
-        counter.textContent = cart.length;
-        // Позже можно будет показать счётчик: counter.style.display = "inline";
+        counter.textContent = totalItems;
     }
+    
+    // Дополнительно синхронизируем с базой
+    updateCartCounterFromDB();
 }

@@ -1,24 +1,68 @@
+let currentProductId = null;
+
+// Функция для обновления счётчика корзины из purchase_products
+async function updateCartCounterFromDB() {
+    try {
+        const response = await fetch('http://localhost:3000/purchase_products');
+        const purchases = await response.json();
+        
+        // Считаем общее количество товаров
+        const totalItems = purchases.reduce((sum, item) => sum + item.amount, 0);
+        
+        // Обновляем счётчик в header
+        const counter = document.getElementById('cart-counter');
+        if (counter) {
+            counter.textContent = totalItems;
+        }
+        
+        // Синхронизируем с localStorage
+        const cart = purchases.map(item => ({
+            id: item.productId,
+            amount: item.amount
+        }));
+        localStorage.setItem('cart', JSON.stringify(cart));
+        
+    } catch (error) {
+        console.error('Error updating cart from DB:', error);
+        // Если ошибка, используем localStorage как fallback
+        updateCartCounter();
+    }
+}
+
 // Загружаем header
 fetch('/templates/header.html')
     .then(response => response.text())
     .then(html => {
         document.getElementById('header-container').innerHTML = html;
         
-        // Обработчик клика по корзине → переход на purchase_page.html
+        // Обработчик клика по корзине
         document.getElementById('cart-button').addEventListener('click', function(e) {
             e.preventDefault();
             window.location.href = '../purchase_page/purchase_page.html';
         });
         
-        // Инициализация корзины (если её нет)
+        // Инициализация корзины
         if (!localStorage.getItem('cart')) {
             localStorage.setItem('cart', JSON.stringify([]));
         }
         
-        // Обновляем счётчик (пока скрыт)
-        updateCartCounter();
+        // Обновляем счётчик из базы данных
+        updateCartCounterFromDB();
     })
     .catch(error => console.error('Error loading header:', error));
+
+function updateCartCounter() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalItems = cart.reduce((sum, item) => sum + item.amount, 0);
+    const counter = document.getElementById('cart-counter');
+    
+    if (counter) {
+        counter.textContent = totalItems;
+    }
+    
+    // Дополнительно синхронизируем с базой
+    updateCartCounterFromDB();
+}
 
 // Загрузка товаров
 document.addEventListener('DOMContentLoaded', function() {
@@ -51,24 +95,6 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => console.error('Error loading products:', error));
 });
 
-// Функция добавления в корзину (оставлена для будущего использования)
-function addToCart(productId) {
-    const cart = JSON.parse(localStorage.getItem('cart'));
-    cart.push(productId);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartCounter();
-}
-
-// Функция обновления счётчика (пока скрыта, но работает)
-function updateCartCounter() {
-    const cart = JSON.parse(localStorage.getItem('cart'));
-    const counter = document.getElementById('cart-counter');
-    if (counter) {
-        counter.textContent = cart.length;
-        // Позже можно будет показать счётчик: counter.style.display = "inline";
-    }
-}
-
 // Получаем ID товара из URL
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get('id');
@@ -93,15 +119,101 @@ if (productId) {
         .catch(error => console.error('Error loading product:', error));
 }
 
-// Обработчик кнопки "Add to Cart"
-document.querySelector('.add-to-cart').addEventListener('click', function() {
-    const quantity = parseInt(document.querySelector('.quantity-selector input').value);
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+document.addEventListener('DOMContentLoaded', function() {
+    // Получаем элементы по ID
+    const quantityInput = document.getElementById('product-quantity');
+    const addToCartBtn = document.getElementById('add-to-cart-btn');
+    const cartCounter = document.getElementById('cart-counter'); // Должен быть в header.html
+
+    // Получаем ID товара из URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
     
-    for (let i = 0; i < quantity; i++) {
-        cart.push(productId);
+    if (productId && addToCartBtn && quantityInput) {
+        // Загружаем данные товара
+        fetch(`http://localhost:3000/products/${productId}`)
+            .then(response => response.json())
+            .then(product => {
+                // Заполняем данные на странице
+                document.querySelector('.product-image').src = product.image;
+                document.querySelector('.product_category').textContent = product.category;
+                document.querySelector('.product_name').textContent = product.name;
+                document.querySelector('.price-line-through').textContent = `$${product.oldPrice.toFixed(2)}`;
+                document.querySelector('.current-price').textContent = `$${product.price.toFixed(2)}`;
+                document.querySelector('.five-star-image').src = product.ratingImage;
+                
+                // Обработчик кнопки "Add to Cart"
+                addToCartBtn.addEventListener('click', function() {
+                    const quantity = parseInt(quantityInput.value) || 1;
+                    
+                    // 1. Обновляем корзину
+                    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    const existingItem = cart.find(item => item.id === productId);
+                    
+                    if (existingItem) {
+                        existingItem.amount += quantity;
+                    } else {
+                        cart.push({ 
+                            id: Number(productId), 
+                            amount: quantity,
+                        });
+                    }
+                    
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    
+                    // 2. Сохраняем в базу данных
+                    fetch('http://localhost:3000/purchase_products', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            productId: productId,
+                            amount: quantity
+                        })
+                    });
+                    
+                    // 3. Обновляем интерфейс
+                    updateCartCounter();
+                    alert(`Added ${quantity} ${product.name} to cart!`);
+                });
+            })
+            .catch(error => console.error('Error loading product:', error));
     }
-    
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert(`${quantity} item(s) added to cart!`);
 });
+
+async function clearCart() {
+    try {
+        // 1. Очищаем localStorage
+        localStorage.setItem('cart', JSON.stringify([]));
+        
+        // 2. Удаляем все записи из purchase_products в базе данных
+        const response = await fetch('http://localhost:3000/purchase_products');
+        const purchases = await response.json();
+        
+        // Создаём массив промисов для удаления
+        const deletePromises = purchases.map(purchase => 
+            fetch(`http://localhost:3000/purchase_products/${purchase.id}`, {
+                method: 'DELETE'
+            })
+        );
+        
+        // Ждём завершения всех удалений
+        await Promise.all(deletePromises);
+        
+        // 3. Обновляем счётчик
+        updateCartCounter();
+        
+        // 4. Показываем уведомление
+        showNotification('Корзина успешно очищена!');
+        
+        // 5. Если находимся на странице корзины - обновляем её
+        if (window.location.pathname.includes('purchase_page.html')) {
+            displayCartItems(); // Ваша функция для отображения корзины
+        }
+        
+    } catch (error) {
+        console.error('Ошибка при очистке корзины:', error);
+        showNotification('Ошибка при очистке корзины', 'error');
+    }
+}

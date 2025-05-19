@@ -51,20 +51,15 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => console.error('Error loading products:', error));
 });
 
-// Функция добавления в корзину (оставлена для будущего использования)
-function addToCart(productId) {
-    const cart = JSON.parse(localStorage.getItem('cart'));
-    cart.push(productId);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartCounter();
-}
-
-// Функция обновления счётчика (пока скрыта, но работает)
 function updateCartCounter() {
-    const cart = JSON.parse(localStorage.getItem('cart'));
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalItems = cart.reduce((sum, item) => sum + item.amount, 0);
     const counter = document.getElementById('cart-counter');
+    
     if (counter) {
-        counter.textContent = cart.length;
-        // Позже можно будет показать счётчик: counter.style.display = "inline";
+        counter.textContent = totalItems;
     }
+    
+    // Дополнительно синхронизируем с базой
+    updateCartCounterFromDB();
 }
