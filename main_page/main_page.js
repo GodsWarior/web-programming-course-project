@@ -1,3 +1,16 @@
+//кнопка на shop
+document.getElementById('explore-button').addEventListener('click', function () {
+    window.location.href = '/shop_page/shop_page.html';
+  });
+
+document.getElementById('shop-now-btn').addEventListener('click', function () {
+window.location.href = '/shop_page/shop_page.html';
+});
+
+document.getElementById('view-all-products-btn').addEventListener('click', function () {
+window.location.href = '/shop_page/shop_page.html';
+});
+
 // Загружаем header
 fetch('/templates/header.html')
     .then(response => response.text())

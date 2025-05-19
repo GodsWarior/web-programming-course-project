@@ -153,21 +153,13 @@
   ],
   "purchase_products": [],
   "orders": [
+  ],
+  "comments": [
     {
-      "id": "6283",
-      "address": "assd",
-      "recipient": "asd",
-      "payment": "cash",
-      "promoCode": "dsad",
-      "date": "2025-05-19T21:49:31.215Z"
-    },
-    {
-      "id": "9144",
-      "address": "asd",
-      "recipient": "asd",
-      "payment": "cash",
-      "promoCode": "dasd",
-      "date": "2025-05-19T21:54:41.333Z"
+      "profile-image": "",
+      "quote": "",
+      "nickname": "",
+      "status": ""
     }
   ]
 }
