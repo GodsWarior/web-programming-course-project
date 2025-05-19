@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/header-foter.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <script src="/js/baseElements/baseElements.js" type="module"></script>
+    <script src="/js/login/logIn.js" type="module"></script>
+</head>
+<body>
+    <div class="preloader">
+        <div class="preloader-content"></div>
+    </div>
+    <header>
+        <div class="header-logo-container">
+            <img src="/img/Logo.svg" alt="logo" class="logo logo-light">
+            <img src="/img/Logo_black.svg" alt="logo" class="logo logo-dark">
+            <div class="header-img-container">
+                <img src="/img/phone.png" alt="phone">
+                <p>Call Us - (+22) 123 456 7890</p>
+            </div>
+        </div>
+        <div class="header-auth-buttons">
+            <label class="theme-toggle">
+                <input type="checkbox" hidden>  
+                <img class="sun" src="/img/sun.png" alt="sun">
+                <img class="moon" src="/img/moon.png" alt="moon">
+            </label>
+            <button class="visually-impaired-button">
+                <img src="/img/eye.png" alt="eye">
+                version for the visually impaired
+            </button>
+            <div class="language-selector">
+                <input type="checkbox" id="lang-switch" class="language-checkbox" hidden>
+                <label for="lang-switch" class="language-toggle">
+                  <span class="language-option ru">RU</span>
+                  <span class="language-option en">EN</span>
+                </label>
+            </div>
+            <nav>
+                <a href="">Log in</a>
+                <a href="./homepage.html">Home</a>
+                <a href="">Pages</a>
+                <a href="">About</a>
+                <a href="">Services</a>
+                <a href="">Contact</a>
+            </nav>
+            <button class="burger-menu">
+                <span></span>
+            </button>
+            <button class="reserv-button">
+                <img src="/img/reservetionLogo.png" alt="">
+                RESERVATION
+            </button>
+            <a href="./cart.html" id="basket-link">
+                <img class="basket" src="/img/basket.png" alt="basket">
+            </a>
+        </div>
+    </header>
+    <main>
+        <section class="banner-container">
+            <div class="banner-container-text">
+                <h3>PASSWORD PROTECTED</h3>
+                <h1>Log in Page</h1>
+            </div>
+        </section>
+        <section class="auth-section">
+            <div>
+                <h3>Enter into Beauty</h3>
+                <h2>Log in</h2>
+            </div>
+            <div class="auth-form">
+                <div class="input-wrapper">
+                    <img class="icon" src="/img/user-register.svg" alt="user icon">
+                    <input class="card-input" type="text" placeholder="Nickname" id="nickname">
+                    <span class="error-message"></span>
+                </div>
+                <div class="input-wrapper">
+                    <img class="icon" src="/img/book-register.svg" alt="lock icon">
+                    <input class="card-input" type="password" placeholder="Password" id="password">
+                    <span class="error-message"></span>
+                </div>
+                <button class="check-in-button" id="submit-button">Log in</button>
+                <h3><a href="registar.html" id="toggle-form">Check in</a></h3>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-top-container">
+            <div class="footer-top-logo-container">
+                <img class="footer-logo-img" src="/img/Logo_black.svg" alt="logo">
+                <div class="footer-img-container">
+                    <div class="footer-img">
+                        <img src="/img/facebook_white.png" alt="facebook">
+                    </div>
+                    <div class="footer-img">
+                        <img src="/img/X_white.png" alt="X">
+                    </div>
+                    <div class="footer-img">
+                        <img src="/img/in_white.png" alt="in">
+                    </div>
+                    <div class="footer-img">
+                        <img src="/img/instagram_white.png" alt="instagram">
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-line">
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Appointments</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Utility Pages</h4>
+                    <ul>
+                        <li><a href="#">Start here</a></li>
+                        <li><a href="#">Style guide</a></li>
+                        <li><a href="#">404 not found</a></li>
+                        <li><a href="#">Password protected</a></li>
+                        <li><a href="#">Licenses</a></li>
+                        <li><a href="#">Changelog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Keep in Touch</h4>
+                    <ul>
+                        <li>
+                            <div class="footer-column-text">
+                                <span>Address:</span>
+                                <span>24A Kingston St, Los Vegas NC 28202, USA.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="footer-column-text">
+                                <span>Mail:</span>
+                                <span>support@doctors.com</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="footer-column-text">
+                                <span>Phone:</span>
+                                <span>(+22) 123 - 4567 - 900</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Working Hours</h4>
+                    <ul>
+                        <li><span>Mon to Fri: 7am - 6pm</span></li>
+                        <li><span>Sat: 9am - 7pm</span></li>
+                        <li><span>Sun: 9am - 6pm</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-button-container">
+            <p>Copyright 2021. Drafted by Victor Themes.</p>
+        </div>
+    </footer>
+</body>
+</html>

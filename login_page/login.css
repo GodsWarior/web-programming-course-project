@@ -1,0 +1,204 @@
+h1 {
+    color: #FFF;
+    text-align: center;
+    font-family: "Playfair Display";
+    font-size: 5.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; /* 66px */
+    letter-spacing: -0.55px;
+}
+h2 {
+    color: var(--black);
+    text-align: center;
+    font-family: "Playfair Display";
+    font-size: 4.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%; /* 58.5px */
+    letter-spacing: -0.45px;
+}
+h3 {
+    font-family: 'Manrope';
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 154.5%; /* 23.175px */
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/*#region banner*/
+
+.banner-container {
+    display: flex;
+    height: 495px;
+    align-items: center;
+    flex: 1;
+    background-image: url("/img/background.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative; 
+}
+
+.banner-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--banner-overlay); 
+    z-index: 100;
+}
+.banner-container-text {
+    position: relative;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin: 0 auto;
+    z-index: 200;
+}
+
+/*#endregion*/
+
+/*#region cards*/
+
+.auth-section {
+    display: flex;
+    flex-direction: column;
+    padding: 179px 5vw 194px 5vw;
+    min-height: 800px;
+    gap: 65px;
+    align-items: center;
+    background-color: var(--banner-bg);
+}
+.auth-section h3 {
+    color: var(--accent-dark);
+}
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    padding-top: 98px;
+    padding-bottom: 40px;
+    align-items: center;
+    min-height: 600px;
+    width: 1010px;
+    gap: 50px;
+    background-color: var(--white);
+    box-shadow: 0px 20px 70px 0px rgba(47, 68, 73, 0.46);
+}
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.card-input {
+    background-color: var(--white);
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 65px;
+    border: 2px solid var(--accent-dark);
+    color: var(--black);
+    font-family: 'Manrope';
+    font-size: 1.4rem;
+    font-weight: 800;
+    line-height: 125%;
+    letter-spacing: 1.68px;
+    padding-left: 54px;
+    position: relative;
+    transition: background-color 0.3s ease; 
+}
+
+
+.card-input:focus {
+    background-color: var(--white); 
+    outline: none; 
+    border-color: var(--accent-dark); 
+}
+
+
+.card-input::placeholder {
+    color: var(--black);
+    opacity: 0.5;
+}
+
+.check-in-button {
+    background-color: var(--accent-dark);
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 65px;
+    color: white;
+    font-family: 'Manrope';
+    font-size: 1.4rem;
+    font-weight: 800;
+    line-height: 125%;
+    letter-spacing: 1.68px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+}
+.icon {
+    top: 22%;
+    z-index: 100;
+    position: absolute;
+    left: calc(10% + 20px);
+}
+.password-wrapper .icon {
+    z-index: 100;
+    left: 20px;
+    align-self: center;
+}
+
+.error-message, .agree-error {
+    color: red;
+    font-family: 'Manrope';
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    display: block; 
+    min-height: 24px; 
+    width: 80%;
+    text-align: left;
+    opacity: 0; 
+    transition: opacity 0.3s ease; 
+}
+
+.error-message.active, .agree-error.active {
+    opacity: 1; 
+}
+
+/*#endregion*/
+@media screen and (max-width: 1100px) {
+    .auth-form {
+        width: 97vw;
+    }
+}
+@media screen and (max-width: 500px) {
+    .generate-button {
+        width: 75px;
+        font-size: 1rem;
+    }
+    .password-wrapper {
+        width: 95%;
+        gap: 5px;
+    }
+    .card-input {
+        width: 95%;
+    }
+    .check-in-button {
+        width: 95%;
+    }
+    .icon {
+        position: absolute;
+        left: calc(2.5% + 20px);
+    }
+}
