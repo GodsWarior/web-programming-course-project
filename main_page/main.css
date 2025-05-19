@@ -972,6 +972,51 @@ label{
   margin-top: 1.1rem;
 }
 
+.testimonial-slider-container {
+    position: relative; /* для позиционирования внутренних элементов */
+    max-width: 800px;
+    margin: 0 auto;
+    padding-bottom: 80px; /* место для стрелок */
+}
+
+.testimonial-wrapper {
+    min-height: 200px; /* фиксированная высота для стабильного положения стрелок */
+    display: flex;
+    align-items: center;
+}
+
+.testimonial-slide {
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.testimonial-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.slider-arrow {
+    background-color: #ffcc00;
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: static; /* стрелки не будут менять позицию */
+}
+
 .fifth-block-second-section-overlay .fifth-block-quote{
   margin-top: 2rem;
   max-width: 58.875rem;

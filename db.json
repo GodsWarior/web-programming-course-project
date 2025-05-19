@@ -156,10 +156,25 @@
   ],
   "comments": [
     {
-      "profile-image": "",
-      "quote": "",
-      "nickname": "",
-      "status": ""
+      "id": 1,
+      "profile-image": "/users_photo/woman_image.png",
+      "quote": "the quality of organic produce is extremely high, the service is second to none and the taste of the food takes me back to my childhood when we were growing our own.",
+      "nickname": "Sara Taylor",
+      "status": "Consumer"
+    },
+    {
+      "id": 2,
+      "profile-image": "/users_photo/woman_image.png",
+      "quote": "fafadada pup titi taka.",
+      "nickname": "Sara Taylor",
+      "status": "Consumer"
+    },
+    {
+      "id": 3,
+      "profile-image": "/users_photo/woman_image.png",
+      "quote": "mdaaaaaaa",
+      "nickname": "Sara Taylor",
+      "status": "Consumer"
     }
   ]
 }
