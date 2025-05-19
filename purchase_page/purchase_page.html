@@ -3,9 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Organik</title>
+    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./purchase_page.css">
 </head>
-<body>
-    фывфыв
+<body class="lock">
+    <div id="header-container"></div>
+        <section class="first-block">
+            <div class="text-overlay">
+                <h1>Shop Single</h1>
+            </div>
+        </section>
+
+        <div class="single-product-container">
+            <div class="single-product-view">
+                <!-- Левая часть - изображение товара -->
+                <div class="product-gallery">
+                    <div class="single-product-rectangle">
+                        <img class="product-image" src="" alt="Product Image">
+                        <p class="product_category"></p>                    
+                    </div>
+                </div>
+            
+                <!-- Правая часть - детали товара -->
+                <div class="product-details">
+                    <p class="product_name"></p>
+                    <div class="rating-wrapper">  <!-- Отдельная обёртка для рейтинга -->
+                        <img class="five-star-image" src="" alt="Rating">
+                    </div>
+                    <div class="price-wrapper">
+                        <p class="price-line-through"></p>
+                        <p class="current-price"></p>
+                    </div>
+                    <p class="product-description">
+                        This premium organic product is carefully grown and harvested to ensure 
+                        the highest quality standards. Rich in nutrients and flavor.
+                    </p>
+                    
+                    <div class="quantity-cart-wrapper">
+                         <div class="quantity-label-input">
+                            <span class="quantity-label">Quantity:</span>
+                            <input type="number" id="product-quantity" value="1" min="1">
+                        </div>
+                        <button id="add-to-cart-btn" class="add-to-cart">Add To Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="second-block">
+            <div class="base-middle-lable our-products-label">
+                <p>Related Products</p>
+            </div>
+            <section class="list-of-products" id="products-container">
+            </section>
+        </section>
+        <section class="block-subscribe-our-newsletter">
+            <div class="content-overlay">
+                <h2>Subscribe our <br class="no-br"> Newsletter</h2>
+                <p>Enter your email address</p>
+                <button class="subscribe-button">Subscribe</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <section class="contacts">
+            <div class="contacts-first-column">
+                <h2>Contact Us</h2>
+                <h3>Email</h3>
+                <p>needhelp@organick.com</p>
+                <h3>Phone</h3>
+                <p>123 (1254) 1452</p>
+                <h3>Address</h3>
+                <p>88 Road, Brooklyn Street, USA</p>
+            </div>
+            <div class="vertical-line first-vertical-line"></div>
+            <div class="contacts-second-column">
+                <img src="./assets/organik_logo.png" class="organic_logo" alt="organik_logo">
+                <p>We are a popular and farming company aspiring to be a leader <br> in the Organic food industry.</p>
+                <div class="icon-group">
+                    <div class="icon-group-round">
+                        <img src="./assets/facebook_icon.png" alt="facebook_icon">
+                    </div>
+                    <div class="icon-group-round">
+                        <img src="./assets/twitter_icon.png" alt="twitter_icon">
+                    </div>
+                    <div class="icon-group-round">
+                        <img src="./assets/instagram_icon.png" alt="instagram_icon">
+                    </div>
+                    <div class="icon-group-round">
+                        <img src="./assets/patreon_icon.png" alt="patreon_icon">
+                    </div>
+                </div>
+            </div>
+            <div class="vertical-line second-vertical-line"></div>
+            <div class="contacts-third-column">
+                <h2>Utility Pages</h2>
+                <p>Style Guide</p>
+                <p>Protected</p>
+                <p>Page Not Found</p>
+                <p>Changelog</p>
+                <p>Licenses</p>
+            </div>
+        </section>
+        <div class="copyright">
+            <div class="full-line"></div>
+            <p>Copyright © Organick | Designed by  VictorFlow -  Powered by  WebFlow</p>
+        </div>
+    </footer>
+<script src="purchase_page.js"></script>
 </body>
 </html>
