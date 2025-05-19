@@ -64,6 +64,12 @@ function updateCartCounter() {
     updateCartCounterFromDB();
 }
 
+//preloader
+window.addEventListener('load', function () {
+    const preloader = document.getElementById('preloader');
+    preloader.style.display = 'none';
+});
+
 // Загрузка товаров
 document.addEventListener('DOMContentLoaded', function() {
     fetch('http://localhost:3000/products')

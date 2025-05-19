@@ -1,3 +1,32 @@
+// Загружаем header
+fetch('/templates/header.html')
+    .then(response => response.text())
+    .then(html => {
+        document.getElementById('header-container').innerHTML = html;
+        
+        // Обработчик клика по корзине → переход на purchase_page.html
+        document.getElementById('cart-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = '../purchase_page/purchase_page.html';
+        });
+        
+        // Инициализация корзины (если её нет)
+        if (!localStorage.getItem('cart')) {
+            localStorage.setItem('cart', JSON.stringify([]));
+        }
+        
+        // Обновляем счётчик (пока скрыт)
+        updateCartCounter();
+    })
+    .catch(error => console.error('Error loading header:', error));
+
+//preloader
+window.addEventListener('load', function () {
+    const preloader = document.getElementById('preloader');
+    preloader.style.display = 'none';
+});
+
+
 //кнопка на shop
 document.getElementById('explore-button').addEventListener('click', function () {
     window.location.href = '/shop_page/shop_page.html';
@@ -59,27 +88,6 @@ window.location.href = '/shop_page/shop_page.html';
     });
   });
 
-// Загружаем header
-fetch('/templates/header.html')
-    .then(response => response.text())
-    .then(html => {
-        document.getElementById('header-container').innerHTML = html;
-        
-        // Обработчик клика по корзине → переход на purchase_page.html
-        document.getElementById('cart-button').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.location.href = '../purchase_page/purchase_page.html';
-        });
-        
-        // Инициализация корзины (если её нет)
-        if (!localStorage.getItem('cart')) {
-            localStorage.setItem('cart', JSON.stringify([]));
-        }
-        
-        // Обновляем счётчик (пока скрыт)
-        updateCartCounter();
-    })
-    .catch(error => console.error('Error loading header:', error));
 
 // Загрузка товаров
 document.addEventListener('DOMContentLoaded', function () {

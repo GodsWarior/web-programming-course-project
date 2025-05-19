@@ -20,6 +20,12 @@ fetch('/templates/header.html')
     })
     .catch(error => console.error('Error loading header:', error));
 
+//preloader
+window.addEventListener('load', function () {
+    const preloader = document.getElementById('preloader');
+    preloader.style.display = 'none';
+});
+
 // Загрузка товаров
 const container = document.getElementById('products-container');
 const searchInput = document.getElementById('searchInput');
