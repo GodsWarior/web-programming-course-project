@@ -19,8 +19,28 @@
                 <i>Organic</i>
                 <p>Our Products</p>
             </div>
-            <section class="list-of-products" id="products-container">
-            </section>
+            <div id="controls">
+                <input type="text" id="searchInput" placeholder="Поиск по названию..." />
+                
+                <select id="sortPrice">
+                    <option value="">Сортировка по цене</option>
+                    <option value="asc">Сначала дешёвые</option>
+                    <option value="desc">Сначала дорогие</option>
+                </select>
+
+                <select id="filterCategory">
+                    <option value="">Все категории</option>
+                    <option value="Vegetable">Vegetable</option>
+                    <option value="Mill">Mill</option>
+                    <option value="Fru">Fru</option>
+                    <option value="Fresh">Fresh</option>
+                    <option value="Health">Health</option>
+                    <option value="Nuts">Nuts</option>
+                </select>
+            </div>
+            <section class="list-of-products" id="products-container"></section>
+            <div class="pagination" id="pagination"></div>
+
         </section>
         <section class="block-subscribe-our-newsletter">
             <div class="content-overlay">

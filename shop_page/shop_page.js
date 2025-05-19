@@ -21,35 +21,96 @@ fetch('/templates/header.html')
     .catch(error => console.error('Error loading header:', error));
 
 // Загрузка товаров
-document.addEventListener('DOMContentLoaded', function() {
-    fetch('http://localhost:3000/products')
-        .then(response => response.json())
-        .then(products => {
-            const container = document.getElementById('products-container');
-            
-            products.forEach(product => {
-                const productElement = document.createElement('div');
-                productElement.className = 'base-rectangle';
-                productElement.innerHTML = `
-                    <img src="${product.image}" class="product-image" alt="${product.name}">
-                    <p class="product_category">${product.category}</p>
-                    <p class="product_name">${product.name}</p>
-                    <div class="rectangle-line"></div>
-                    <p class="price-line-through">$ ${product.oldPrice.toFixed(2)} USD</p>
-                    <p class="current-price">$ ${product.price.toFixed(2)} USD</p>
-                    <img src="${product.ratingImage}" class="five-star-image" alt="Rating ${product.rating}">
-                `;
-                
-                // Клик на товар → переход на single_shop_page.html с ID товара
-                productElement.addEventListener('click', function() {
-                    window.location.href = `../shop_single_page/single_shop_page.html?id=${product.id}`;
-                });
-                
-                container.appendChild(productElement);
-            });
-        })
-        .catch(error => console.error('Error loading products:', error));
+const container = document.getElementById('products-container');
+const searchInput = document.getElementById('searchInput');
+const sortPrice = document.getElementById('sortPrice');
+const filterCategory = document.getElementById('filterCategory');
+const pagination = document.getElementById('pagination');
+
+let allProducts = [];
+let filteredProducts = [];
+let currentPage = 1;
+const itemsPerPage = 6;
+
+document.addEventListener('DOMContentLoaded', () => {
+  fetch('http://localhost:3000/products')
+    .then(response => response.json())
+    .then(products => {
+      allProducts = products;
+      applyFilters();
+    });
 });
+
+function applyFilters() {
+  const searchTerm = searchInput.value.toLowerCase();
+  const selectedSort = sortPrice.value;
+  const selectedCategory = filterCategory.value;
+
+  filteredProducts = allProducts.filter(product => {
+    return product.name.toLowerCase().includes(searchTerm) &&
+           (selectedCategory ? product.category === selectedCategory : true);
+  });
+
+  if (selectedSort === 'asc') {
+    filteredProducts.sort((a, b) => a.price - b.price);
+  } else if (selectedSort === 'desc') {
+    filteredProducts.sort((a, b) => b.price - a.price);
+  }
+
+  currentPage = 1;
+  renderProducts();
+  renderPagination();
+}
+
+function renderProducts() {
+  container.innerHTML = '';
+
+  const start = (currentPage - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  const productsToShow = filteredProducts.slice(start, end);
+
+  productsToShow.forEach(product => {
+    const productElement = document.createElement('div');
+    productElement.className = 'base-rectangle';
+    productElement.innerHTML = `
+      <img src="${product.image}" class="product-image" alt="${product.name}">
+      <p class="product_category">${product.category}</p>
+      <p class="product_name">${product.name}</p>
+      <div class="rectangle-line"></div>
+      <p class="price-line-through">$ ${product.oldPrice.toFixed(2)} USD</p>
+      <p class="current-price">$ ${product.price.toFixed(2)} USD</p>
+      <img src="${product.ratingImage}" class="five-star-image" alt="Rating ${product.rating}">
+    `;
+    productElement.addEventListener('click', () => {
+      window.location.href = `../shop_single_page/single_shop_page.html?id=${product.id}`;
+    });
+    container.appendChild(productElement);
+  });
+}
+
+function renderPagination() {
+  pagination.innerHTML = '';
+  const pageCount = Math.ceil(filteredProducts.length / itemsPerPage);
+
+  for (let i = 1; i <= pageCount; i++) {
+    const pageBtn = document.createElement('button');
+    pageBtn.textContent = i;
+    pageBtn.classList.toggle('active', i === currentPage);
+    pageBtn.addEventListener('click', () => {
+      currentPage = i;
+      renderProducts();
+      renderPagination();
+    });
+    pagination.appendChild(pageBtn);
+  }
+}
+
+// Слушатели фильтров
+searchInput.addEventListener('input', applyFilters);
+sortPrice.addEventListener('change', applyFilters);
+filterCategory.addEventListener('change', applyFilters);
+
+
 
 // Функция добавления в корзину (оставлена для будущего использования)
 function addToCart(productId) {
