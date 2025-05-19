@@ -21,13 +21,16 @@ fetch('/templates/header.html')
     .catch(error => console.error('Error loading header:', error));
 
 // Загрузка товаров
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     fetch('http://localhost:3000/products')
         .then(response => response.json())
         .then(products => {
             const container = document.getElementById('products-container');
             
-            products.forEach(product => {
+            // Показываем только первые 6 товаров
+            const limitedProducts = products.slice(0, 6);
+
+            limitedProducts.forEach(product => {
                 const productElement = document.createElement('div');
                 productElement.className = 'base-rectangle';
                 productElement.innerHTML = `
@@ -39,17 +42,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     <p class="current-price">$ ${product.price.toFixed(2)} USD</p>
                     <img src="${product.ratingImage}" class="five-star-image" alt="Rating ${product.rating}">
                 `;
-                
-                // Клик на товар → переход на single_shop_page.html с ID товара
-                productElement.addEventListener('click', function() {
+
+                productElement.addEventListener('click', function () {
                     window.location.href = `../shop_single_page/single_shop_page.html?id=${product.id}`;
                 });
-                
+
                 container.appendChild(productElement);
             });
         })
         .catch(error => console.error('Error loading products:', error));
 });
+
 
 function updateCartCounter() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
