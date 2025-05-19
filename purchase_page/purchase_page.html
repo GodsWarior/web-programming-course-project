@@ -10,64 +10,54 @@
     <link rel="stylesheet" href="./purchase_page.css">
 </head>
 <body class="lock">
+    <main>
     <div id="header-container"></div>
-        <section class="first-block">
-            <div class="text-overlay">
-                <h1>Shop Single</h1>
-            </div>
-        </section>
-
-        <div class="single-product-container">
-            <div class="single-product-view">
-                <!-- Левая часть - изображение товара -->
-                <div class="product-gallery">
-                    <div class="single-product-rectangle">
-                        <img class="product-image" src="" alt="Product Image">
-                        <p class="product_category"></p>                    
-                    </div>
-                </div>
-            
-                <!-- Правая часть - детали товара -->
-                <div class="product-details">
-                    <p class="product_name"></p>
-                    <div class="rating-wrapper">  <!-- Отдельная обёртка для рейтинга -->
-                        <img class="five-star-image" src="" alt="Rating">
-                    </div>
-                    <div class="price-wrapper">
-                        <p class="price-line-through"></p>
-                        <p class="current-price"></p>
-                    </div>
-                    <p class="product-description">
-                        This premium organic product is carefully grown and harvested to ensure 
-                        the highest quality standards. Rich in nutrients and flavor.
-                    </p>
-                    
-                    <div class="quantity-cart-wrapper">
-                         <div class="quantity-label-input">
-                            <span class="quantity-label">Quantity:</span>
-                            <input type="number" id="product-quantity" value="1" min="1">
-                        </div>
-                        <button id="add-to-cart-btn" class="add-to-cart">Add To Cart</button>
-                    </div>
-                </div>
-            </div>
+    <section class="first-block">
+        <div class="text-overlay">
+            <h1>Purchase</h1>
         </div>
+    </section>
+    <section class="list-of-products" id="products-container"></section>
 
-        <section class="second-block">
-            <div class="base-middle-lable our-products-label">
-                <p>Related Products</p>
+    <!-- Добавленная секция с формой заказа -->
+    <section class="order-form-container">
+        <h2>Order Details</h2>
+        <form id="order-form">
+            <div class="form-group">
+                <label for="delivery-address">Delivery Address:</label>
+                <input type="text" id="delivery-address" required placeholder="Street, House, Apartment">
             </div>
-            <section class="list-of-products" id="products-container">
-            </section>
-        </section>
-        <section class="block-subscribe-our-newsletter">
-            <div class="content-overlay">
-                <h2>Subscribe our <br class="no-br"> Newsletter</h2>
-                <p>Enter your email address</p>
-                <button class="subscribe-button">Subscribe</button>
+            
+            <div class="form-group">
+                <label for="recipient-name">Recipient Name:</label>
+                <input type="text" id="recipient-name" required placeholder="Full Name">
             </div>
-        </section>
+            
+            <div class="form-group">
+                <label>Payment Method:</label>
+                <div class="payment-options">
+                    <label>
+                        <input type="radio" name="payment" value="card" checked> 
+                        <span class="payment-icon">💳</span> Credit Card
+                    </label>
+                    <label>
+                        <input type="radio" name="payment" value="cash"> 
+                        <span class="payment-icon">💰</span> Cash on Delivery
+                    </label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="promo-code">Promo Code:</label>
+                <input type="text" id="promo-code" placeholder="Enter promo code if you have">
+            </div>
+            
+            <button type="submit" class="submit-order-btn">Place Order</button>
+        </form>
+    </section>
+
     </main>
+
     <footer>
         <section class="contacts">
             <div class="contacts-first-column">
