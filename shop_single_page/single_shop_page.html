@@ -30,19 +30,25 @@
                 <!-- Правая часть - детали товара -->
                 <div class="product-details">
                     <p class="product_name"></p>
-                    <p class="price-line-through"></p>
-                    <p class="current-price"></p>
-                    <img class="five-star-image" src="" alt="Rating">
+                    <div class="rating-wrapper">  <!-- Отдельная обёртка для рейтинга -->
+                        <img class="five-star-image" src="" alt="Rating">
+                    </div>
+                    <div class="price-wrapper">
+                        <p class="price-line-through"></p>
+                        <p class="current-price"></p>
+                    </div>
                     <p class="product-description">
                         This premium organic product is carefully grown and harvested to ensure 
                         the highest quality standards. Rich in nutrients and flavor.
                     </p>
                     
-                    <div class="quantity-selector">
-                        <input type="number" value="1" min="1">
+                    <div class="quantity-cart-wrapper">
+                         <div class="quantity-label-input">
+                            <span class="quantity-label">Quantity:</span>
+                            <input type="number" id="quantity" value="1" min="1">
+                        </div>
+                        <button class="add-to-cart">Add To Cart</button>
                     </div>
-                    
-                    <button class="add-to-cart">Add To Cart</button>
                 </div>
             </div>
         </div>

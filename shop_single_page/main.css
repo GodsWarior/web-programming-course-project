@@ -437,14 +437,154 @@ label{
   margin-left: 1.875rem;
 }
 
+.rating-wrapper {
+    margin-top: 1.4rem;  /* Фиксированный отступ после звёзд */
+}
+
+.single-product-rectangle {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 80px 20px;
+    box-sizing: border-box;
+}
+
+.single-product-view {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.product-gallery {
+    flex: 1;
+    min-width: 0;
+}
+
+.product-details {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.add-to-cart{
+  width: 12.4375rem;
+  height: 4.125rem;
+  color: #FFF;
+  background-color: #274C5B;
+  background-image: url('./assets/arrow_to_button.png');
+  background-repeat: no-repeat;
+  background-size: 3.125rem 3.125rem;
+  background-position: 97% 40%;
+  text-indent: -2.5625rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2rem;
+  letter-spacing: 0.0225rem;
+  text-transform: capitalize;
+  border-radius: 0.9375rem;
+  border: none;
+  padding: 0.625rem 1.25rem;
+  margin-top: 0rem;
+  cursor: pointer; /* Указатель при наведении */
+  transition: background-color 0.3s; /* Плавный переход фона */
+}
+
+.quantity-label-input {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.quantity-label {
+  width: 43.4%;
+  height: 6.101%;
+  top: 29.1rem;
+  left: 1.88rem;
+  right: 14.19rem;
+  bottom: 5.63rem;
+  color: #274C5B;
+  font-family: Roboto;
+  font-size: 1.375rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 2.2rem;
+  letter-spacing: 0.0225rem;
+}
+
+.add-to-cart:hover {
+  background-color: gray;
+}
+
+.quantity-cart-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem; /* расстояние между полем и кнопкой */
+    margin-top: 1.3125rem;
+}
+
+/* Сохраняем стили для input */
+.quantity-cart-wrapper input[type="number"] {
+    width: 7rem;
+    height: 4.125rem;
+    padding: 8px;
+    font-size: 16px;
+    text-align: center;
+    border: 3px solid #1b4b5a;
+    border-radius: 15px;
+    outline: none;
+    appearance: textfield;
+}
+
+.quantity-cart-wrapper input::-webkit-inner-spin-button,
+.quantity-cart-wrapper input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.quantity-wrapper input[type="number"] {
+    width: 7rem;
+    height: 4rem;
+    padding: 8px;
+    font-size: 16px;
+    text-align: center;
+    border: 3px solid #1b4b5a; /* цвет рамки */
+    border-radius: 15px;
+    outline: none;
+    appearance: textfield;
+}
+
+/* Убираем стрелки в Chrome */
+.quantity-wrapper input::-webkit-inner-spin-button,
+.quantity-wrapper input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+.single-product-container {
+  display: flex;
+  justify-content: center; /* Центрирование по горизонтали */
+  padding-top: 6rem; /* Отступ сверху */
+}
+
+
 .single-product-rectangle{
   position: relative;
+  padding: 30px;
   min-width: 320px;
   width: 487px;
   height: 48.3967%;
   min-height: 480px;
   border-radius: 1.875rem;
   background: #F9F8F8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .single-product-rectangle .product-image{
@@ -473,6 +613,68 @@ label{
   line-height: 1.6875rem;
   letter-spacing: 0.0225rem;
 }
+
+.product-details .product_name{
+  width: 43.4%;
+  height: 8.101%;
+  top: 29.1rem;
+  left: 1.88rem;
+  right: 14.19rem;
+  bottom: 5.63rem;
+  color: #274C5B;
+  font-family: Roboto;
+  font-size: 1.875rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 2.2rem;
+  letter-spacing: 0.0225rem;
+}
+
+.product-details .five-star-image{
+  width: 5.3125rem;
+  height: 1.1875rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  flex-shrink: 0;
+  top: 33.06rem;
+  left: 20.75rem;
+}
+
+.product-details .price-line-through{
+  width: 6.5625rem;
+  height: 2.0625rem;
+  top: 32.75rem;
+  left: 1.88rem;
+  text-decoration: line-through;
+  color: #B8B8B8;
+  font-family: "Open Sans";
+  font-size: 1.0625rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.025rem; 
+  letter-spacing: 0.0225rem;
+}
+
+.product-details .current-price{
+  width: 6.6875rem;
+  height: 2.0625rem;
+  top: 32.6875rem;
+  left: 9.06rem;
+  color: #274C5B;
+  font-family: "Open Sans";
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2.025rem;
+  letter-spacing: 0.0225rem;
+}
+
+.price-wrapper {
+  display: flex;
+  gap: 0rem; /* расстояние между ценами, по желанию */
+  align-items: center; /* выравнивание по вертикали */
+}
+
 
 .base-rectangle{
   position: relative;
@@ -577,6 +779,18 @@ label{
   left: 20.75rem;
 }
 
+.product-description{
+  width: 100%;
+  color: #525C60;
+  font-family: Open Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32.4px; /* 180% */
+  letter-spacing: 0.36px;
+  margin-bottom: 0px;
+}
+
 .Dried-Pistachio .product_category, .brown-hazelnut .product_category{
   width: 5.75rem;
   height: 2.3125rem;
@@ -597,6 +811,72 @@ label{
   text-align: left;
   padding-left: 1.25rem;
 }
+
+/* ----------- Планшеты: ширина < 992px ----------- */
+@media (max-width: 991px) {
+  .single-product-view {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .product-gallery,
+  .product-details {
+    width: 100%;
+    flex: unset;
+  }
+
+  .add-to-cart {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .price-wrapper {
+    justify-content: flex-start;
+  }
+
+  .quantity-cart-wrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+/* ----------- Мобильные устройства: ширина < 576px ----------- */
+@media (max-width: 575px) {
+  .quantity-label-input {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .quantity-label {
+    font-size: 1rem;
+  }
+
+  .quantity-label-input input[type="number"] {
+    width: 100%;
+    height: 2.5rem;
+  }
+
+  .add-to-cart {
+    width: 100%;
+    height: 3.5rem;
+    font-size: 1rem;
+    text-indent: 0;
+    background-position: right center;
+  }
+
+  .price-wrapper {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .product-details {
+    gap: 1rem;
+  }
+}
+
+
 
 @media (max-width: 1439px){
   .list-of-products{
