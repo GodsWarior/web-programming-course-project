@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organik</title>
+    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./login.css">
+    <script src="login_page.js"></script>
+</head>
+<body class="lock">
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <div id="header-container"></div>
+
+    <main>
+        <section class="registration-section">
+            <div class="registration-container">
+                <div class="registration-header">
+                    <h1>Create Your Account</h1>
+                    <p>Join our organic community today!</p>
+                </div>
+                
+                <form class="registration-form" id="registration-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" name="first-name" required placeholder="John">
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" name="last-name" required placeholder="Doe">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required placeholder="••••••••">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" name="confirm-password" required placeholder="••••••••">
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <span class="checkmark"></span>
+                            Subscribe to our newsletter
+                        </label>
+                        
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                        </label>
+                    </div>
+                    
+                    <button type="button" id="register-btn" class="register-btn">Register Now</button>
+                    
+                    <div class="login-redirect">
+                        Already have an account? <a href="./login.html">Log in</a>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="registration-image">
+                <img src="./assets/bg.png" alt="Organic vegetables">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <section class="contacts">
+            <div class="contacts-first-column">
+                <h2>Contact Us</h2>
+                <h3>Email</h3>
+                <p>needhelp@organick.com</p>
+                <h3>Phone</h3>
+                <p>123 (1254) 1452</p>
+                <h3>Address</h3>
+                <p>88 Road, Brooklyn Street, USA</p>
+            </div>
+            <div class="vertical-line first-vertical-line"></div>
+            <div class="contacts-second-column">
+                <img src="./assets/organik_logo.png" class="organic_logo" alt="organik_logo">
+                <p>We are a popular and farming company aspiring to be a leader <br> in the Organic food industry.</p>
+                <div class="icon-group">
+                    <div class="icon-group-round">
+                        <img src="./assets/facebook_icon.png" alt="facebook_icon">
+                    </div>
+                    <div class="icon-group-round">
+                        <img src="./assets/twitter_icon.png" alt="twitter_icon">
+                    </div>
+                    <div class="icon-group-round">
+                        <img src="./assets/instagram_icon.png" alt="instagram_icon">
+                    </div>
+                    <div class="icon-group-round">
+                        <img src="./assets/patreon_icon.png" alt="patreon_icon">
+                    </div>
+                </div>
+            </div>
+            <div class="vertical-line second-vertical-line"></div>
+            <div class="contacts-third-column">
+                <h2>Utility Pages</h2>
+                <p>Style Guide</p>
+                <p>Protected</p>
+                <p>Page Not Found</p>
+                <p>Changelog</p>
+                <p>Licenses</p>
+            </div>
+        </section>
+        <div class="copyright">
+            <div class="full-line"></div>
+            <p>Copyright © Organick | Designed by  VictorFlow -  Powered by  WebFlow</p>
+        </div>
+    </footer>
+</body>
+</html>
