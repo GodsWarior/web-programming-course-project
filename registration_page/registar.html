@@ -17,6 +17,67 @@
     <div id="header-container"></div>
 
     <main>
+        <section class="registration-section">
+            <div class="registration-container">
+                <div class="registration-header">
+                    <h1>Create Your Account</h1>
+                    <p>Join our organic community today!</p>
+                </div>
+                
+                <form class="registration-form" id="registration-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" name="first-name" required placeholder="John">
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" name="last-name" required placeholder="Doe">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required placeholder="••••••••">
+                        <span class="password-toggle">👁️</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" name="confirm-password" required placeholder="••••••••">
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <span class="checkmark"></span>
+                            Subscribe to our newsletter
+                        </label>
+                        
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="register-btn">Register Now</button>
+                    
+                    <div class="login-redirect">
+                        Already have an account? <a href="./login.html">Log in</a>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="registration-image">
+                <img src="./assets/bg.png" alt="Organic vegetables">
+            </div>
+        </section>
     </main>
 
     <footer>
