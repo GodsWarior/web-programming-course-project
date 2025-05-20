@@ -41,56 +41,29 @@ function updateCartCounter() {
     updateCartCounterFromDB();
 }
 
-// Обработчик формы регистрации
+// Обработчик формы входа
 document.addEventListener("DOMContentLoaded", function () {
-    const registerBtn = document.getElementById("register-btn");
+    const loginBtn = document.getElementById("login-btn");
 
-    registerBtn.addEventListener("click", async function () {
-        const firstName = document.getElementById("first-name").value.trim();
-        const lastName = document.getElementById("last-name").value.trim();
+    loginBtn.addEventListener("click", async function () {
         const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value;
-        const confirmPassword = document.getElementById("confirm-password").value;
-        const newsletter = document.getElementById("newsletter").checked;
-        const termsAccepted = document.getElementById("terms").checked;
-
-        if (!termsAccepted) {
-            alert("You must agree to the terms.");
-            return;
-        }
-
-        if (password !== confirmPassword) {
-            alert("Passwords do not match.");
-            return;
-        }
-
-        const newUser = {
-            firstName,
-            lastName,
-            email,
-            password,
-            newsletter,
-            createdAt: new Date().toISOString()
-        };
 
         try {
-            const response = await fetch("http://localhost:3000/users", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(newUser)
-            });
+            const response = await fetch(`http://localhost:3000/users?email=${email}&password=${password}`);
+            const users = await response.json();
 
-            if (response.ok) {
-                alert("Registration successful!");
-                document.getElementById("registration-form").reset();
+            if (users.length > 0) {
+                alert("Login successful!");
+                // Пример: сохраняем пользователя в localStorage
+                localStorage.setItem("user", JSON.stringify(users[0]));
+                // Перенаправление, если нужно
+                // window.location.href = "/dashboard.html";
             } else {
-                alert("Something went wrong.");
-                console.error(await response.text());
+                alert("Invalid email or password.");
             }
         } catch (error) {
-            console.error("Fetch error:", error);
+            console.error("Login error:", error);
             alert("Server error.");
         }
     });
