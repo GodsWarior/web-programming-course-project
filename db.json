@@ -152,8 +152,7 @@
     }
   ],
   "purchase_products": [],
-  "orders": [
-  ],
+  "orders": [],
   "comments": [
     {
       "id": 1,
@@ -175,6 +174,26 @@
       "quote": "mdaaaaaaa",
       "nickname": "Sara Taylor",
       "status": "Consumer"
+    }
+  ],
+  "users": [
+    {
+      "id": "d21f",
+      "firstName": "asd",
+      "lastName": "фыв",
+      "email": "p8866857@gmail.com",
+      "password": "1234",
+      "newsletter": true,
+      "createdAt": "2025-05-20T01:14:48.928Z"
+    },
+    {
+      "id": "20ef",
+      "firstName": "asd",
+      "lastName": "лллл",
+      "email": "ia@mail.ru",
+      "password": "9999",
+      "newsletter": false,
+      "createdAt": "2025-05-20T01:15:26.884Z"
     }
   ]
 }

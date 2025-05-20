@@ -12,11 +12,9 @@ html{
 }
 
 html, body {
-  /* height: 10447px; /* 652,9375rem */
-  max-width: 1440px;
-  margin: auto;
+  max-width: 1440px; /* Это ограничивает контент на мобильных */
+  margin: auto;      /* Центрирует, но не решает проблему ширины */
 }
-
 
 /* Прелоудер: занимает весь экран */
 #preloader {
@@ -170,16 +168,17 @@ label{
 @media screen and (min-width: 320px) and (max-width: 1245px){
   
   label{
-      display: block;
-      position: relative;
-      order: 3;
-      width: 40px;
-      height: 25px;
-      z-index: 5;
-      cursor: pointer;
-      align-items: center;
-      margin-left: auto;
-      margin-right: 1.875rem;
+    right: 20px; /* Фиксированное положение от края */
+    margin-right: 0;
+    display: block;
+    position: relative;
+    order: 3;
+    width: 40px;
+    height: 25px;
+    z-index: 5;
+    cursor: pointer;
+    align-items: center;
+    margin-left: auto;
   }
   
   .menu-icon::after, .menu-icon::before, .menu-icon span{
@@ -236,64 +235,74 @@ label{
 @media screen and (min-width: 320px) and (max-width: 1000px){
   header .container .contacts{
       display: none;
+      
   }
   header .container{
       padding-left: 15px;
+      padding-right: 0;
+      margin-right: 0;
   }
 }
 
 /* Конец header ---------------------------------------- */
-/* Registration Section */
+/* Registration Section - Fixed Mobile Version */
+/* Основные стили формы регистрации */
 .registration-section {
-    display: flex;
-    min-height: calc(100vh - 120px);
-    background-color: #f9f8f8;
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background-color: #f9f8f8;
 }
 
 .registration-container {
-    flex: 1;
-    padding: 4rem 2rem;
-    max-width: 600px;
-    margin: 0 auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .registration-header {
-    text-align: center;
-    margin-bottom: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .registration-header h1 {
-    font-family: 'Roboto', sans-serif;
-    font-size: 2.5rem;
-    color: #274C5B;
-    margin-bottom: 0.5rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2.5rem;
+  color: #274C5B;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
 }
 
 .registration-header p {
-    color: #525C60;
-    font-size: 1.1rem;
+  color: #525C60;
+  font-size: 1.1rem;
 }
 
 .registration-form {
-    background: white;
-    padding: 2.5rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
 
 .form-row {
-    display: flex;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .form-row .form-group {
-    flex: 1;
+  flex: 1;
 }
 
 .form-group {
-    margin-bottom: 1.5rem;
-    position: relative;
+  margin-bottom: 1.5rem;
+  position: relative;
 }
 
 .form-group label {
@@ -305,157 +314,211 @@ label{
 }
 
 .form-group input {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: border 0.3s;
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
 .form-group input:focus {
-    border-color: #7EB693;
-    outline: none;
-}
-
-.password-toggle {
-    position: absolute;
-    right: 15px;
-    top: 38px;
-    cursor: pointer;
-    user-select: none;
+  border-color: #7EB693;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(126, 182, 147, 0.2);
 }
 
 .checkbox-container {
-    display: block;
-    position: relative;
-    padding-left: 30px;
-    margin-bottom: 1rem;
-    cursor: pointer;
-    color: #525C60;
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  color: #525C60;
+  user-select: none;
 }
 
 .checkbox-container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
 }
 
 .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 20px;
-    width: 20px;
-    background-color: #f1f1f1;
-    border-radius: 4px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #f1f1f1;
+  border-radius: 4px;
+  transition: all 0.2s ease;
 }
 
 .checkbox-container:hover input ~ .checkmark {
-    background-color: #e0e0e0;
+  background-color: #e0e0e0;
 }
 
 .checkbox-container input:checked ~ .checkmark {
-    background-color: #7EB693;
+  background-color: #7EB693;
 }
 
 .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
+  content: "";
+  position: absolute;
+  display: none;
 }
 
 .checkbox-container input:checked ~ .checkmark:after {
-    display: block;
+  display: block;
 }
 
 .checkbox-container .checkmark:after {
-    left: 7px;
-    top: 3px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
 }
 
 .register-btn {
-    width: 100%;
-    padding: 15px;
-    background: #274C5B;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s;
-    margin-top: 1rem;
+  width: 100%;
+  padding: 15px;
+  background: #274C5B;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 1rem;
 }
 
 .register-btn:hover {
-    background: #1a3641;
+  background: #1a3641;
 }
 
 .login-redirect {
-    text-align: center;
-    margin-top: 1.5rem;
-    color: #525C60;
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #525C60;
 }
 
 .login-redirect a {
-    color: #7EB693;
-    text-decoration: none;
-    font-weight: 600;
+  color: #7EB693;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
 }
 
 .login-redirect a:hover {
-    text-decoration: underline;
+  color: #5d9b7b;
+  text-decoration: underline;
 }
 
 .registration-image {
-    flex: 1;
-    background: #7EB693;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+  flex: 1;
+  background: #7EB693;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .registration-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
-/* Responsive */
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .form-group label{
+        width: 5rem;
+        margin-left: 1.4rem;
+    }
+    .checkbox-container{
+        margin-left:1rem;
+        width:12rem;
+    }
+
+  .registration-header h1 {
+    font-size: 2.2rem;
+  }
+}
+
 @media (max-width: 992px) {
-    .registration-section {
-        flex-direction: column;
-    }
-    
-    .registration-image {
-        display: none;
-    }
-    
-    .registration-container {
-        padding: 2rem 1rem;
-    }
+  .registration-section {
+    flex-direction: column;
+  }
+  
+  .registration-image {
+    display: none;
+  }
+  
+  .registration-container {
+    padding: 3rem 2rem;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .registration-form {
+    padding: 1.5rem;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .registration-header h1 {
+    font-size: 2rem;
+  }
 }
 
 @media (max-width: 576px) {
-    .form-row {
-        flex-direction: column;
-        gap: 0;
-    }
-    
-    .registration-form {
-        padding: 1.5rem;
-    }
+  .registration-container {
+    padding: 2rem 1rem;
+  }
+  
+  .registration-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .registration-header p {
+    font-size: 1rem;
+  }
+  
+  .form-group input {
+    padding: 10px 12px;
+  }
+  
+  .checkbox-container {
+    font-size: 0.9rem;
+  }
+  
+  .register-btn {
+    padding: 12px;
+    font-size: 1rem;
+  }
 }
 
+@media (max-width: 400px) {
+  .registration-form {
+    padding: 1.25rem;
+  }
+  
+  .registration-header h1 {
+    font-size: 1.6rem;
+  }
+}
 /* Конец 1 блока -------------------------------------------- */
 
 

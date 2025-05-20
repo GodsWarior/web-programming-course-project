@@ -40,3 +40,58 @@ function updateCartCounter() {
     // Дополнительно синхронизируем с базой
     updateCartCounterFromDB();
 }
+
+// Обработчик формы регистрации
+document.addEventListener("DOMContentLoaded", function () {
+    const registerBtn = document.getElementById("register-btn");
+
+    registerBtn.addEventListener("click", async function () {
+        const firstName = document.getElementById("first-name").value.trim();
+        const lastName = document.getElementById("last-name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirm-password").value;
+        const newsletter = document.getElementById("newsletter").checked;
+        const termsAccepted = document.getElementById("terms").checked;
+
+        if (!termsAccepted) {
+            alert("You must agree to the terms.");
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            alert("Passwords do not match.");
+            return;
+        }
+
+        const newUser = {
+            firstName,
+            lastName,
+            email,
+            password,
+            newsletter,
+            createdAt: new Date().toISOString()
+        };
+
+        try {
+            const response = await fetch("http://localhost:3000/users", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(newUser)
+            });
+
+            if (response.ok) {
+                alert("Registration successful!");
+                document.getElementById("registration-form").reset();
+            } else {
+                alert("Something went wrong.");
+                console.error(await response.text());
+            }
+        } catch (error) {
+            console.error("Fetch error:", error);
+            alert("Server error.");
+        }
+    });
+});
