@@ -1,24 +1,48 @@
-// Загружаем header
+// Загрузка header
 fetch('/templates/header.html')
     .then(response => response.text())
     .then(html => {
         document.getElementById('header-container').innerHTML = html;
-        
-        // Обработчик клика по корзине → переход на purchase_page.html
-        document.getElementById('cart-button').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.location.href = '../purchase_page/purchase_page.html';
+
+        const menuToggle = document.getElementById('menu-toggle');
+        const overlay = document.getElementById('overlay');
+        const body = document.body;
+
+        // Показ/скрытие меню
+        if (menuToggle) {
+            menuToggle.addEventListener('change', () => {
+                if (menuToggle.checked) {
+                    body.classList.add('menu-open');
+                } else {
+                    body.classList.remove('menu-open');
+                }
+            });
+        }
+
+        // Клик вне меню — закрыть
+        overlay.addEventListener('click', () => {
+            menuToggle.checked = false;
+            body.classList.remove('menu-open');
         });
-        
-        // Инициализация корзины (если её нет)
+
+        // Обработка перехода в корзину
+        const cartButton = document.getElementById('cart-button');
+        if (cartButton) {
+            cartButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = '../purchase_page/purchase_page.html';
+            });
+        }
+
         if (!localStorage.getItem('cart')) {
             localStorage.setItem('cart', JSON.stringify([]));
         }
-        
-        // Обновляем счётчик (пока скрыт)
+
         updateCartCounter();
     })
-    .catch(error => console.error('Error loading header:', error));
+    .catch(error => console.error('Ошибка загрузки header:', error));
+
+
 
 //preloader
 window.addEventListener('load', function () {
@@ -137,33 +161,15 @@ function updateCartCounter() {
 }
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Создаём и добавляем бургер-иконку
-    const burgerIcon = document.createElement('div');
-    burgerIcon.className = 'burger-icon';
-    burgerIcon.innerHTML = '&#9776;'; // Юникод-иконка
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.getElementById("menu-toggle");
+  const body = document.body;
 
-    document.body.appendChild(burgerIcon);
-
-    const menu = document.querySelector('.contacts');
-
-    burgerIcon.addEventListener('click', () => {
-        menu.classList.toggle('active-burger-menu');
-    });
-
-    // Закрытие меню при клике по ссылке
-    const links = menu.querySelectorAll('a');
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            menu.classList.remove('active-burger-menu');
-        });
-    });
-
-    // Закрытие при клике вне меню
-    document.addEventListener('click', (e) => {
-        if (!menu.contains(e.target) && !burgerIcon.contains(e.target)) {
-            menu.classList.remove('active-burger-menu');
-        }
-    });
+  menuToggle.addEventListener("change", () => {
+    if (menuToggle.checked) {
+      body.classList.add("menu-open");
+    } else {
+      body.classList.remove("menu-open");
+    }
+  });
 });
-

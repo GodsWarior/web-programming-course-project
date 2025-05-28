@@ -3,22 +3,44 @@ fetch('/templates/header.html')
     .then(response => response.text())
     .then(html => {
         document.getElementById('header-container').innerHTML = html;
-        
-        // Обработчик клика по корзине → переход на purchase_page.html
-        document.getElementById('cart-button').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.location.href = '../purchase_page/purchase_page.html';
+
+        const menuToggle = document.getElementById('menu-toggle');
+        const overlay = document.getElementById('overlay');
+        const body = document.body;
+
+        // Показ/скрытие меню
+        if (menuToggle) {
+            menuToggle.addEventListener('change', () => {
+                if (menuToggle.checked) {
+                    body.classList.add('menu-open');
+                } else {
+                    body.classList.remove('menu-open');
+                }
+            });
+        }
+
+        // Клик вне меню — закрыть
+        overlay.addEventListener('click', () => {
+            menuToggle.checked = false;
+            body.classList.remove('menu-open');
         });
-        
-        // Инициализация корзины (если её нет)
+
+        // Обработка перехода в корзину
+        const cartButton = document.getElementById('cart-button');
+        if (cartButton) {
+            cartButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = '../purchase_page/purchase_page.html';
+            });
+        }
+
         if (!localStorage.getItem('cart')) {
             localStorage.setItem('cart', JSON.stringify([]));
         }
-        
-        // Обновляем счётчик
+
         updateCartCounter();
     })
-    .catch(error => console.error('Error loading header:', error));
+    .catch(error => console.error('Ошибка загрузки header:', error));
 
 //preloader
 window.addEventListener('load', function () {
