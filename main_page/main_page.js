@@ -135,3 +135,35 @@ function updateCartCounter() {
     // Дополнительно синхронизируем с базой
     updateCartCounterFromDB();
 }
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Создаём и добавляем бургер-иконку
+    const burgerIcon = document.createElement('div');
+    burgerIcon.className = 'burger-icon';
+    burgerIcon.innerHTML = '&#9776;'; // Юникод-иконка
+
+    document.body.appendChild(burgerIcon);
+
+    const menu = document.querySelector('.contacts');
+
+    burgerIcon.addEventListener('click', () => {
+        menu.classList.toggle('active-burger-menu');
+    });
+
+    // Закрытие меню при клике по ссылке
+    const links = menu.querySelectorAll('a');
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            menu.classList.remove('active-burger-menu');
+        });
+    });
+
+    // Закрытие при клике вне меню
+    document.addEventListener('click', (e) => {
+        if (!menu.contains(e.target) && !burgerIcon.contains(e.target)) {
+            menu.classList.remove('active-burger-menu');
+        }
+    });
+});
+

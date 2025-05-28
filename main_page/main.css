@@ -208,7 +208,7 @@ label{
       bottom: 10px;
   }
 
-  #menu-toggle:checked ~ label::before{
+  #menu-toggle:checked ~ label::before{ 
       transform: rotate(-45deg);
       top: 12px;
   }
@@ -241,6 +241,7 @@ label{
       padding-left: 15px;
   }
 }
+
 
 /* Конец header ---------------------------------------- */
 
