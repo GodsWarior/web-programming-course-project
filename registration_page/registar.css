@@ -588,6 +588,125 @@ label{
     font-size: 1.6rem;
   }
 }
+
+
+/* Добавьте эти стили к существующему registar.css */
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.radio-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.radio-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radiomark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+}
+
+.radio-container:hover input ~ .radiomark {
+    background-color: #e9e9e9;
+}
+
+.radio-container input:checked ~ .radiomark {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.radiomark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.radio-container input:checked ~ .radiomark:after {
+    display: block;
+}
+
+.radio-container .radiomark:after {
+    top: 6px;
+    left: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+.generated-password {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.generated-password span {
+    flex-grow: 1;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    word-break: break-all;
+}
+
+.copy-btn, .generate-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.copy-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.copy-btn:hover {
+    background-color: #45a049;
+}
+
+.generate-btn {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+}
+
+.generate-btn:hover {
+    background-color: #e9e9e9;
+}
+
+.payment-section {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.payment-section h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+}
 /* Конец 1 блока -------------------------------------------- */
 
 

@@ -8,15 +8,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./registar.css">
-    <script src="registration.js"></script>
-    <script src="/templates/common.js"></script>
 </head>
 <body class="lock">
     <div id="preloader">
         <div class="loader"></div>
     </div>
     <div id="header-container"></div>
-
     <main>
         <section class="registration-section">
             <div class="registration-container">
@@ -28,28 +25,92 @@
                 <form class="registration-form" id="registration-form">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="first-name">First Name</label>
+                            <label for="first-name">First Name*</label>
                             <input type="text" id="first-name" name="first-name" required placeholder="John">
                         </div>
                         <div class="form-group">
-                            <label for="last-name">Last Name</label>
+                            <label for="last-name">Last Name*</label>
                             <input type="text" id="last-name" name="last-name" required placeholder="Doe">
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="email">Email Address</label>
+                        <label for="middle-name">Middle Name</label>
+                        <input type="text" id="middle-name" name="middle-name" placeholder="Alexander">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="username">Username*</label>
+                        <input type="text" id="username" name="username" required placeholder="johndoe123">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Belarusian Phone Number*</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+375 XX XXX XX XX" pattern="\+375\s?\d{2}\s?\d{3}\s?\d{2}\s?\d{2}">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address*</label>
                         <input type="email" id="email" name="email" required placeholder="your@email.com">
                     </div>
                     
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" required placeholder="••••••••">
+                        <label for="birth-date">Date of Birth*</label>
+                        <input type="date" id="birth-date" name="birth-date" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="confirm-password">Confirm Password</label>
+                        <label>Password Method*</label>
+                        <div class="radio-group">
+                            <label class="radio-container">
+                                <input type="radio" name="password-method" value="manual" checked>
+                                <span class="radiomark"></span>
+                                Manual Entry
+                            </label>
+                            <label class="radio-container">
+                                <input type="radio" name="password-method" value="auto">
+                                <span class="radiomark"></span>
+                                Auto-generated
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group manual-password">
+                        <label for="password">Password*</label>
+                        <input type="password" id="password" name="password" required placeholder="••••••••">
+                    </div>
+                    
+                    <div class="form-group manual-password">
+                        <label for="confirm-password">Confirm Password*</label>
                         <input type="password" id="confirm-password" name="confirm-password" required placeholder="••••••••">
+                    </div>
+                    
+                    <div class="form-group auto-password" style="display: none;">
+                        <label>Generated Password</label>
+                        <div class="generated-password">
+                            <span id="generated-password"></span>
+                            <button type="button" id="copy-password" class="copy-btn">Copy</button>
+                            <button type="button" id="regenerate-password" class="generate-btn">Regenerate</button>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-section">
+                        <h3>Payment Information</h3>
+                        <div class="form-group">
+                            <label for="card-number">Card Number*</label>
+                            <input type="text" id="card-number" name="card-number" required placeholder="XXXX XXXX XXXX XXXX" pattern="\d{4}\s?\d{4}\s?\d{4}\s?\d{4}">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiry-date">Expiry Date*</label>
+                                <input type="text" id="expiry-date" name="expiry-date" required placeholder="MM/YY" pattern="\d{2}/\d{2}">
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV*</label>
+                                <input type="text" id="cvv" name="cvv" required placeholder="XXX" pattern="\d{3}">
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="form-options">
@@ -122,8 +183,10 @@
         </section>
         <div class="copyright">
             <div class="full-line"></div>
-            <p>Copyright © Organick | Designed by  VictorFlow -  Powered by  WebFlow</p>
+            <p>Copyright © Organick | Designed by VictorFlow - Powered by WebFlow</p>
         </div>
     </footer>
+    <script src="registration.js"></script>
+    <script src="/templates/common.js"></script>
 </body>
 </html>

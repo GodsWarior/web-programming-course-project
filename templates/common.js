@@ -8,24 +8,17 @@ fetch('/templates/header.html')
         const overlay = document.getElementById('overlay');
         const body = document.body;
 
-        // Показ/скрытие меню
         if (menuToggle) {
             menuToggle.addEventListener('change', () => {
-                if (menuToggle.checked) {
-                    body.classList.add('menu-open');
-                } else {
-                    body.classList.remove('menu-open');
-                }
+                body.classList.toggle('menu-open', menuToggle.checked);
             });
         }
 
-        // Клик вне меню — закрыть
         overlay.addEventListener('click', () => {
             menuToggle.checked = false;
             body.classList.remove('menu-open');
         });
 
-        // Обработка перехода в корзину
         const cartButton = document.getElementById('cart-button');
         if (cartButton) {
             cartButton.addEventListener('click', function(e) {
@@ -39,8 +32,44 @@ fetch('/templates/header.html')
         }
 
         updateCartCounter();
+
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        const signInLink = document.getElementById('sign-in-link');
+        const signUpLink = document.getElementById('sign-up-link');
+        const signOutLink = document.getElementById('sign-out-link');
+
+        const sideSignInLink = document.getElementById('side-sign-in');
+        const sideSignUpLink = document.getElementById('side-sign-up');
+        const sideSignOutLink = document.getElementById('side-sign-out');
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            localStorage.setItem('cart', JSON.stringify([]));
+            location.reload();
+        }
+
+        if (currentUser) {
+            if (signInLink) signInLink.style.display = 'none';
+            if (signUpLink) signUpLink.style.display = 'none';
+            if (signOutLink) {
+                signOutLink.style.display = 'inline';
+                signOutLink.addEventListener('click', logout);
+            }
+
+            if (sideSignInLink) sideSignInLink.style.display = 'none';
+            if (sideSignUpLink) sideSignUpLink.style.display = 'none';
+            if (sideSignOutLink) {
+                sideSignOutLink.style.display = 'inline';
+                sideSignOutLink.addEventListener('click', logout);
+            }
+        } else {
+            if (signOutLink) signOutLink.style.display = 'none';
+            if (sideSignOutLink) sideSignOutLink.style.display = 'none';
+        }
     })
     .catch(error => console.error('Ошибка загрузки header:', error));
+
 
 //footer
 fetch('/templates/footer.html')
@@ -109,5 +138,82 @@ async function updateCartCounterFromDB() {
         console.error('Error updating cart from DB:', error);
         // Если ошибка, используем localStorage как fallback
         updateCartCounter();
+    }
+}
+
+
+
+// Функция для обновления счетчика корзины
+function updateCartCounter() {
+    // Проверяем, есть ли элемент счетчика на странице
+    const counter = document.getElementById('cart-counter');
+    if (!counter) return;
+
+    try {
+        // Получаем данные корзины из localStorage
+        const cartData = localStorage.getItem('cart');
+        let cartItems = [];
+        
+        if (cartData) {
+            cartItems = JSON.parse(cartData);
+        } else {
+            localStorage.setItem('cart', JSON.stringify([]));
+        }
+
+        // Считаем общее количество товаров в корзине
+        const totalItems = cartItems.reduce((sum, item) => sum + (item.amount || 1), 0);
+        
+        // Обновляем счетчик
+        counter.textContent = totalItems > 0 ? totalItems : '0';
+        
+    } catch (error) {
+        console.error('Error updating cart counter:', error);
+        counter.style.display = 'none';
+    }
+}
+
+
+/**
+ * Очищает весь LocalStorage браузера
+ */
+function clearLocalStorage() {
+    try {
+        localStorage.clear();
+        console.log('LocalStorage has been completely cleared');
+        return true;
+    } catch (error) {
+        console.error('Error clearing LocalStorage:', error);
+        return false;
+    }
+}
+
+/**
+ * Очищает только данные корзины (из LocalStorage и базы данных)
+ */
+async function clearCart() {
+    try {
+        // 1. Очищаем корзину в LocalStorage
+        localStorage.setItem('cart', JSON.stringify([]));
+        
+        // 2. Очищаем корзину на сервере (если есть доступ)
+        try {
+            const response = await fetch('http://localhost:3000/purchase_products', {
+                method: 'DELETE'
+            });
+            
+            if (!response.ok) {
+                throw new Error('Failed to clear server cart');
+            }
+        } catch (serverError) {
+            console.warn('Could not clear server cart, proceeding with localStorage only:', serverError);
+        }
+        
+        // 3. Обновляем счетчик
+        updateCartCounter();
+        console.log('Cart has been cleared successfully');
+        return true;
+    } catch (error) {
+        console.error('Error clearing cart:', error);
+        return false;
     }
 }

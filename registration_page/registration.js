@@ -1,78 +1,66 @@
-// Загружаем header
-fetch('/templates/header.html')
-    .then(response => response.text())
-    .then(html => {
-        document.getElementById('header-container').innerHTML = html;
-
-        const menuToggle = document.getElementById('menu-toggle');
-        const overlay = document.getElementById('overlay');
-        const body = document.body;
-
-        // Показ/скрытие меню
-        if (menuToggle) {
-            menuToggle.addEventListener('change', () => {
-                if (menuToggle.checked) {
-                    body.classList.add('menu-open');
-                } else {
-                    body.classList.remove('menu-open');
-                }
-            });
-        }
-
-        // Клик вне меню — закрыть
-        overlay.addEventListener('click', () => {
-            menuToggle.checked = false;
-            body.classList.remove('menu-open');
-        });
-
-        // Обработка перехода в корзину
-        const cartButton = document.getElementById('cart-button');
-        if (cartButton) {
-            cartButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.location.href = '../purchase_page/purchase_page.html';
-            });
-        }
-
-        if (!localStorage.getItem('cart')) {
-            localStorage.setItem('cart', JSON.stringify([]));
-        }
-
-        updateCartCounter();
-    })
-    .catch(error => console.error('Ошибка загрузки header:', error));
-
-//preloader
-window.addEventListener('load', function () {
-    const preloader = document.getElementById('preloader');
-    preloader.style.display = 'none';
-});
-
-
-// Функция обновления счётчика (пока скрыта, но работает)
-function updateCartCounter() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const totalItems = cart.reduce((sum, item) => sum + item.amount, 0);
-    const counter = document.getElementById('cart-counter');
+document.addEventListener("DOMContentLoaded", function () {
+    // Обработка выбора метода пароля
+    const passwordMethodRadios = document.querySelectorAll('input[name="password-method"]');
+    const manualPasswordFields = document.querySelector('.manual-password');
+    const autoPasswordField = document.querySelector('.auto-password');
+    const generatedPasswordSpan = document.getElementById('generated-password');
     
-    if (counter) {
-        counter.textContent = totalItems;
+    function generateRandomPassword() {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*';
+        let password = '';
+        for (let i = 0; i < 12; i++) {
+            password += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return password;
     }
     
-    // Дополнительно синхронизируем с базой
-    updateCartCounterFromDB();
-}
-
-// Обработчик формы регистрации
-document.addEventListener("DOMContentLoaded", function () {
+    passwordMethodRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.value === 'auto') {
+                manualPasswordFields.style.display = 'none';
+                autoPasswordField.style.display = 'block';
+                generatedPasswordSpan.textContent = generateRandomPassword();
+            } else {
+                manualPasswordFields.style.display = 'block';
+                autoPasswordField.style.display = 'none';
+            }
+        });
+    });
+    
+    document.getElementById('regenerate-password').addEventListener('click', function() {
+        generatedPasswordSpan.textContent = generateRandomPassword();
+    });
+    
+    document.getElementById('copy-password').addEventListener('click', function() {
+        navigator.clipboard.writeText(generatedPasswordSpan.textContent);
+        alert('Password copied to clipboard!');
+    });
+    
+    // Обработчик формы регистрации
     const registerBtn = document.getElementById("register-btn");
-
+    
     registerBtn.addEventListener("click", async function () {
         const firstName = document.getElementById("first-name").value.trim();
         const lastName = document.getElementById("last-name").value.trim();
+        const middleName = document.getElementById("middle-name").value.trim();
+        const username = document.getElementById("username").value.trim();
+        const phone = document.getElementById("phone").value.trim();
         const email = document.getElementById("email").value.trim();
-        const password = document.getElementById("password").value;
-        const confirmPassword = document.getElementById("confirm-password").value;
+        const birthDate = document.getElementById("birth-date").value;
+        const passwordMethod = document.querySelector('input[name="password-method"]:checked').value;
+        let password, confirmPassword;
+
+        if (passwordMethod === 'manual') {
+            password = document.getElementById("password").value;
+            confirmPassword = document.getElementById("confirm-password").value;
+        } else {
+            password = generatedPasswordSpan.textContent;
+            confirmPassword = generatedPasswordSpan.textContent;
+        }
+
+        const cardNumber = document.getElementById("card-number").value.trim();
+        const expiryDate = document.getElementById("expiry-date").value.trim();
+        const cvv = document.getElementById("cvv").value.trim();
         const newsletter = document.getElementById("newsletter").checked;
         const termsAccepted = document.getElementById("terms").checked;
 
@@ -86,16 +74,53 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        const newUser = {
-            firstName,
-            lastName,
-            email,
-            password,
-            newsletter,
-            createdAt: new Date().toISOString()
-        };
+        if (!phone.match(/^\+375\s?\d{2}\s?\d{3}\s?\d{2}\s?\d{2}$/)) {
+            alert("Please enter a valid Belarusian phone number (+375 XX XXX XX XX)");
+            return;
+        }
+
+        if (!cardNumber.match(/^\d{4}\s?\d{4}\s?\d{4}\s?\d{4}$/)) {
+            alert("Please enter a valid card number (16 digits)");
+            return;
+        }
+
+        if (!expiryDate.match(/^\d{2}\/\d{2}$/)) {
+            alert("Please enter a valid expiry date (MM/YY)");
+            return;
+        }
+
+        if (!cvv.match(/^\d{3}$/)) {
+            alert("Please enter a valid CVV (3 digits)");
+            return;
+        }
 
         try {
+            // Проверка на существующий email
+            const checkEmailResponse = await fetch(`http://localhost:3000/users?email=${email}`);
+            const existingUsers = await checkEmailResponse.json();
+
+            if (existingUsers.length > 0) {
+                alert("This email is already registered. Please use another one.");
+                return;
+            }
+
+            const newUser = {
+                firstName,
+                lastName,
+                middleName,
+                username,
+                phone,
+                email,
+                birthDate,
+                passwordMethod,
+                password,
+                cardNumber: cardNumber.replace(/\s/g, ''),
+                expiryDate,
+                cvv,
+                newsletter,
+                createdAt: new Date().toISOString()
+            };
+
             const response = await fetch("http://localhost:3000/users", {
                 method: "POST",
                 headers: {
@@ -105,15 +130,28 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             if (response.ok) {
-                alert("Registration successful!");
-                document.getElementById("registration-form").reset();
+                localStorage.setItem('currentUser', JSON.stringify({
+                    id: newUser.id,
+                    email: newUser.email,
+                    firstName: newUser.firstName,
+                    lastName: newUser.lastName,
+                    username: newUser.username,
+                    phone: newUser.phone,
+                    loggedIn: true,
+                    token: 'generated-token-here'
+                }));
+
+                localStorage.setItem('lastLogin', new Date().toISOString());
+
+                window.location.href = '/main_page/index.html';
             } else {
-                alert("Something went wrong.");
-                console.error(await response.text());
+                const errorData = await response.json();
+                alert(errorData.message || "Registration failed");
+                console.error("Registration error:", errorData);
             }
         } catch (error) {
             console.error("Fetch error:", error);
-            alert("Server error.");
+            alert("Network error. Please try again later.");
         }
     });
 });

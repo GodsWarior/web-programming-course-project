@@ -153,42 +153,27 @@
   ],
   "purchase_products": [
     {
-      "id": "fe58",
+      "id": "1fec",
       "productId": "2",
       "amount": 1
     },
     {
-      "id": "a8a9",
+      "id": "c4c7",
       "productId": "3",
-      "amount": 2
-    }
-  ],
-  "orders": [
-    {
-      "id": "2cfd",
-      "address": "jfj",
-      "recipient": "gjg",
-      "payment": "card",
-      "promoCode": "jjj",
-      "date": "2025-05-22T12:02:17.397Z"
+      "amount": 1
     },
     {
-      "id": "9d55",
-      "address": "asd",
-      "recipient": "fad",
-      "payment": "cash",
-      "promoCode": "asd",
-      "date": "2025-05-22T20:05:07.880Z"
+      "id": "e981",
+      "productId": "2",
+      "amount": 1
     },
     {
-      "id": "1ec6",
-      "address": "ukhhgg",
-      "recipient": "gjyhv",
-      "payment": "cash",
-      "promoCode": "lopkj",
-      "date": "2025-05-28T07:58:50.496Z"
+      "id": "19e4",
+      "productId": "1",
+      "amount": 1
     }
   ],
+  "orders": [],
   "comments": [
     {
       "id": "1",
@@ -214,22 +199,72 @@
   ],
   "users": [
     {
-      "id": "d21f",
-      "firstName": "asd",
-      "lastName": "фыв",
-      "email": "p8866857@gmail.com",
-      "password": "1234",
-      "newsletter": true,
-      "createdAt": "2025-05-20T01:14:48.928Z"
+      "id": "99ab",
+      "firstName": "Cool",
+      "lastName": "Guy",
+      "middleName": "Fing",
+      "username": "GoodWin",
+      "phone": "+375293767995",
+      "email": "iadaniklolka@mail.ru",
+      "birthDate": "2005-02-11",
+      "passwordMethod": "manual",
+      "password": "12345678",
+      "cardNumber": "4255190136438903",
+      "expiryDate": "08/27",
+      "cvv": "938",
+      "newsletter": false,
+      "createdAt": "2025-06-04T15:40:39.455Z"
     },
     {
-      "id": "20ef",
-      "firstName": "asd",
-      "lastName": "лллл",
-      "email": "ia@mail.ru",
-      "password": "9999",
-      "newsletter": false,
-      "createdAt": "2025-05-20T01:15:26.884Z"
+      "id": "77f4",
+      "firstName": "never",
+      "lastName": "mind",
+      "middleName": "hi",
+      "username": "test123",
+      "phone": "+375293737998",
+      "email": "uuu@mail.ru",
+      "birthDate": "1999-06-13",
+      "passwordMethod": "auto",
+      "password": "9KP#E78Hl!CL",
+      "cardNumber": "4255190187649890",
+      "expiryDate": "02/11",
+      "cvv": "222",
+      "newsletter": true,
+      "createdAt": "2025-06-04T15:56:30.279Z"
+    },
+    {
+      "id": "379c",
+      "firstName": "oasd",
+      "lastName": "fad",
+      "middleName": "qwsaasd",
+      "username": "dddfffll",
+      "phone": "+375293767992",
+      "email": "olkiff@mail.ru",
+      "birthDate": "2000-03-02",
+      "passwordMethod": "auto",
+      "password": "gZM8^Rl&jhVn",
+      "cardNumber": "4255123456782345",
+      "expiryDate": "02/02",
+      "cvv": "222",
+      "newsletter": true,
+      "createdAt": "2025-06-04T16:00:07.700Z"
+    },
+    {
+      "id": "8d76",
+      "firstName": "zxcv",
+      "lastName": "qqqe",
+      "middleName": "acuma",
+      "username": "kjold",
+      "phone": "+375293767995",
+      "email": "p8866857@gmail.com",
+      "birthDate": "1999-01-20",
+      "passwordMethod": "auto",
+      "password": "QVrMzi3E0rum",
+      "cardNumber": "1234567812345678",
+      "expiryDate": "12/11",
+      "cvv": "234",
+      "newsletter": true,
+      "createdAt": "2025-06-04T16:02:18.884Z"
     }
   ]
 }
