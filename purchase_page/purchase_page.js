@@ -1,52 +1,3 @@
-// Загружаем header
-fetch('/templates/header.html')
-    .then(response => response.text())
-    .then(html => {
-        document.getElementById('header-container').innerHTML = html;
-
-        const menuToggle = document.getElementById('menu-toggle');
-        const overlay = document.getElementById('overlay');
-        const body = document.body;
-
-        // Показ/скрытие меню
-        if (menuToggle) {
-            menuToggle.addEventListener('change', () => {
-                if (menuToggle.checked) {
-                    body.classList.add('menu-open');
-                } else {
-                    body.classList.remove('menu-open');
-                }
-            });
-        }
-
-        // Клик вне меню — закрыть
-        overlay.addEventListener('click', () => {
-            menuToggle.checked = false;
-            body.classList.remove('menu-open');
-        });
-
-        // Обработка перехода в корзину
-        const cartButton = document.getElementById('cart-button');
-        if (cartButton) {
-            cartButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.location.href = '../purchase_page/purchase_page.html';
-            });
-        }
-
-        if (!localStorage.getItem('cart')) {
-            localStorage.setItem('cart', JSON.stringify([]));
-        }
-
-        updateCartCounter();
-    })
-    .catch(error => console.error('Ошибка загрузки header:', error));
-
-//preloader
-window.addEventListener('load', function () {
-    const preloader = document.getElementById('preloader');
-    preloader.style.display = 'none';
-});
 // Загрузка и отображение продуктов
 document.addEventListener('DOMContentLoaded', function() {
     // Сначала получаем данные о покупках
@@ -91,18 +42,71 @@ document.addEventListener('DOMContentLoaded', function() {
                 const productElement = document.createElement('div');
                 productElement.className = 'base-rectangle';
                 productElement.innerHTML = `
+                    <div class="product-header">
+                        <span class="delete-btn">&times;</span>
+                    </div>
                     <img src="${product.image}" class="product-image" alt="${product.name}">
                     <p class="product_category">${product.category}</p>
                     <p class="product_name">${product.name}</p>
                     <div class="rectangle-line"></div>
                     <p class="price-line-through">$ ${product.oldPrice.toFixed(2)} USD</p>
                     <p class="current-price">$ ${product.price.toFixed(2)} USD</p>
-                    <div class="purchased-amount">
-                        Purchased: ${product.totalPurchased}
+                    <div class="amount-control">
+                        <input type="number" id="amount-${product.id}" min="1" value="${product.totalPurchased}" data-product-id="${product.id}">
                     </div>
-                `;
-                
+                `;                
                 container.appendChild(productElement);
+                productElement.querySelector('.delete-btn').addEventListener('click', async () => {
+                    try {
+                        const response = await fetch('http://localhost:3000/purchase_products');
+                        const purchases = await response.json();
+                        const toDelete = purchases.filter(p => p.productId === product.id);
+
+                        await Promise.all(toDelete.map(p =>
+                            fetch(`http://localhost:3000/purchase_products/${p.id}`, { method: 'DELETE' })
+                        ));
+
+                        productElement.remove();
+                        updateCartCounter();
+                    } catch (error) {
+                        console.error('Delete error:', error);
+                    }
+                });
+                productElement.querySelector(`#amount-${product.id}`).addEventListener('change', async (e) => {
+                    const newAmount = parseInt(e.target.value);
+                    if (isNaN(newAmount) || newAmount < 1) {
+                        alert('Minimum quantity is 1');
+                        e.target.value = product.totalPurchased;
+                        return;
+                    }
+
+                    try {
+                        const response = await fetch('http://localhost:3000/purchase_products');
+                        const purchases = await response.json();
+                        const existing = purchases.filter(p => p.productId === product.id);
+
+                        // Удалить все записи
+                        await Promise.all(existing.map(p =>
+                            fetch(`http://localhost:3000/purchase_products/${p.id}`, { method: 'DELETE' })
+                        ));
+
+                        // Добавить новую с нужным количеством
+                        await fetch('http://localhost:3000/purchase_products', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                productId: product.id,
+                                amount: newAmount
+                            })
+                        });
+
+                        updateCartCounter();
+                    } catch (error) {
+                        console.error('Update quantity error:', error);
+                    }
+                });
+
+
             });
         })
         .catch(error => console.error('Error loading data:', error));
@@ -193,3 +197,56 @@ async function updateCartCounter() {
         }
     }
 }
+
+// Кнопка удаления
+productElement.querySelector('.delete-btn').addEventListener('click', async () => {
+    try {
+        const response = await fetch('http://localhost:3000/purchase_products');
+        const purchases = await response.json();
+        const toDelete = purchases.filter(p => p.productId === product.id);
+
+        await Promise.all(toDelete.map(p =>
+            fetch(`http://localhost:3000/purchase_products/${p.id}`, { method: 'DELETE' })
+        ));
+
+        productElement.remove();
+        updateCartCounter();
+    } catch (error) {
+        console.error('Delete error:', error);
+    }
+});
+
+// Изменение количества
+productElement.querySelector(`#amount-${product.id}`).addEventListener('change', async (e) => {
+    const newAmount = parseInt(e.target.value);
+    if (isNaN(newAmount) || newAmount < 1) {
+        alert('Minimum quantity is 1');
+        e.target.value = product.totalPurchased;
+        return;
+    }
+
+    try {
+        const response = await fetch('http://localhost:3000/purchase_products');
+        const purchases = await response.json();
+        const existing = purchases.filter(p => p.productId === product.id);
+
+        // Удалить все записи
+        await Promise.all(existing.map(p =>
+            fetch(`http://localhost:3000/purchase_products/${p.id}`, { method: 'DELETE' })
+        ));
+
+        // Добавить новую с нужным количеством
+        await fetch('http://localhost:3000/purchase_products', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                productId: product.id,
+                amount: newAmount
+            })
+        });
+
+        updateCartCounter();
+    } catch (error) {
+        console.error('Update quantity error:', error);
+    }
+});

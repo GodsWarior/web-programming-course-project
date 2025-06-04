@@ -118,7 +118,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 expiryDate,
                 cvv,
                 newsletter,
-                createdAt: new Date().toISOString()
+                createdAt: new Date().toISOString(),
+                role: "user"
             };
 
             const response = await fetch("http://localhost:3000/users", {
@@ -138,7 +139,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     username: newUser.username,
                     phone: newUser.phone,
                     loggedIn: true,
-                    token: 'generated-token-here'
+                    token: 'generated-token-here',
+                    role: newUser.role
                 }));
 
                 localStorage.setItem('lastLogin', new Date().toISOString());

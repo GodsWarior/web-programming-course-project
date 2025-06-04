@@ -499,6 +499,40 @@ label{
   }
 }
 
+.product-edit-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: white;
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.add-product-button {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #6a994e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.add-product-button:hover {
+  background-color: #588d43;
+}
+
+
 /* Конец 2 блока -------------------------------------------- */
 
 .our-products-label{
@@ -910,6 +944,35 @@ label{
 
 
 /* Конец 3 блока --------------------------------------------*/
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 60px;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* модальное окно --------------------------------------------*/
 
 footer{
   width: 100%;

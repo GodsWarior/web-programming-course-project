@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     username: user.username,
                     phone: user.phone,
                     loggedIn: true,
+                    role : user.role
                 }));
 
                 // Сохраняем дату входа
