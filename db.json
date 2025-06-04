@@ -151,7 +151,18 @@
       "ratingImage": "./assets/five_star.png"
     }
   ],
-  "purchase_products": [],
+  "purchase_products": [
+    {
+      "id": "fe58",
+      "productId": "2",
+      "amount": 1
+    },
+    {
+      "id": "a8a9",
+      "productId": "3",
+      "amount": 2
+    }
+  ],
   "orders": [
     {
       "id": "2cfd",
@@ -168,6 +179,14 @@
       "payment": "cash",
       "promoCode": "asd",
       "date": "2025-05-22T20:05:07.880Z"
+    },
+    {
+      "id": "1ec6",
+      "address": "ukhhgg",
+      "recipient": "gjyhv",
+      "payment": "cash",
+      "promoCode": "lopkj",
+      "date": "2025-05-28T07:58:50.496Z"
     }
   ],
   "comments": [
