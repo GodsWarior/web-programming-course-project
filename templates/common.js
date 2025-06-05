@@ -145,6 +145,7 @@ async function updateCartCounterFromDB() {
 
 // Функция для обновления счетчика корзины
 function updateCartCounter() {
+    updateCartCounterFromDB();
     // Проверяем, есть ли элемент счетчика на странице
     const counter = document.getElementById('cart-counter');
     if (!counter) return;
@@ -194,20 +195,21 @@ async function clearCart() {
     try {
         // 1. Очищаем корзину в LocalStorage
         localStorage.setItem('cart', JSON.stringify([]));
-        
-        // 2. Очищаем корзину на сервере (если есть доступ)
+
+        // 2. Получаем все покупки и удаляем их по одной
         try {
-            const response = await fetch('http://localhost:3000/purchase_products', {
-                method: 'DELETE'
-            });
-            
-            if (!response.ok) {
-                throw new Error('Failed to clear server cart');
-            }
+            const response = await fetch('http://localhost:3000/purchase_products');
+            const purchases = await response.json();
+
+            await Promise.all(purchases.map(p =>
+                fetch(`http://localhost:3000/purchase_products/${p.id}`, {
+                    method: 'DELETE'
+                })
+            ));
         } catch (serverError) {
             console.warn('Could not clear server cart, proceeding with localStorage only:', serverError);
         }
-        
+
         // 3. Обновляем счетчик
         updateCartCounter();
         console.log('Cart has been cleared successfully');
@@ -217,3 +219,25 @@ async function clearCart() {
         return false;
     }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.getElementById("theme-toggle");
+  const body = document.body;
+
+  // Проверяем сохранённую тему
+  if (localStorage.getItem("theme") === "dark") {
+    body.classList.add("dark-theme");
+    toggle.checked = true;
+  }
+
+  // Обработчик переключения темы
+  toggle.addEventListener("change", () => {
+    if (toggle.checked) {
+      body.classList.add("dark-theme");
+      localStorage.setItem("theme", "dark");
+    } else {
+      body.classList.remove("dark-theme");
+      localStorage.setItem("theme", "light");
+    }
+  });
+});

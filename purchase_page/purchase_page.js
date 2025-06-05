@@ -113,90 +113,65 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-// Обработчик формы заказа
-document.getElementById('order-form')?.addEventListener('submit', async function(e) {
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("order-form");
+
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    
-    try {
-        // Получаем данные формы (без содержимого корзины)
-        const orderData = {
-            address: document.getElementById('delivery-address').value,
-            recipient: document.getElementById('recipient-name').value,
-            payment: document.querySelector('input[name="payment"]:checked').value,
-            promoCode: document.getElementById('promo-code').value,
-            date: new Date().toISOString()
-        };
-        
-        // 1. Отправляем данные заказа
-        const orderResponse = await fetch('http://localhost:3000/orders', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(orderData)
-        });
-        
-        if (!orderResponse.ok) throw new Error('Failed to create order');
-        
-        // 2. Получаем все purchase_products для удаления
-        const purchasesResponse = await fetch('http://localhost:3000/purchase_products');
-        const purchases = await purchasesResponse.json();
-        
-        // 3. Удаляем все purchase_products
-        const deletePromises = purchases.map(purchase => 
-            fetch(`http://localhost:3000/purchase_products/${purchase.id}`, {
-                method: 'DELETE'
-            })
-        );
-        
-        await Promise.all(deletePromises);
-        
-        // 4. Обновляем счетчик корзины (он будет 0, так как purchase_products очищены)
-        updateCartCounter();
-        
-        // 5. Показываем уведомление об успехе
-        showNotification('Order placed successfully!');
-        
-    } catch (error) {
-        console.error('Error:', error);
-        showNotification('Error placing order. Please try again.', 'error');
+
+    // Получение данных формы
+    const address = document.getElementById("delivery-address").value.trim();
+    const recipient = document.getElementById("recipient-name").value.trim();
+    const payment = document.querySelector("input[name='payment']:checked").value;
+    const promo = document.getElementById("promo-code").value.trim();
+
+    // Получение currentUser и cart из localStorage
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (!currentUser || !currentUser.id) {
+      alert("User not authorized.");
+      return;
     }
+
+    if (cart.length === 0) {
+      alert("Your cart is empty.");
+      return;
+    }
+
+    // Создание объекта заказа
+    const order = {
+      userId: currentUser.id,
+      address: address,
+      recipient: recipient,
+      paymentMethod: payment,
+      promoCode: promo || null,
+      items: cart,
+      createdAt: new Date().toISOString()
+    };
+
+    try {
+      const response = await fetch("http://localhost:3000/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(order)
+      });
+
+      if (response.ok) {
+        clearCart();
+      } else {
+        alert("Failed to place order.");
+      }
+    } catch (err) {
+      console.error("Order error:", err);
+      alert("An error occurred while placing the order.");
+    }
+  });
 });
 
-// Функция обновления счетчика корзины (теперь учитывает purchase_products)
-async function updateCartCounter() {
-    try {
-        // Получаем текущие покупки из базы
-        const response = await fetch('http://localhost:3000/purchase_products');
-        const purchases = await response.json();
-        
-        // Считаем общее количество
-        const totalItems = purchases.reduce((sum, item) => sum + item.amount, 0);
-        const counter = document.getElementById('cart-counter');
-        
-        if (counter) {
-            counter.textContent = totalItems;
-            counter.style.display = totalItems > 0 ? "inline" : "0";
-        }
-        
-        // Синхронизируем с localStorage (опционально)
-        const cart = purchases.map(item => ({
-            id: item.productId,
-            amount: item.amount
-        }));
-        localStorage.setItem('cart', JSON.stringify(cart));
-        
-    } catch (error) {
-        console.error('Error updating cart counter:', error);
-        // Fallback на localStorage если сервер недоступен
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const totalItems = cart.reduce((sum, item) => sum + item.amount, 0);
-        const counter = document.getElementById('cart-counter');
-        if (counter) {
-            counter.textContent = totalItems;
-        }
-    }
-}
+
 
 // Кнопка удаления
 productElement.querySelector('.delete-btn').addEventListener('click', async () => {

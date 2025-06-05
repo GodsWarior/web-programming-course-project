@@ -152,7 +152,42 @@
     }
   ],
   "purchase_products": [],
-  "orders": [],
+  "orders": [
+    {
+      "id": "60b4",
+      "userId": "8a17",
+      "address": "ukhhgg",
+      "recipient": "dddd",
+      "paymentMethod": "card",
+      "promoCode": null,
+      "items": [
+        {
+          "id": 1,
+          "amount": 1
+        },
+        {
+          "id": 3,
+          "amount": 2
+        }
+      ],
+      "createdAt": "2025-06-05T07:08:53.892Z"
+    },
+    {
+      "id": "42eb",
+      "userId": "8a17",
+      "address": "dfasd",
+      "recipient": "fasd",
+      "paymentMethod": "card",
+      "promoCode": "asdtest",
+      "items": [
+        {
+          "id": 2,
+          "amount": 2
+        }
+      ],
+      "createdAt": "2025-06-05T07:15:38.218Z"
+    }
+  ],
   "comments": [
     {
       "id": "1",
@@ -194,6 +229,24 @@
       "newsletter": true,
       "createdAt": "2025-06-04T16:46:22.014Z",
       "role": "admin"
+    },
+    {
+      "id": "18be",
+      "firstName": "фыв",
+      "lastName": "фыв",
+      "middleName": "qwsaasd",
+      "username": "GodWin12",
+      "phone": "+375293767900",
+      "email": "forchatbotgpt@mail.ru",
+      "birthDate": "1999-09-19",
+      "passwordMethod": "manual",
+      "password": "87654321",
+      "cardNumber": "1234567818276354",
+      "expiryDate": "02/11",
+      "cvv": "267",
+      "newsletter": false,
+      "createdAt": "2025-06-05T07:20:45.425Z",
+      "role": "user"
     }
   ]
 }

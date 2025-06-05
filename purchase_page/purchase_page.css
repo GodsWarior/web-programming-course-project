@@ -312,6 +312,60 @@ label{
   }
 }
 
+/*тема*/
+.theme-label{
+  display: block;
+}
+.theme-label {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 26px;
+}
+
+.theme-label input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.theme-label .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: background-color 0.4s;
+  border-radius: 34px;
+}
+
+.theme-label .slider::before {
+  content: "☀️";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.4s ease, content 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.theme-label input:checked + .slider {
+  background-color: #4a4a4a;
+}
+
+.theme-label input:checked + .slider::before {
+  transform: translateX(22px);
+  content: "🌙";
+}
+
+/*тема*/
+
 /* Конец header ---------------------------------------- */
 
 .first-block {
