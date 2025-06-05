@@ -151,7 +151,23 @@
       "ratingImage": "./assets/five_star.png"
     }
   ],
-  "purchase_products": [],
+  "purchase_products": [
+    {
+      "id": "b4e0",
+      "productId": "2",
+      "amount": 1
+    },
+    {
+      "id": "a227",
+      "productId": "1",
+      "amount": 1
+    },
+    {
+      "id": "79d9",
+      "productId": "3",
+      "amount": 1
+    }
+  ],
   "orders": [
     {
       "id": "60b4",
@@ -186,6 +202,29 @@
         }
       ],
       "createdAt": "2025-06-05T07:15:38.218Z"
+    },
+    {
+      "id": "0c39",
+      "userId": "8a17",
+      "address": "jlihkjg",
+      "recipient": "lkj hj",
+      "paymentMethod": "cash",
+      "promoCode": null,
+      "items": [
+        {
+          "id": "1",
+          "amount": 1
+        },
+        {
+          "id": "3",
+          "amount": 3
+        },
+        {
+          "id": "13",
+          "amount": 1
+        }
+      ],
+      "createdAt": "2025-06-05T08:06:29.995Z"
     }
   ],
   "comments": [

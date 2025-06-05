@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organik</title>
+    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./login.css">
+</head>
+<body class="lock">
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <div id="header-container"></div>
+
+    <main>
+        <section class="registration-section">
+            <div class="registration-container">
+                <div class="registration-header">
+                    <h1>Log In to Your Account</h1>
+                    <p>Welcome back to our organic community!</p>
+                </div>
+
+                <form class="registration-form" id="login-form">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required placeholder="••••••••">
+                    </div>
+
+                    <button type="button" id="login-btn" class="register-btn">Log In</button>
+
+                    <div class="login-redirect">
+                        Don’t have an account? <a href="/registration_page/registar.html">Register</a>
+                    </div>
+                </form>
+            </div>
+
+            <div class="registration-image">
+                <img src="./assets/bg.png" alt="Organic vegetables">
+            </div>
+        </section>
+
+    </main>
+
+    <div id="footer-container"></div>
+    <script src="login_page.js"></script>
+    <script src="/templates/common.js"></script>
+</body>
+</html>
