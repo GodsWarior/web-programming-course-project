@@ -5,7 +5,7 @@
       "name": "Calabrese Broccoli",
       "category": "Vegetable",
       "image": "/products_images/calabrese_broccoli.png",
-      "oldPrice": 25,
+      "oldPrice": 26,
       "price": 21,
       "rating": 5,
       "ratingImage": "./assets/five_star.png"
@@ -15,7 +15,7 @@
       "name": "Fresh Corn",
       "category": "Vegetable",
       "image": "/products_images/fresh-corn.png",
-      "oldPrice": 21.23,
+      "oldPrice": 21.35,
       "price": 18,
       "rating": 5,
       "ratingImage": "./assets/five_star.png"

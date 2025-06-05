@@ -56,23 +56,56 @@
     <div id="editModal" class="modal">
         <div class="modal-content">
             <span id="closeModal" class="close">&times;</span>
-            <h2>Редактировать товар</h2>
+            <h2>Edit product</h2>
+            <div class="edit-modal-body">
             <form id="editForm">
-            <input type="hidden" id="editId">
-            <label>Название:</label>
-            <input type="text" id="editName"><br>
-            <label>Категория:</label>
-            <input type="text" id="editCategory"><br>
-            <label>Старая цена:</label>
-            <input type="number" id="editOldPrice"><br>
-            <label>Новая цена:</label>
-            <input type="number" id="editPrice"><br>
-            <label>Изображение (URL):</label>
-            <input type="text" id="editImage"><br>
-            <button type="submit">Сохранить</button>
+                <input type="hidden" id="editId">
+                <label>Name:</label>
+                <input type="text" id="editName"><br>
+                <label>Category:</label>
+                <select id="editCategory"></select><br>
+                <label>Old price:</label>
+                <input type="number" id="editOldPrice" step="0.01"><br>
+                <label>New price:</label>
+                <input type="number" id="editPrice" step="0.01"><br>
+                <label>Picture (URL):</label>
+                <input type="text" id="editImage"><br>
+                <button type="submit">Save</button>
+                <button id="deleteProduct" type="submit" class="delete-btn">Delete</button>
+            </form>
+            <div class="edit-product-image-wrapper">
+                <img id="editProductImage" src="" alt="Фото товара">
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="addModal" class="modal">
+        <div class="modal-content">
+            <span id="closeAddModal" class="close">&times;</span>
+            <h2>Add New Product</h2>
+            <form id="addForm">
+            <label>Name:</label>
+            <input type="text" id="addName" required><br>
+
+            <label>Category:</label>
+            <select id="addCategory" required></select><br>
+
+            <label>Old Price:</label>
+            <input type="number" id="addOldPrice" step="0.01" required><br>
+
+            <label>New Price:</label>
+            <input type="number" id="addPrice" step="0.01" required><br>
+
+            <label>Picture (URL):</label>
+            <input type="text" id="addImage" required><br>
+
+            <button type="submit">Add Product</button>
             </form>
         </div>
     </div>
+
 
     <div id="footer-container"></div>
     <script src="shop_page.js"></script>
