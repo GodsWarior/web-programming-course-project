@@ -86,4 +86,47 @@
             </a>
         </nav>
     </div>
+
+    <!-- Модальное окно версии для слабовидящих -->
+    <div id="accessibility-modal" class="accessibility-modal">
+        <div class="accessibility-content">
+            <h2 data-translate="accessibilitySettings">Версия для слабовидящих</h2>
+            
+            <div class="setting-group">
+                <h3 data-translate="fontSize">Размер текста</h3>
+                <div class="font-size-options">
+                    <button class="font-size-btn" data-size="small" data-translate="small">Маленький</button>
+                    <button class="font-size-btn active" data-size="medium" data-translate="medium">Средний</button>
+                    <button class="font-size-btn" data-size="large" data-translate="large">Большой</button>
+                </div>
+            </div>
+            
+            <div class="setting-group">
+                <h3 data-translate="colorScheme">Цветовая схема</h3>
+                <div class="color-scheme-options">
+                    <button class="color-scheme-btn" data-scheme="default" data-translate="blackOnWhite">Черный на белом</button>
+                    <button class="color-scheme-btn" data-scheme="dark" data-translate="whiteOnBlack">Белый на черном</button>
+                    <button class="color-scheme-btn" data-scheme="green" data-translate="blackOnGreen">Черный на зеленом</button>
+                    <button class="color-scheme-btn" data-scheme="brown" data-translate="beigeOnBrown">Бежевый на коричневом</button>
+                    <button class="color-scheme-btn" data-scheme="blue" data-translate="blueOnLightBlue">Синий на голубом</button>
+                </div>
+            </div>
+            
+            <div class="setting-group">
+                <h3 data-translate="images">Изображения</h3>
+                <div class="toggle-switch">
+                    <input type="checkbox" id="images-toggle" checked>
+                    <label for="images-toggle">
+                        <span class="on" data-translate="on">Вкл</span>
+                        <span class="off" data-translate="off">Выкл</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="accessibility-buttons">
+                <button id="apply-accessibility" data-translate="apply">Применить</button>
+                <button id="close-accessibility" data-translate="close">Закрыть</button>
+            </div>
+        </div>
+    </div>
 </header>

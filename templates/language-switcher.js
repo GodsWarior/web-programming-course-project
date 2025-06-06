@@ -100,7 +100,7 @@ const translations = {
 
         // First block
         madeWithNature: "Сделано с природой",
-        welcomeTitle: "Добро пожаловать в мир природы и органики.",
+        welcomeTitle: "Добро пожаловать в мир органики.",
         exploreNow: "Исследовать",
 
         // Second block
@@ -113,9 +113,9 @@ const translations = {
         aboutUs: "О нас",
         weBelieveTitle: "Мы верим в органические продукты для крепкого здоровья",
         welcomeText: "Добро пожаловать в мир натурального и органического. Здесь вы можете открыть для себя щедрость природы. Мы выросли на принципах здоровья и заботы. Наша цель - обеспечить наших клиентов здоровой едой без химии для идеального питания.",
-        organicFoodsOnly: "Только органические продукты",
+        organicFoodsOnly: "Продукты",
         organicFoodsText: "Продукт, который вы заказали, будет проверен на наличие, и если он есть, мы перейдем к следующему шагу.",
-        qualityStandards: "Стандарты качества",
+        qualityStandards: "Качество!",
         qualityStandardsText: "После упаковки ваш продукт будет доставлен в ближайший магазин, где вы сможете его купить.",
         shopNow: "Купить сейчас",
 
@@ -137,8 +137,8 @@ const translations = {
         viewAllProducts: "Все товары",
         vegetable: "Овощи",
         fruits: "Фрукты",
-        veganRedTomato: "Веганские красные помидоры",
-        organicAlmonds: "Органический миндаль",
+        veganRedTomato: "Помидоры",
+        organicAlmonds: "Миндаль",
         freshCorn: "Свежая кукуруза",
 
         // Seventh block

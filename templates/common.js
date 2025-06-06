@@ -3,7 +3,6 @@ fetch('/templates/header.html')
     .then(response => response.text())
     .then(html => {
         document.getElementById('header-container').innerHTML = html;
-
         // Инициализация меню и других элементов
         const menuToggle = document.getElementById('menu-toggle');
         const overlay = document.getElementById('overlay');
@@ -80,6 +79,9 @@ fetch('/templates/header.html')
 
         // Инициализация переключателя языка
         initLanguageSwitcher();
+
+        // Инициализация модального окна версии для слабовидящих
+        initAccessibilityModal();
     })
     .catch(error => console.error('Ошибка загрузки header:', error));
 
@@ -349,4 +351,114 @@ function initLanguageSwitcher() {
 
     // Первоначальное обновление текста
     updatePageText();
+}
+
+// Инициализация модального окна версии для слабовидящих
+function initAccessibilityModal() {
+    const settingsButton = document.getElementById('settings-button');
+    const sideSettingsButton = document.getElementById('side-settings-button');
+    const accessibilityModal = document.getElementById('accessibility-modal');
+    const closeAccessibility = document.getElementById('close-accessibility');
+    const applyAccessibility = document.getElementById('apply-accessibility');
+    const fontSizeButtons = document.querySelectorAll('.font-size-btn');
+    const colorSchemeButtons = document.querySelectorAll('.color-scheme-btn');
+    const imagesToggle = document.getElementById('images-toggle');
+
+    function openAccessibilityModal() {
+        accessibilityModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeAccessibilityModal() {
+        accessibilityModal.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    // Обработчики для открытия модального окна
+    if (settingsButton) {
+        settingsButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            openAccessibilityModal();
+        });
+    }
+
+    if (sideSettingsButton) {
+        sideSettingsButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            openAccessibilityModal();
+        });
+    }
+
+    // Обработчик для закрытия модального окна
+    if (closeAccessibility) {
+        closeAccessibility.addEventListener('click', closeAccessibilityModal);
+    }
+
+    // Обработчики для кнопок размера шрифта
+    fontSizeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            fontSizeButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    // Обработчики для кнопок цветовой схемы
+    colorSchemeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            colorSchemeButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    // Обработчик для применения настроек
+    if (applyAccessibility) {
+        applyAccessibility.addEventListener('click', function() {
+            // Применение размера шрифта
+            const activeFontSize = document.querySelector('.font-size-btn.active').dataset.size;
+            document.documentElement.setAttribute('data-font-size', activeFontSize);
+            localStorage.setItem('fontSize', activeFontSize);
+
+            // Применение цветовой схемы
+            const activeColorScheme = document.querySelector('.color-scheme-btn.active').dataset.scheme;
+            document.documentElement.setAttribute('data-color-scheme', activeColorScheme);
+            localStorage.setItem('colorScheme', activeColorScheme);
+
+            // Применение настроек изображений
+            const showImages = imagesToggle.checked;
+            document.documentElement.setAttribute('data-images', showImages ? 'show' : 'hide');
+            localStorage.setItem('showImages', showImages);
+
+            closeAccessibilityModal();
+        });
+    }
+
+    // Закрытие по клику вне модального окна
+    accessibilityModal.addEventListener('click', function(e) {
+        if (e.target === accessibilityModal) {
+            closeAccessibilityModal();
+        }
+    });
+
+    // Восстановление сохраненных настроек при загрузке
+    function loadAccessibilitySettings() {
+        // Размер шрифта
+        const savedFontSize = localStorage.getItem('fontSize') || 'medium';
+        document.documentElement.setAttribute('data-font-size', savedFontSize);
+        const fontSizeBtn = document.querySelector(`.font-size-btn[data-size="${savedFontSize}"]`);
+        if (fontSizeBtn) fontSizeBtn.classList.add('active');
+
+        // Цветовая схема
+        const savedColorScheme = localStorage.getItem('colorScheme') || 'default';
+        document.documentElement.setAttribute('data-color-scheme', savedColorScheme);
+        const colorSchemeBtn = document.querySelector(`.color-scheme-btn[data-scheme="${savedColorScheme}"]`);
+        if (colorSchemeBtn) colorSchemeBtn.classList.add('active');
+
+        // Изображения
+        const showImages = localStorage.getItem('showImages') !== 'false';
+        if (imagesToggle) imagesToggle.checked = showImages;
+        document.documentElement.setAttribute('data-images', showImages ? 'show' : 'hide');
+    }
+
+    // Вызываем при загрузке
+    loadAccessibilitySettings();
 }

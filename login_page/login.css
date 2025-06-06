@@ -4,7 +4,7 @@
   --secondary-color: #7EB693;
   --accent-color: #EFD372;
   --text-color: #525C60;
-  --light-text-color: #FFFFFF;
+  --light-text-color: #FFFFF;
   --dark-text-color: var(--primary-color); 
   --black-color: #000000;
   --white-color: white;
@@ -546,7 +546,7 @@ footer .organic_logo img {
     transform: translateY(-50%);
     font-size: 12px;
     font-weight: bold;
-    color: #fff;
+    color: var(--light-text-color);
 }
 
 .language-label .ru {
@@ -563,7 +563,7 @@ footer .organic_logo img {
     left: 3px;
     width: 24px;
     height: 24px;
-    background: #fff;
+    background: var(--light-text-color);
     border-radius: 50%;
     transition: transform 0.3s;
 }
@@ -610,7 +610,180 @@ footer .organic_logo img {
     margin-right: 10px;
 }
 
+
+/* Стили для модального окна версии для слабовидящих */
+.accessibility-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1001;
+    justify-content: center;
+    align-items: center;
+}
+
+.accessibility-content {
+    background-color: var(--secondary-bg);
+    padding: 25px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.accessibility-content h2 {
+    margin-top: 0;
+    color: #2c3e50;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.setting-group {
+    margin-bottom: 20px;
+}
+
+.setting-group h3 {
+    margin-bottom: 10px;
+    color: #34495e;
+    font-size: 1.1rem;
+}
+
+.font-size-options, .color-scheme-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.font-size-btn, .color-scheme-btn {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    background: #f8f9fa;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+
+.font-size-btn:hover, .color-scheme-btn:hover {
+    background: #e9ecef;
+}
+
+.font-size-btn.active, .color-scheme-btn.active {
+    background: #3498db;
+    color: white;
+    border-color: #3498db;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-switch label {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 30px;
+}
+
+.toggle-switch label:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.toggle-switch input:checked + label {
+    background-color: #3498db;
+}
+
+.toggle-switch input:checked + label:before {
+    transform: translateX(30px);
+}
+
+.toggle-switch .on, .toggle-switch .off {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 12px;
+}
+
+.toggle-switch .on {
+    left: 8px;
+    display: none;
+}
+
+.toggle-switch .off {
+    right: 8px;
+}
+
+.toggle-switch input:checked + label .on {
+    display: block;
+}
+
+.toggle-switch input:checked + label .off {
+    display: none;
+}
+
+.accessibility-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.accessibility-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+#apply-accessibility {
+    background-color: #3498db;
+    color: white;
+}
+
+#apply-accessibility:hover {
+    background-color: #2980b9;
+}
+
+#close-accessibility {
+    background-color: #e74c3c;
+    color: white;
+}
+
+#close-accessibility:hover {
+    background-color: #c0392b;
+}
+
 /* header */
+
+
 /* Registration Section - Fixed Mobile Version */
 /* Основные стили формы регистрации */
 .registration-section {
