@@ -4,6 +4,7 @@ fetch('/templates/header.html')
     .then(html => {
         document.getElementById('header-container').innerHTML = html;
 
+        // Инициализация меню и других элементов
         const menuToggle = document.getElementById('menu-toggle');
         const overlay = document.getElementById('overlay');
         const body = document.body;
@@ -19,6 +20,7 @@ fetch('/templates/header.html')
             body.classList.remove('menu-open');
         });
 
+        // Инициализация корзины
         const cartButton = document.getElementById('cart-button');
         if (cartButton) {
             cartButton.addEventListener('click', function(e) {
@@ -33,15 +35,16 @@ fetch('/templates/header.html')
 
         updateCartCounter();
 
+        // Инициализация авторизации
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
         const signInLink = document.getElementById('sign-in-link');
         const signUpLink = document.getElementById('sign-up-link');
-        const signOutLink = document.getElementById('sign-out-link');
+        const signOutLink = document.getElementById('Account-link');
 
         const sideSignInLink = document.getElementById('side-sign-in');
         const sideSignUpLink = document.getElementById('side-sign-up');
-        const sideSignOutLink = document.getElementById('side-sign-out');
+        const sideSignOutLink = document.getElementById('Account-sign');
 
         function logout() {
             localStorage.removeItem('currentUser');
@@ -49,26 +52,87 @@ fetch('/templates/header.html')
             location.reload();
         }
 
+        function redirectToAccountPage() {
+            window.location.href = '/user_account/account.html';
+        }
+
         if (currentUser) {
             if (signInLink) signInLink.style.display = 'none';
             if (signUpLink) signUpLink.style.display = 'none';
             if (signOutLink) {
                 signOutLink.style.display = 'inline';
-                signOutLink.addEventListener('click', logout);
+                signOutLink.addEventListener('click', redirectToAccountPage);
             }
 
             if (sideSignInLink) sideSignInLink.style.display = 'none';
             if (sideSignUpLink) sideSignUpLink.style.display = 'none';
             if (sideSignOutLink) {
                 sideSignOutLink.style.display = 'inline';
-                sideSignOutLink.addEventListener('click', logout);
+                sideSignOutLink.addEventListener('click', redirectToAccountPage);
             }
         } else {
             if (signOutLink) signOutLink.style.display = 'none';
             if (sideSignOutLink) sideSignOutLink.style.display = 'none';
         }
+
+        // Инициализация темы ПОСЛЕ загрузки header
+        initThemeToggle();
+
+        // Инициализация переключателя языка
+        initLanguageSwitcher();
     })
     .catch(error => console.error('Ошибка загрузки header:', error));
+
+// Отдельная функция для инициализации переключателя темы
+function initThemeToggle() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    
+    if (!themeToggle) {
+        console.error('Theme toggle element not found!');
+        return;
+    }
+
+    function setTheme(isDark) {
+        if (isDark) {
+            htmlElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+            themeToggle.checked = true;
+            console.log('Dark theme applied');
+        } else {
+            htmlElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+            themeToggle.checked = false;
+            console.log('Light theme applied');
+        }
+    }
+    
+    // Проверяем сохранённую тему
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme) {
+        setTheme(savedTheme === 'dark');
+    } else if (systemPrefersDark) {
+        setTheme(true);
+    } else {
+        setTheme(false);
+    }
+    
+    themeToggle.addEventListener('change', function() {
+        setTheme(this.checked);
+        console.log('Theme changed to:', this.checked ? 'dark' : 'light');
+    });
+    
+    // Отслеживание изменений системных предпочтений
+    if (window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (!localStorage.getItem('theme')) {
+                setTheme(e.matches);
+            }
+        });
+    }
+}
 
 
 //footer
@@ -83,6 +147,7 @@ window.addEventListener('load', function () {
     const preloader = document.getElementById('preloader');
     preloader.style.display = 'none';
 });
+
 
 
 //кнопка на shop
@@ -220,24 +285,68 @@ async function clearCart() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const toggle = document.getElementById("theme-toggle");
-  const body = document.body;
+function initLanguageSwitcher() {
+    // Проверяем сохраненный язык (по умолчанию - английский)
+    let currentLang = localStorage.getItem('language') || 'en';
 
-  // Проверяем сохранённую тему
-  if (localStorage.getItem("theme") === "dark") {
-    body.classList.add("dark-theme");
-    toggle.checked = true;
-  }
+    // Функция для обновления текста на странице
+    function updatePageText() {
+        // Обновляем элементы с атрибутом data-transate
+        document.querySelectorAll('[data-transate]').forEach(element => {
+            const key = element.getAttribute('data-transate');
+            if (translations[currentLang] && translations[currentLang][key]) {
+                if (element.tagName === 'INPUT' && element.type === 'placeholder') {
+                    element.placeholder = translations[currentLang][key];
+                } else {
+                    element.textContent = translations[currentLang][key];
+                }
+            }
+        });
 
-  // Обработчик переключения темы
-  toggle.addEventListener("change", () => {
-    if (toggle.checked) {
-      body.classList.add("dark-theme");
-      localStorage.setItem("theme", "dark");
-    } else {
-      body.classList.remove("dark-theme");
-      localStorage.setItem("theme", "light");
+        // Обновляем элементы с атрибутом data-translate (опечатка в header.html)
+        document.querySelectorAll('[data-translate]').forEach(element => {
+            const key = element.getAttribute('data-translate');
+            if (translations[currentLang] && translations[currentLang][key]) {
+                element.textContent = translations[currentLang][key];
+            }
+        });
     }
-  });
-});
+
+    // Инициализация переключателей
+    const languageToggle = document.getElementById('language-toggle');
+    const sideLanguageToggle = document.getElementById('side-language-toggle');
+
+    // Устанавливаем начальное состояние переключателей
+    if (languageToggle) languageToggle.checked = currentLang === 'ru';
+    if (sideLanguageToggle) sideLanguageToggle.checked = currentLang === 'ru';
+
+    // Обработчики событий для переключателей
+    if (languageToggle) {
+        languageToggle.addEventListener('change', function() {
+            currentLang = this.checked ? 'ru' : 'en';
+            localStorage.setItem('language', currentLang);
+            updatePageText();
+            
+            // Синхронизируем состояние бокового переключателя
+            if (sideLanguageToggle) {
+                sideLanguageToggle.checked = this.checked;
+            }
+        });
+    }
+
+    if (sideLanguageToggle) {
+        sideLanguageToggle.addEventListener('change', function() {
+            currentLang = this.checked ? 'ru' : 'en';
+            localStorage.setItem('language', currentLang);
+            updatePageText();
+            
+            // Синхронизируем состояние основного переключателя
+            if (languageToggle) {
+                languageToggle.checked = this.checked;
+            }
+        });
+    }
+
+    // Первоначальное обновление текста
+    updatePageText();
+}

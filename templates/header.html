@@ -9,30 +9,44 @@
         </label>
         <div class="contacts active-burger-menu">
             <nav>
-                <a href="/main_page/index.html" class="contacts-home-button">Home</a>
-                <a href="/about_page/about.html">About Us</a>
-                <a href="/shop_page/shop_page.html">Shop</a>
-                <!-- <a href="#" class="contacts-use-bigger-size">Pages</a> -->
-                <a href="/registration_page/registar.html" class="contacts-use-bigger-size" id="sign-up-link">Sign up</a>
-                <a href="/login_page/login.html" class="contacts-use-bigger-size" id="sign-in-link">Sign in</a>
-                <a href="#" class="contacts-use-bigger-size" id="sign-out-link" style="display: none;">Sign out</a>
+                <a href="/main_page/index.html" data-translate="home" class="contacts-home-button">Home</a>
+                <a href="/about_page/about.html" data-translate="about">About Us</a>
+                <a href="/shop_page/shop_page.html" data-translate="shop">Shop</a>
+                <a href="/registration_page/registar.html" data-translate="signUp" class="contacts-use-bigger-size" id="sign-up-link">Sign up</a>
+                <a href="/login_page/login.html" data-translate="signIn" class="contacts-use-bigger-size" id="sign-in-link">Sign in</a>
+                <a href="#" class="contacts-use-bigger-size" data-translate="account" id="Account-link" style="display: none;">Account</a>
+                
+                <!-- Переключатель языка (RU/EN) -->
+                <div class="language-switch">
+                    <input type="checkbox" id="language-toggle" class="language-checkbox">
+                    <label for="language-toggle" class="language-label">
+                        <span class="ru">RU</span>
+                        <span class="en">EN</span>
+                        <span class="language-handle"></span>
+                    </label>
+                </div>
+                
+                <!-- Кнопка темы (светлая/темная) -->
                 <label class="theme-label">
                     <input type="checkbox" id="theme-toggle">
                     <span class="slider"></span>
                 </label>
-
-
-
+                
+                <!-- Иконка настроек -->
+                <a href="#" class="settings-icon" id="settings-button">
+                    <img src="/templates/settings.svg" alt="Settings">
+                </a>
             </nav>
         </div>
         <span class="cart" id="cart-button">
             <div class="cart-dark-round">
                 <img src="./assets/cort_button_image.png" alt="Cart">
             </div>
-            <a href="#" id="cart-link">Cart (<span id="cart-counter">0</span>)</a>
+            <a href="#" data-translate="cart" id="cart-link">Cart (<span id="cart-counter">0</span>)</a>
         </span>
     </div>
-        <!-- Затемнение фона -->
+    
+    <!-- Затемнение фона -->
     <div id="overlay" class="overlay"></div>
 
     <!-- Боковая панель -->
@@ -46,15 +60,30 @@
                     Cart (<span id="side-cart-counter">0</span>)
                 </a>
             </div>
-            <a href="/main_page/index.html">Home</a>
-            <a href="/about_page/about.html">About Us</a>
-            <a href="/shop_page/shop_page.html">Shop</a>
+            <a data-translate="home" href="/main_page/index.html">Home</a>
+            <a data-translate="about" href="/about_page/about.html">About Us</a>
+            <a data-translate="shop" href="/shop_page/shop_page.html">Shop</a>
             <a href="#">Pages</a>
-            <a href="/registration_page/registar.html" id="side-sign-up">Sign Up</a>
-            <a href="/login_page/login.html" id="side-sign-in">Sign In</a>
-            <a href="#" id="side-sign-out" style="display: none;">Sign Out</a>
-
+            <a data-translate="signUp" href="/registration_page/registar.html" id="side-sign-up">Sign Up</a>
+            <a data-translate="singIn" href="/login_page/login.html" id="side-sign-in">Sign In</a>
+            <a data-translate="account" href="#" id="Account-sign" style="display: none;">Account</a>
+            
+            <!-- Переключатель языка в боковом меню -->
+            <div class="side-language-switch">
+                <input type="checkbox" id="side-language-toggle" class="language-checkbox">
+                <label for="side-language-toggle" class="language-label">
+                    <span class="ru">RU</span>
+                    <span class="en">EN</span>
+                    <span class="language-handle"></span>
+                </label>
+                <span class="language-text" data-translate="language">Language</span>
+            </div>
+            
+            <!-- Настройки в боковом меню -->
+            <a href="#" class="side-settings" id="side-settings-button">
+                <img src="templates/settings.svg" alt="Settings">
+                <span data-translate="settings">Settings</span>
+            </a>
         </nav>
     </div>
-
 </header>

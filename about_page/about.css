@@ -1,6 +1,52 @@
 :root {
-  color-scheme: only light !important;
+  /* Основные цвета светлой темы */
+  --primary-color: #274C5B;
+  --secondary-color: #7EB693;
+  --accent-color: #EFD372;
+  --text-color: #525C60;
+  --light-text-color: #FFFFFF;
+  --dark-text-color: var(--primary-color); 
+  --black-color: #000000;
+  --white-color: white;
+  
+  /* Фоновые цвета */
+  --main-bg: var(--light-text-color);
+  --secondary-bg: #F9F8F8;
+  --footer-bg: var(--primary-color); 
+  --light-bg: #EFF6F1;
+  --dark-section-bg: var(--primary-color); 
+  
+  /* Границы и разделители */
+  --border-color: #D4D4D4;
+  --divider-color: #D5D5D5;
+  
+  /* Кнопки и интерактивные элементы */
+  --button-bg: var(--primary-color); 
+  --button-text: var(--light-text-color);
+  --button-hover: #3a6b80;
+  
+  /* Особые элементы */
+  --organic-badge: #22aa00;
+  --preloader-bg: var(--light-text-color);
+  --preloader-spinner: #ffcc00;
+  --preloader-border: #f3f3f3;
+  
+  /* Тени */
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --overlay-color: rgba(0, 0, 0, 0.4);
+  
+  /* Темная тема */
+  --dark-primary-color: var(--secondary-color);
+  --dark-secondary-color: var(--accent-color);
+  --dark-main-bg: #1a1a1a;
+  --dark-secondary-bg: #2d2d2d;
+  --dark-text-color: #f0f0f0;
+  --dark-border-color: #444;
+  --dark-footer-bg: #121212;
+  
+  color-scheme: light dark;
 }
+
 *{
   box-sizing: border-box;
   padding: 0;
@@ -8,12 +54,13 @@
 }
 
 html{
+  background-color:var(--main-bg);
   font-size: 100%;
 }
 
 html, body {
-  max-width: 1440px; /* Это ограничивает контент на мобильных */
-  margin: auto;      /* Центрирует, но не решает проблему ширины */
+  max-width: 1440px;
+  margin: auto;  
 }
 
 /* Прелоудер: занимает весь экран */
@@ -23,7 +70,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: white; /* или другой фон */
+    background-color: var(--white-color); /* или другой фон */
     z-index: 9999;
     display: flex;
     align-items: center;
@@ -47,7 +94,7 @@ html, body {
 }
 
 header {
-  background-color: #ffffff;
+  background-color: var(--main-bg);
   height: 152px;
   padding-top: 1.3125rem;
 }
@@ -91,7 +138,7 @@ header {
   gap: 42px;
   flex-shrink: 0; 
   text-decoration: none;
-  color: #274C5B;
+  color: var(--primary-color);
   font-family: 'Roboto', sans-serif;
   font-size: 19px;
   font-style: normal;
@@ -101,7 +148,7 @@ header {
 }
 
 .contacts-home-button{
-  color: #7EB693 !important;
+  color: var(--secondary-color) !important;
   font-size: larger;
 
 }
@@ -119,7 +166,7 @@ header .cart{
   width: 9.9375rem;
   height: 4.375rem;
   border-radius: 2.0625rem;
-  border: 1px solid #D4D4D4;
+  border: 1px solid var(--border-color);
 }
 
 header .cart .cart-dark-round{
@@ -127,7 +174,7 @@ header .cart .cart-dark-round{
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 6.25rem;
-  background: #274C5B;
+  background: var(--primary-color);
 }
 
 header .cart .cart-dark-round img{
@@ -140,7 +187,7 @@ header .cart .cart-dark-round img{
 
 .cart a{
   white-space: pre;
-  color: #274C5B;
+  color: var(--primary-color);
   font-family: Roboto;
   font-size: 1.0625rem;
   font-style: normal;
@@ -157,7 +204,7 @@ header .cart .cart-dark-round img{
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: var(--overlay-color);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
@@ -176,7 +223,7 @@ body.menu-open .overlay {
     right: -100%;
     width: 250px;
     height: 100vh;
-    background-color: white;
+    background-color: var(--white-color);
     box-shadow: -2px 0 5px rgba(0,0,0,0.2);
     transition: right 0.3s ease;
     padding: 2rem 1.5rem;
@@ -197,7 +244,7 @@ body.menu-open .side-menu {
 
 .side-menu a {
     text-decoration: none;
-    color: black;
+    color: var(--black-color);
     font-size: 1.1rem;
 }
 
@@ -208,7 +255,7 @@ body.menu-open .side-menu {
     right: -100%;
     width: 65%;
     height: 100vh;
-    background-color: white;
+    background-color: var(--white-color);
     box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
     transition: right 0.3s ease;
     padding: 2rem 1rem;
@@ -255,7 +302,7 @@ label{
       position: absolute;
       width: 100%;
       height: 3px;
-      background-color: black;
+      background-color: var(--black-color);
       transition: .3s ease;
   }
   
@@ -314,6 +361,45 @@ label{
 }
 
 
+/* Темная тема */
+[data-theme="dark"] {
+  --main-bg: var(--dark-main-bg);
+  --secondary-bg: var(--dark-secondary-bg);
+  --text-color: var(--dark-text-color);
+  --primary-color: var(--dark-primary-color);
+  --border-color: var(--dark-border-color);
+  --footer-bg: var(--dark-footer-bg);
+  --divider-color: var(--dark-border-color);
+}
+
+[data-theme="dark"] .logo img {
+  filter: brightness(0) invert(1);
+}
+
+[data-theme="dark"] .side-menu,
+[data-theme="dark"] .overlay {
+  background-color: var(--dark-secondary-bg);
+}
+
+[data-theme="dark"] .side-menu a {
+  color: var(--dark-text-color);
+}
+
+[data-theme="dark"] .menu-icon::after,
+[data-theme="dark"] .menu-icon::before,
+[data-theme="dark"] .menu-icon span {
+  background-color: var(--dark-text-color);
+}
+
+[data-theme="dark"] footer .icon-group-round {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] footer .icon-group-round img {
+  filter: brightness(0) invert(1);
+}
+
+
 /*тема*/
 .theme-label{
   display: block;
@@ -366,9 +452,165 @@ label{
   content: "🌙";
 }
 
+
+
+[data-theme="dark"] footer {
+  background-color: var(--dark-main-bg);
+  color: var(--dark-text-color);
+}
+
+[data-theme="dark"] footer .contacts h2,
+[data-theme="dark"] footer .contacts h3 {
+  color: var(--dark-text-color);
+}
+
+[data-theme="dark"] footer .contacts p {
+  color: var(--dark-text-color);
+  opacity: 0.8;
+}
+
+[data-theme="dark"] footer .vertical-line,
+[data-theme="dark"] footer .full-line {
+  background-color: var(--dark-border-color);
+}
+
+[data-theme="dark"] footer .icon-group-round {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] footer .icon-group-round img {
+  filter: brightness(0) invert(1);
+}
+
+[data-theme="dark"] footer .copyright p {
+  color: var(--dark-text-color);
+  opacity: 0.6;
+}
+
+[data-theme="dark"] footer .side-menu a {
+  color: var(--dark-text-color);
+}
+
+/* Адаптация логотипа для темной темы */
+[data-theme="dark"] footer .organic_logo img {
+  filter: brightness(0) invert(1);
+}
+
+/* Плавные переходы */
+footer,
+footer .contacts h2,
+footer .contacts h3,
+footer .contacts p,
+footer .vertical-line,
+footer .full-line,
+footer .icon-group-round,
+footer .organic_logo img {
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              opacity 0.3s ease,
+              filter 0.3s ease;
+}
+
 /*тема*/
 
-/* Конец header ---------------------------------------- */
+/* Стили для переключателя языка (RU/EN) */
+.language-switch {
+    display: inline-block;
+    margin: 0 10px;
+    vertical-align: middle;
+}
+
+.language-checkbox {
+    display: none;
+}
+
+.language-label {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    background: #e0e0e0;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.language-checkbox:checked + .language-label {
+    background: #4CAF50;
+}
+
+.language-label .ru,
+.language-label .en {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.language-label .ru {
+    left: 8px;
+}
+
+.language-label .en {
+    right: 8px;
+}
+
+.language-handle {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.language-checkbox:checked + .language-label .language-handle {
+    transform: translateX(30px);
+}
+
+/* Стили для бокового меню */
+.side-language-switch {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    margin: 10px 0;
+}
+
+.side-language-switch .language-text {
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+/* Иконка настроек */
+.settings-icon {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.settings-icon img {
+    width: 30px;
+    height: 30px;
+}
+
+.side-settings {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    margin: 10px 0;
+}
+
+.side-settings img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+/* header */
 
 
 .first-block {
@@ -384,7 +626,7 @@ label{
 
 .text-overlay h1 {
     max-width: 512px;
-    color: #274C5B;
+    color: var(--primary-color);
     font-family: Roboto;
     font-size: 2.8125rem; /* 45px */
     font-weight: 700;
@@ -454,7 +696,7 @@ label{
 
 .third-block-text-sections .first-subsection i, .our-products-label i, .fifth-block i, .sixth-block i, .seventh-block i, .ninth-block i{
   max-width: 122px;
-  color: #7EB693;
+  color: var(--secondary-color);
   font-family: Yellowtail;
   font-size: 2.25rem;
   font-style: normal;
@@ -467,7 +709,7 @@ label{
 .base-middle-lable
 {
   /* max-width: 512px; */
-  color: #274C5B;
+  color: var(--primary-color);
   font-family: Roboto;
   font-size: 2.8125rem;
   font-style: normal;
@@ -537,7 +779,7 @@ label{
 
 .organic-food-text h3, .quality-standards-text h3{ 
   max-width: 225px;
-  color: #274C5B;
+  color: var(--primary-color);
   font-family: Roboto;
   font-size: 25px;
   font-style: normal;
@@ -577,7 +819,7 @@ label{
   width: 12.4375rem;
   height: 5.125rem;
   color: #FFF;
-  background-color: #274C5B;
+  background-color: var(--primary-color);
   background-image: url('./assets/arrow_to_button.png');
   background-repeat: no-repeat;
   background-size: 3.125rem 3.125rem;
@@ -734,7 +976,7 @@ label{
   left: 1.88rem;
   right: 14.19rem;
   bottom: 5.63rem;
-  color: #274C5B;
+  color: var(--primary-color);
   font-family: Roboto;
   font-size: 1.375rem;
   font-style: normal;
@@ -840,18 +1082,18 @@ label{
   position: relative;
   min-height: 1060px;
   height: auto;
-  background-color: #274C5B;
+  background-color: var(--primary-color);
 }
 
 .sixth-section-label{
-    text-align: center;
+  text-align: center;
   display: flex;
   position: relative;
   width: 95.82%;
   max-width: 1380px;
   height: 16.0604%;
   margin-top: 8.77rem;
-  margin-left: 27.88rem;
+  margin-left: 2.88rem;
 }
 
 .sixth-block h3{
@@ -935,7 +1177,7 @@ footer .contacts{
 }
 
 footer .contacts h2{
-  color: #274C5B;
+  color: var(--primary-color);
   font-family: Roboto;
   font-size: 1.875rem;
   font-style: normal;

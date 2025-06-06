@@ -1,6 +1,52 @@
 :root {
-  color-scheme: only light !important;
+  /* Основные цвета светлой темы */
+  --primary-color: #274C5B;
+  --secondary-color: #7EB693;
+  --accent-color: #EFD372;
+  --text-color: #525C60;
+  --light-text-color: #FFFFFF;
+  --dark-text-color: var(--primary-color); 
+  --black-color: #000000;
+  --white-color: white;
+  
+  /* Фоновые цвета */
+  --main-bg: var(--light-text-color);
+  --secondary-bg: #F9F8F8;
+  --footer-bg: var(--primary-color); 
+  --light-bg: #EFF6F1;
+  --dark-section-bg: var(--primary-color); 
+  
+  /* Границы и разделители */
+  --border-color: #D4D4D4;
+  --divider-color: #D5D5D5;
+  
+  /* Кнопки и интерактивные элементы */
+  --button-bg: var(--primary-color); 
+  --button-text: var(--light-text-color);
+  --button-hover: #3a6b80;
+  
+  /* Особые элементы */
+  --organic-badge: #22aa00;
+  --preloader-bg: var(--light-text-color);
+  --preloader-spinner: #ffcc00;
+  --preloader-border: #f3f3f3;
+  
+  /* Тени */
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --overlay-color: rgba(0, 0, 0, 0.4);
+  
+  /* Темная тема */
+  --dark-primary-color: var(--secondary-color);
+  --dark-secondary-color: var(--accent-color);
+  --dark-main-bg: #1a1a1a;
+  --dark-secondary-bg: #2d2d2d;
+  --dark-text-color: #f0f0f0;
+  --dark-border-color: #444;
+  --dark-footer-bg: #121212;
+  
+  color-scheme: light dark;
 }
+
 *{
   box-sizing: border-box;
   padding: 0;
@@ -8,12 +54,13 @@
 }
 
 html{
+  background-color:var(--main-bg);
   font-size: 100%;
 }
 
 html, body {
-  max-width: 1440px; /* Это ограничивает контент на мобильных */
-  margin: auto;      /* Центрирует, но не решает проблему ширины */
+  max-width: 1440px;
+  margin: auto;  
 }
 
 /* Прелоудер: занимает весь экран */
@@ -23,7 +70,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: white; /* или другой фон */
+    background-color: var(--white-color); /* или другой фон */
     z-index: 9999;
     display: flex;
     align-items: center;
@@ -47,7 +94,7 @@ html, body {
 }
 
 header {
-  background-color: #ffffff;
+  background-color: var(--main-bg);
   height: 152px;
   padding-top: 1.3125rem;
 }
@@ -91,7 +138,7 @@ header {
   gap: 42px;
   flex-shrink: 0; 
   text-decoration: none;
-  color: #274C5B;
+  color: var(--primary-color);
   font-family: 'Roboto', sans-serif;
   font-size: 19px;
   font-style: normal;
@@ -101,7 +148,7 @@ header {
 }
 
 .contacts-home-button{
-  color: #7EB693 !important;
+  color: var(--secondary-color) !important;
   font-size: larger;
 
 }
@@ -119,7 +166,7 @@ header .cart{
   width: 9.9375rem;
   height: 4.375rem;
   border-radius: 2.0625rem;
-  border: 1px solid #D4D4D4;
+  border: 1px solid var(--border-color);
 }
 
 header .cart .cart-dark-round{
@@ -127,7 +174,7 @@ header .cart .cart-dark-round{
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 6.25rem;
-  background: #274C5B;
+  background: var(--primary-color);
 }
 
 header .cart .cart-dark-round img{
@@ -140,7 +187,7 @@ header .cart .cart-dark-round img{
 
 .cart a{
   white-space: pre;
-  color: #274C5B;
+  color: var(--primary-color);
   font-family: Roboto;
   font-size: 1.0625rem;
   font-style: normal;
@@ -157,7 +204,7 @@ header .cart .cart-dark-round img{
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: var(--overlay-color);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
@@ -176,7 +223,7 @@ body.menu-open .overlay {
     right: -100%;
     width: 250px;
     height: 100vh;
-    background-color: white;
+    background-color: var(--white-color);
     box-shadow: -2px 0 5px rgba(0,0,0,0.2);
     transition: right 0.3s ease;
     padding: 2rem 1.5rem;
@@ -197,7 +244,7 @@ body.menu-open .side-menu {
 
 .side-menu a {
     text-decoration: none;
-    color: black;
+    color: var(--black-color);
     font-size: 1.1rem;
 }
 
@@ -208,7 +255,7 @@ body.menu-open .side-menu {
     right: -100%;
     width: 65%;
     height: 100vh;
-    background-color: white;
+    background-color: var(--white-color);
     box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
     transition: right 0.3s ease;
     padding: 2rem 1rem;
@@ -255,7 +302,7 @@ label{
       position: absolute;
       width: 100%;
       height: 3px;
-      background-color: black;
+      background-color: var(--black-color);
       transition: .3s ease;
   }
   
@@ -314,6 +361,45 @@ label{
 }
 
 
+/* Темная тема */
+[data-theme="dark"] {
+  --main-bg: var(--dark-main-bg);
+  --secondary-bg: var(--dark-secondary-bg);
+  --text-color: var(--dark-text-color);
+  --primary-color: var(--dark-primary-color);
+  --border-color: var(--dark-border-color);
+  --footer-bg: var(--dark-footer-bg);
+  --divider-color: var(--dark-border-color);
+}
+
+[data-theme="dark"] .logo img {
+  filter: brightness(0) invert(1);
+}
+
+[data-theme="dark"] .side-menu,
+[data-theme="dark"] .overlay {
+  background-color: var(--dark-secondary-bg);
+}
+
+[data-theme="dark"] .side-menu a {
+  color: var(--dark-text-color);
+}
+
+[data-theme="dark"] .menu-icon::after,
+[data-theme="dark"] .menu-icon::before,
+[data-theme="dark"] .menu-icon span {
+  background-color: var(--dark-text-color);
+}
+
+[data-theme="dark"] footer .icon-group-round {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] footer .icon-group-round img {
+  filter: brightness(0) invert(1);
+}
+
+
 /*тема*/
 .theme-label{
   display: block;
@@ -366,283 +452,400 @@ label{
   content: "🌙";
 }
 
+
+
+[data-theme="dark"] footer {
+  background-color: var(--dark-main-bg);
+  color: var(--dark-text-color);
+}
+
+[data-theme="dark"] footer .contacts h2,
+[data-theme="dark"] footer .contacts h3 {
+  color: var(--dark-text-color);
+}
+
+[data-theme="dark"] footer .contacts p {
+  color: var(--dark-text-color);
+  opacity: 0.8;
+}
+
+[data-theme="dark"] footer .vertical-line,
+[data-theme="dark"] footer .full-line {
+  background-color: var(--dark-border-color);
+}
+
+[data-theme="dark"] footer .icon-group-round {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] footer .icon-group-round img {
+  filter: brightness(0) invert(1);
+}
+
+[data-theme="dark"] footer .copyright p {
+  color: var(--dark-text-color);
+  opacity: 0.6;
+}
+
+[data-theme="dark"] footer .side-menu a {
+  color: var(--dark-text-color);
+}
+
+/* Адаптация логотипа для темной темы */
+[data-theme="dark"] footer .organic_logo img {
+  filter: brightness(0) invert(1);
+}
+
+/* Плавные переходы */
+footer,
+footer .contacts h2,
+footer .contacts h3,
+footer .contacts p,
+footer .vertical-line,
+footer .full-line,
+footer .icon-group-round,
+footer .organic_logo img {
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              opacity 0.3s ease,
+              filter 0.3s ease;
+}
+
 /*тема*/
 
-/* Конец header ---------------------------------------- */
-/* Registration Section - Fixed Mobile Version */
-/* Основные стили формы регистрации */
-.registration-section {
-  display: flex;
-  min-height: 100vh;
-  width: 100%;
-  overflow: hidden;
-  background-color: #f9f8f8;
+/* Стили для переключателя языка (RU/EN) */
+.language-switch {
+    display: inline-block;
+    margin: 0 10px;
+    vertical-align: middle;
 }
 
-.registration-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 2rem;
-  max-width: 600px;
-  margin: 0 auto;
+.language-checkbox {
+    display: none;
 }
 
-.registration-header {
-  text-align: center;
-  margin-bottom: 2rem;
+.language-label {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    background: #e0e0e0;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
-.registration-header h1 {
-  font-family: 'Roboto', sans-serif;
-  font-size: 2.5rem;
-  color: #274C5B;
-  margin-bottom: 0.5rem;
-  line-height: 1.2;
+.language-checkbox:checked + .language-label {
+    background: #4CAF50;
 }
 
-.registration-header p {
-  color: #525C60;
-  font-size: 1.1rem;
+.language-label .ru,
+.language-label .en {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
 }
 
-.registration-form {
-  background: white;
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+.language-label .ru {
+    left: 8px;
 }
 
-.form-row {
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
+.language-label .en {
+    right: 8px;
 }
 
-.form-row .form-group {
-  flex: 1;
+.language-handle {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.language-checkbox:checked + .language-label .language-handle {
+    transform: translateX(30px);
+}
+
+/* Стили для бокового меню */
+.side-language-switch {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    margin: 10px 0;
+}
+
+.side-language-switch .language-text {
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+/* Иконка настроек */
+.settings-icon {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.settings-icon img {
+    width: 30px;
+    height: 30px;
+}
+
+.side-settings {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    margin: 10px 0;
+}
+
+.side-settings img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+/* header */
+
+
+.account-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.account-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+    color: #274C5B;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.account-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.account-info, .account-payment {
+    background: #F9F8F8;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.account-info h2, .account-payment h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    color: #274C5B;
+    margin-bottom: 1.5rem;
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
-  position: relative;
+    margin-bottom: 1.5rem;
 }
 
 .form-group label {
+  width:100%;
+  text-align: left;
     display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
     color: #274C5B;
-    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    margin-left: 1rem;
+
 }
 
 .form-group input {
-  width: 100%;
-  padding: 12px 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #D4D4D4;
+    border-radius: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
 }
 
-.form-group input:focus {
-  border-color: #7EB693;
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(126, 182, 147, 0.2);
+.checkbox-group {
+    display: flex;
+    align-items: center;
 }
 
-.checkbox-container {
-  display: block;
-  position: relative;
-  padding-left: 30px;
-  margin-bottom: 1rem;
-  cursor: pointer;
-  color: #525C60;
-  user-select: none;
+.checkbox-group input {
+    width: auto;
+    margin-right: 0.5rem;
 }
 
-.checkbox-container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
+.save-btn {
+    background-color: #274C5B;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 20px;
-  width: 20px;
-  background-color: #f1f1f1;
-  border-radius: 4px;
-  transition: all 0.2s ease;
+.save-btn:hover {
+    background-color: #1a3641;
 }
 
-.checkbox-container:hover input ~ .checkmark {
-  background-color: #e0e0e0;
+.account-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
 }
 
-.checkbox-container input:checked ~ .checkmark {
-  background-color: #7EB693;
+.logout-btn, .change-password-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
 }
 
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
+.logout-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
 }
 
-.checkbox-container input:checked ~ .checkmark:after {
-  display: block;
+.logout-btn:hover {
+    background-color: #d32f2f;
 }
 
-.checkbox-container .checkmark:after {
-  left: 7px;
-  top: 3px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+.change-password-btn {
+    background-color: transparent;
+    border: 1px solid #274C5B;
+    color: #274C5B;
 }
 
-.register-btn {
-  width: 100%;
-  padding: 15px;
-  background: #274C5B;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s;
-  margin-top: 1rem;
-}
-
-.register-btn:hover {
-  background: #1a3641;
-}
-
-.login-redirect {
-  text-align: center;
-  margin-top: 1.5rem;
-  color: #525C60;
-}
-
-.login-redirect a {
-  color: #7EB693;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.2s;
-}
-
-.login-redirect a:hover {
-  color: #5d9b7b;
-  text-decoration: underline;
-}
-
-.registration-image {
-  flex: 1;
-  background: #7EB693;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.registration-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-/* Адаптивность */
-@media (max-width: 1200px) {
-    .form-group label{
-        width: 5rem;
-        margin-left: 1.4rem;
-    }
-    .checkbox-container{
-        margin-left:1rem;
-        width:12rem;
-    }
-
-  .registration-header h1 {
-    font-size: 2.2rem;
-  }
-}
-
-@media (max-width: 992px) {
-  .registration-section {
-    flex-direction: column;
-  }
-  
-  .registration-image {
-    display: none;
-  }
-  
-  .registration-container {
-    padding: 3rem 2rem;
-    max-width: 100%;
-  }
+.change-password-btn:hover {
+    background-color: #274C5B;
+    color: white;
 }
 
 @media (max-width: 768px) {
-  .registration-form {
-    padding: 1.5rem;
-  }
-  
-  .form-row {
-    flex-direction: column;
-    gap: 0;
-  }
-  
-  .registration-header h1 {
-    font-size: 2rem;
-  }
+    .account-content {
+        padding: 0 1rem;
+    }
+    
+    .account-actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .logout-btn, .change-password-btn {
+        width: 100%;
+    }
 }
 
-@media (max-width: 576px) {
-  .registration-container {
-    padding: 2rem 1rem;
-  }
-  
-  .registration-header h1 {
-    font-size: 1.8rem;
-  }
-  
-  .registration-header p {
-    font-size: 1rem;
-  }
-  
-  .form-group input {
-    padding: 10px 12px;
-  }
-  
-  .checkbox-container {
-    font-size: 0.9rem;
-  }
-  
-  .register-btn {
-    padding: 12px;
-    font-size: 1rem;
-  }
+/* Добавляем эти стили в account.css */
+
+.error-message {
+    color: #f44336;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+    display: none;
 }
 
-@media (max-width: 400px) {
-  .registration-form {
-    padding: 1.25rem;
-  }
-  
-  .registration-header h1 {
-    font-size: 1.6rem;
-  }
+/* Стили для модального окна */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
 }
+
+.modal-content {
+    background-color: #f9f8f8;
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.close-modal {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #274C5B;
+}
+
+.password-input {
+    position: relative;
+}
+
+.password-input input {
+    padding-right: 2.5rem;
+    width: calc(100% - 2.5rem);
+}
+
+.toggle-password {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #274C5B;
+}
+
+.password-strength {
+    margin-top: 0.5rem;
+}
+
+.strength-meter {
+    height: 5px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    margin-bottom: 0.25rem;
+}
+
+.strength-bar {
+    height: 100%;
+    width: 0;
+    border-radius: 5px;
+    transition: width 0.3s, background-color 0.3s;
+}
+
+.strength-text {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* Индикаторы сложности пароля */
+.strength-weak .strength-bar {
+    width: 30%;
+    background-color: #f44336;
+}
+
+.strength-medium .strength-bar {
+    width: 60%;
+    background-color: #ff9800;
+}
+
+.strength-strong .strength-bar {
+    width: 100%;
+    background-color: #4caf50;
+}
+
 /* Конец 1 блока -------------------------------------------- */
 
 

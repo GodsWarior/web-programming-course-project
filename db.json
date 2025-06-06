@@ -151,23 +151,7 @@
       "ratingImage": "./assets/five_star.png"
     }
   ],
-  "purchase_products": [
-    {
-      "id": "b4e0",
-      "productId": "2",
-      "amount": 1
-    },
-    {
-      "id": "a227",
-      "productId": "1",
-      "amount": 1
-    },
-    {
-      "id": "79d9",
-      "productId": "3",
-      "amount": 1
-    }
-  ],
+  "purchase_products": [],
   "orders": [
     {
       "id": "60b4",
@@ -225,6 +209,21 @@
         }
       ],
       "createdAt": "2025-06-05T08:06:29.995Z"
+    },
+    {
+      "id": "5779",
+      "userId": "8a17",
+      "address": "ыфв",
+      "recipient": "афвы",
+      "paymentMethod": "card",
+      "promoCode": "авф",
+      "items": [
+        {
+          "id": "3",
+          "amount": 1
+        }
+      ],
+      "createdAt": "2025-06-06T04:24:58.599Z"
     }
   ],
   "comments": [
@@ -255,13 +254,13 @@
       "id": "8a17",
       "firstName": "God",
       "lastName": "Win",
-      "middleName": "yeah",
+      "middleName": "hell",
       "username": "GoodWin",
       "phone": "+375293767995",
       "email": "p8866857@gmail.com",
       "birthDate": "1999-11-20",
       "passwordMethod": "manual",
-      "password": "12345678",
+      "password": "dan12341234",
       "cardNumber": "4255123456789182",
       "expiryDate": "02/27",
       "cvv": "987",

@@ -1,6 +1,52 @@
 :root {
-  color-scheme: only light !important;
+  /* Основные цвета светлой темы */
+  --primary-color: #274C5B;
+  --secondary-color: #7EB693;
+  --accent-color: #EFD372;
+  --text-color: #525C60;
+  --light-text-color: #FFFFFF;
+  --dark-text-color: var(--primary-color); 
+  --black-color: #000000;
+  --white-color: white;
+  
+  /* Фоновые цвета */
+  --main-bg: var(--light-text-color);
+  --secondary-bg: #F9F8F8;
+  --footer-bg: var(--primary-color); 
+  --light-bg: #EFF6F1;
+  --dark-section-bg: var(--primary-color); 
+  
+  /* Границы и разделители */
+  --border-color: #D4D4D4;
+  --divider-color: #D5D5D5;
+  
+  /* Кнопки и интерактивные элементы */
+  --button-bg: var(--primary-color); 
+  --button-text: var(--light-text-color);
+  --button-hover: #3a6b80;
+  
+  /* Особые элементы */
+  --organic-badge: #22aa00;
+  --preloader-bg: var(--light-text-color);
+  --preloader-spinner: #ffcc00;
+  --preloader-border: #f3f3f3;
+  
+  /* Тени */
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --overlay-color: rgba(0, 0, 0, 0.4);
+  
+  /* Темная тема */
+  --dark-primary-color: var(--secondary-color);
+  --dark-secondary-color: var(--accent-color);
+  --dark-main-bg: #1a1a1a;
+  --dark-secondary-bg: #2d2d2d;
+  --dark-text-color: #f0f0f0;
+  --dark-border-color: #444;
+  --dark-footer-bg: #121212;
+  
+  color-scheme: light dark;
 }
+
 *{
   box-sizing: border-box;
   padding: 0;
@@ -8,13 +54,13 @@
 }
 
 html{
+  background-color:var(--main-bg);
   font-size: 100%;
 }
 
 html, body {
-  /* height: 10447px; /* 652,9375rem */
   max-width: 1440px;
-  margin: auto;
+  margin: auto;  
 }
 
 /* Прелоудер: занимает весь экран */
@@ -24,7 +70,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: white; /* или другой фон */
+    background-color: var(--white-color); /* или другой фон */
     z-index: 9999;
     display: flex;
     align-items: center;
@@ -47,9 +93,8 @@ html, body {
     100% { transform: rotate(360deg); }
 }
 
-
 header {
-  background-color: #ffffff;
+  background-color: var(--main-bg);
   height: 152px;
   padding-top: 1.3125rem;
 }
@@ -93,7 +138,7 @@ header {
   gap: 42px;
   flex-shrink: 0; 
   text-decoration: none;
-  color: #274C5B;
+  color: var(--primary-color);
   font-family: 'Roboto', sans-serif;
   font-size: 19px;
   font-style: normal;
@@ -103,7 +148,7 @@ header {
 }
 
 .contacts-home-button{
-  color: #7EB693 !important;
+  color: var(--secondary-color) !important;
   font-size: larger;
 
 }
@@ -121,7 +166,7 @@ header .cart{
   width: 9.9375rem;
   height: 4.375rem;
   border-radius: 2.0625rem;
-  border: 1px solid #D4D4D4;
+  border: 1px solid var(--border-color);
 }
 
 header .cart .cart-dark-round{
@@ -129,7 +174,7 @@ header .cart .cart-dark-round{
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 6.25rem;
-  background: #274C5B;
+  background: var(--primary-color);
 }
 
 header .cart .cart-dark-round img{
@@ -142,7 +187,7 @@ header .cart .cart-dark-round img{
 
 .cart a{
   white-space: pre;
-  color: #274C5B;
+  color: var(--primary-color);
   font-family: Roboto;
   font-size: 1.0625rem;
   font-style: normal;
@@ -152,14 +197,6 @@ header .cart .cart-dark-round img{
   text-decoration: none;
 }
 
-label{
-  display: none;
-}
-
-#menu-toggle{
-  display: none;
-}
-
 /* Overlay — затемнение фона */
 .overlay {
     position: fixed;
@@ -167,7 +204,7 @@ label{
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: var(--overlay-color);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
@@ -186,7 +223,7 @@ body.menu-open .overlay {
     right: -100%;
     width: 250px;
     height: 100vh;
-    background-color: white;
+    background-color: var(--white-color);
     box-shadow: -2px 0 5px rgba(0,0,0,0.2);
     transition: right 0.3s ease;
     padding: 2rem 1.5rem;
@@ -207,16 +244,35 @@ body.menu-open .side-menu {
 
 .side-menu a {
     text-decoration: none;
-    color: black;
+    color: var(--black-color);
     font-size: 1.1rem;
 }
 
+@media (max-width: 480px) {
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 65%;
+    height: 100vh;
+    background-color: var(--white-color);
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 1000;
+  }
+}
 
+label{
+  display: none;
+}
 
-
-
-
-
+#menu-toggle{
+  display: none;
+}
 
 @media (max-width: 1439px) {
   header .cart {
@@ -226,18 +282,19 @@ body.menu-open .side-menu {
 }
 
 @media screen and (min-width: 320px) and (max-width: 1245px){
-
+  
   label{
-      display: block;
-      position: relative;
-      order: 3;
-      width: 40px;
-      height: 25px;
-      z-index: 5;
-      cursor: pointer;
-      align-items: center;
-      margin-left: auto;
-      margin-right: 1.875rem;
+    right: 20px; /* Фиксированное положение от края */
+    margin-right: 0;
+    display: block;
+    position: relative;
+    order: 3;
+    width: 40px;
+    height: 25px;
+    z-index: 5;
+    cursor: pointer;
+    align-items: center;
+    margin-left: auto;
   }
   
   .menu-icon::after, .menu-icon::before, .menu-icon span{
@@ -245,7 +302,7 @@ body.menu-open .side-menu {
       position: absolute;
       width: 100%;
       height: 3px;
-      background-color: black;
+      background-color: var(--black-color);
       transition: .3s ease;
   }
   
@@ -266,7 +323,7 @@ body.menu-open .side-menu {
       bottom: 10px;
   }
 
-  #menu-toggle:checked ~ label::before{ 
+  #menu-toggle:checked ~ label::before{
       transform: rotate(-45deg);
       top: 12px;
   }
@@ -285,15 +342,6 @@ body.menu-open .side-menu {
       right: 0%;
   }
 
-  .menu-open body {
-      overflow: hidden;
-  }
-
-  .menu-open .cart {
-      display: flex;
-      right: 0%;
-  }
-
   header .cart{
       display: none;
   }
@@ -303,31 +351,53 @@ body.menu-open .side-menu {
 @media screen and (min-width: 320px) and (max-width: 1000px){
   header .container .contacts{
       display: none;
+      
   }
   header .container{
       padding-left: 15px;
-  }
-}
-
-@media (max-width: 480px) {
-.side-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 65%;
-    height: 100vh;
-    background-color: white;
-    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
-    transition: right 0.3s ease;
-    padding: 2rem 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    z-index: 1000;
+      padding-right: 0;
+      margin-right: 0;
   }
 }
 
 
+/* Темная тема */
+[data-theme="dark"] {
+  --main-bg: var(--dark-main-bg);
+  --secondary-bg: var(--dark-secondary-bg);
+  --text-color: var(--dark-text-color);
+  --primary-color: var(--dark-primary-color);
+  --border-color: var(--dark-border-color);
+  --footer-bg: var(--dark-footer-bg);
+  --divider-color: var(--dark-border-color);
+}
+
+[data-theme="dark"] .logo img {
+  filter: brightness(0) invert(1);
+}
+
+[data-theme="dark"] .side-menu,
+[data-theme="dark"] .overlay {
+  background-color: var(--dark-secondary-bg);
+}
+
+[data-theme="dark"] .side-menu a {
+  color: var(--dark-text-color);
+}
+
+[data-theme="dark"] .menu-icon::after,
+[data-theme="dark"] .menu-icon::before,
+[data-theme="dark"] .menu-icon span {
+  background-color: var(--dark-text-color);
+}
+
+[data-theme="dark"] footer .icon-group-round {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] footer .icon-group-round img {
+  filter: brightness(0) invert(1);
+}
 
 
 /*тема*/
@@ -382,9 +452,165 @@ body.menu-open .side-menu {
   content: "🌙";
 }
 
+
+
+[data-theme="dark"] footer {
+  background-color: var(--dark-main-bg);
+  color: var(--dark-text-color);
+}
+
+[data-theme="dark"] footer .contacts h2,
+[data-theme="dark"] footer .contacts h3 {
+  color: var(--dark-text-color);
+}
+
+[data-theme="dark"] footer .contacts p {
+  color: var(--dark-text-color);
+  opacity: 0.8;
+}
+
+[data-theme="dark"] footer .vertical-line,
+[data-theme="dark"] footer .full-line {
+  background-color: var(--dark-border-color);
+}
+
+[data-theme="dark"] footer .icon-group-round {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] footer .icon-group-round img {
+  filter: brightness(0) invert(1);
+}
+
+[data-theme="dark"] footer .copyright p {
+  color: var(--dark-text-color);
+  opacity: 0.6;
+}
+
+[data-theme="dark"] footer .side-menu a {
+  color: var(--dark-text-color);
+}
+
+/* Адаптация логотипа для темной темы */
+[data-theme="dark"] footer .organic_logo img {
+  filter: brightness(0) invert(1);
+}
+
+/* Плавные переходы */
+footer,
+footer .contacts h2,
+footer .contacts h3,
+footer .contacts p,
+footer .vertical-line,
+footer .full-line,
+footer .icon-group-round,
+footer .organic_logo img {
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              opacity 0.3s ease,
+              filter 0.3s ease;
+}
+
 /*тема*/
 
-/* Конец header ---------------------------------------- */
+/* Стили для переключателя языка (RU/EN) */
+.language-switch {
+    display: inline-block;
+    margin: 0 10px;
+    vertical-align: middle;
+}
+
+.language-checkbox {
+    display: none;
+}
+
+.language-label {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    background: #e0e0e0;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.language-checkbox:checked + .language-label {
+    background: #4CAF50;
+}
+
+.language-label .ru,
+.language-label .en {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.language-label .ru {
+    left: 8px;
+}
+
+.language-label .en {
+    right: 8px;
+}
+
+.language-handle {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.language-checkbox:checked + .language-label .language-handle {
+    transform: translateX(30px);
+}
+
+/* Стили для бокового меню */
+.side-language-switch {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    margin: 10px 0;
+}
+
+.side-language-switch .language-text {
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+/* Иконка настроек */
+.settings-icon {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.settings-icon img {
+    width: 30px;
+    height: 30px;
+}
+
+.side-settings {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    margin: 10px 0;
+}
+
+.side-settings img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+/* header */
 
 .first-block{
   background: url('./assets/IMAGE.png') top / cover;
@@ -409,7 +635,7 @@ body.menu-open .side-menu {
 
 .first-block .text-overlay i {
   max-width: 241px;
-  color: #7EB693;
+  color: var(--secondary-color);
   font-family: 'Yellowtail';
   font-size: 36px;
   font-style: normal;
@@ -422,7 +648,7 @@ body.menu-open .side-menu {
 .first-block .text-overlay h1{
   max-width: 31rem;
   height: 15.75rem;
-  color: #274C5B;
+  color: var(--primary-color);
   text-align: left; 
   font-family: 'Roboto', sans-serif;
   font-size: 70px;
@@ -530,7 +756,7 @@ body.menu-open .side-menu {
 }
 
 .second-block-second-picture .second-block-text-overlay i{
-  color: #7EB693;
+  color: var(--secondary-color);
   font-family: Yellowtail;
   font-size: 36px;
   font-style: normal;
@@ -542,7 +768,7 @@ body.menu-open .side-menu {
 .second-block-second-picture .second-block-text-overlay h1{
   margin-top: 0px;
   max-width: 264px;
-  color: #274C5B;
+  color: var(--primary-color);
   font-family: Roboto;
   font-size: 40px;
   font-style: normal;
@@ -623,7 +849,7 @@ body.menu-open .side-menu {
   max-width: 1440px;
   width: 100%;
   min-height: 1006px;
-  background-color: #F9F8F8;
+  background-color: var(--secondary-bg);
   display: grid;
   grid-template-columns: 1fr 1fr; /* Две колонки */
   gap: 30px;
@@ -649,7 +875,7 @@ body.menu-open .side-menu {
 
 .third-block-text-sections .first-subsection i, .our-products-label i, .fifth-block i, .sixth-block i, .seventh-block i, .ninth-block i{
   max-width: 122px;
-  color: #7EB693;
+  color: var(--secondary-color);
   font-family: Yellowtail;
   font-size: 2.25rem;
   font-style: normal;
@@ -662,7 +888,7 @@ body.menu-open .side-menu {
 .base-middle-lable
 {
   /* max-width: 512px; */
-  color: #274C5B;
+  color: var(--primary-color);
   font-family: Roboto;
   font-size: 2.8125rem;
   font-style: normal;
@@ -679,7 +905,7 @@ body.menu-open .side-menu {
 
 .third-block-text-sections .first-subsection h2{
   width: 100%;
-  color: #525C60;
+  color: var(--text-color);
   font-family: Open Sans;
   font-size: 18px;
   font-style: normal;
@@ -732,7 +958,7 @@ body.menu-open .side-menu {
 
 .organic-food-text h3, .quality-standards-text h3{ 
   max-width: 225px;
-  color: #274C5B;
+  color: var(--primary-color);
   font-family: Roboto;
   font-size: 25px;
   font-style: normal;
@@ -745,7 +971,7 @@ body.menu-open .side-menu {
 
 .organic-food-text p, .quality-standards-text p{ 
   max-width: 552px;
-  color: #525C60;
+  color: var(--text-color);
   font-family: "Open Sans";
   font-size: 18px;
   font-style: normal;
@@ -772,7 +998,7 @@ body.menu-open .side-menu {
   width: 12.4375rem;
   height: 5.125rem;
   color: #FFF;
-  background-color: #274C5B;
+  background-color: var(--primary-color);
   background-image: url('./assets/arrow_to_button.png');
   background-repeat: no-repeat;
   background-size: 3.125rem 3.125rem;
@@ -920,7 +1146,7 @@ body.menu-open .side-menu {
   height: 48.3967%;
   min-height: 590px;
   border-radius: 1.875rem;
-  background: #F9F8F8;
+  background: var(--secondary-bg);
 }
 
 .rectangle-line{
@@ -929,7 +1155,7 @@ body.menu-open .side-menu {
   left: 1.875rem;
   width: 86.5011%;
   height: 0.1695%;
-  background-color: #D4D4D4;
+  background-color: var(--border-color);
 }
 
 .base-rectangle .product-image{
@@ -949,7 +1175,7 @@ body.menu-open .side-menu {
   width: 26.3982%;
   height: 6.2711%;
   border-radius: 0.5rem;
-  background: #274C5B;
+  background: var(--primary-color);
   color: #FFF;
   font-family: "Open Sans";
   font-size: 0.9375rem;
@@ -967,7 +1193,7 @@ body.menu-open .side-menu {
   left: 1.88rem;
   right: 14.19rem;
   bottom: 5.63rem;
-  color: #274C5B;
+  color: var(--primary-color);
   font-family: Roboto;
   font-size: 1.375rem;
   font-style: normal;
@@ -998,7 +1224,7 @@ body.menu-open .side-menu {
   height: 2.0625rem;
   top: 32.6875rem;
   left: 9.06rem;
-  color: #274C5B;
+  color: var(--primary-color);
   font-family: "Open Sans";
   font-size: 1.125rem;
   font-style: normal;
@@ -1119,7 +1345,7 @@ body.menu-open .side-menu {
 }
 
 .fifth-block-first-section-overlay h3{
-  color: #274C5B;
+  color: var(--primary-color);
   text-align: center;
   font-family: Roboto;
   font-size: 2.8125rem;
@@ -1193,7 +1419,7 @@ body.menu-open .side-menu {
 .fifth-block-second-section-overlay .fifth-block-quote{
   margin-top: 2rem;
   max-width: 58.875rem;
-  color: #525C60;
+  color: var(--text-color);
   text-align: center;
   font-family: "Open Sans";
   font-size: 1.125rem;
@@ -1205,7 +1431,7 @@ body.menu-open .side-menu {
 
 .fifth-block-second-section-overlay h3{
   margin-top: 1.2rem;
-  color: #274C5B;
+  color: var(--primary-color);
   text-align: center;
   font-family: Roboto;
   font-size: 1.625rem;
@@ -1218,7 +1444,7 @@ body.menu-open .side-menu {
 .fifth-block-consumer{
   margin-top: -0.1rem;
   width: 4.5625rem;
-  color: #525C60;
+  color: var(--text-color);
   text-align: center;
   font-family: "Open Sans";
   font-size: 0.875rem;
@@ -1249,7 +1475,7 @@ body.menu-open .side-menu {
   width: 15.625rem;
   height: 15.625rem;
   border-radius: 12.5rem;
-  border: 6px solid #7EB693;
+  border: 6px solid var(--secondary-color);
   background: #F1F1F1;
 }
 
@@ -1266,7 +1492,7 @@ body.menu-open .side-menu {
 
 .outer-round .base-round h3{
   margin-top: 4.5rem;
-  color: #274C5B;
+  color: var(--primary-color);
   text-align: center;
   font-family: Roboto;
   font-size: 2.625rem;
@@ -1277,7 +1503,7 @@ body.menu-open .side-menu {
 }
 
 .outer-round .base-round p{
-  color: #274C5B;
+  color: var(--primary-color);
   text-align: center;
   font-family: "Open Sans";
   font-size: 1.125rem;
@@ -1323,7 +1549,7 @@ body.menu-open .side-menu {
   position: relative;
   min-height: 1060px;
   height: auto;
-  background-color: #274C5B;
+  background-color: var(--primary-color);
 }
 
 .sixth-section-label{
@@ -1353,7 +1579,7 @@ body.menu-open .side-menu {
   width: 16.6875rem;
   height: 5.125rem;
   color: #335B6B;
-  background-color: #EFD372;
+  background-color: var(--accent-color);
   font-size: 1.25rem;
   line-height: 2rem;
   letter-spacing: 0.0225rem;
@@ -1441,7 +1667,7 @@ body.menu-open .side-menu {
   height: 704px;
   width: 100%;
   max-width: 1440px;
-  color: #274C5B;
+  color: var(--primary-color);
   font-family: Roboto;
   font-style: normal;
   letter-spacing: 0.0225rem;
@@ -1476,7 +1702,7 @@ body.menu-open .side-menu {
 }
 
 .seventh-block p{
-  color: #525C60;
+  color: var(--text-color);
   font-family: "Open Sans";
   /* width: 37.875rem; */
   width: auto;
@@ -1543,7 +1769,7 @@ body.menu-open .side-menu {
   gap: 1.87rem;
   min-height: 860px;
   height: auto;
-  background-color: #EFF6F1;
+  background-color: var(--light-bg);
 }
 
 .eighth-block-fruit-juice{
@@ -1574,7 +1800,7 @@ body.menu-open .side-menu {
   height: 5.9375rem;
   border-radius: 1.25rem;
   background: #FFF;
-  color: #274C5B;
+  color: var(--primary-color);
   text-align: center;
   font-family: Roboto;
   font-style: normal;
@@ -1658,7 +1884,7 @@ body.menu-open .side-menu {
 
 .ninth-block-label h2{
   margin-top: 0.06rem;
-  color: #274C5B;
+  color: var(--primary-color);
   font-family: Roboto;
   font-size: 2.8125rem;
   font-style: normal;
@@ -1676,8 +1902,8 @@ body.menu-open .side-menu {
   width: 13.125rem;
   height: 5.125rem;
   background-color: #FFF;
-  border:0.0625rem solid #274C5B;
-  color: #274C5B;
+  border:0.0625rem solid var(--primary-color);
+  color: var(--primary-color);
   font-size: 1.25rem;
 }
 
@@ -1734,7 +1960,7 @@ body.menu-open .side-menu {
   position: absolute;
   top: 3.4rem;
   left: 4.88rem;
-  color: #274C5B;
+  color: var(--primary-color);
   font-family: Roboto;
   font-size: 1.0625rem;
   font-style: normal;
@@ -1751,7 +1977,7 @@ body.menu-open .side-menu {
   position: absolute;
   top: 5.59rem;
   left: 3.13rem;
-  color: #274C5B;
+  color: var(--primary-color);
   font-family: Roboto;
   font-size: 1.5625rem;
   font-style: normal;
@@ -1764,7 +1990,7 @@ body.menu-open .side-menu {
   position: absolute;
   top: 10.21rem;
   left: 3.13rem;
-  color: #525C60;
+  color: var(--text-color);
   font-family: "Open Sans";
   font-size: 1.125rem;
   font-style: normal;
@@ -1786,7 +2012,7 @@ body.menu-open .side-menu {
 
 .ninth-block .view-more-block a{
   text-decoration: none;
-  color: #274C5B;
+  color: var(--primary-color);
   font-family: Roboto;
   font-size: 1.25rem;
   font-style: normal;
@@ -1848,7 +2074,7 @@ body.menu-open .side-menu {
   align-items: center;
   width: 21.875rem;
   height: 5.125rem;
-  color: #525C60;
+  color: var(--text-color);
   font-family: "Open Sans";
   font-size: 1.125rem;
   font-style: normal;
@@ -2076,7 +2302,7 @@ footer .contacts{
 }
 
 footer .contacts h2{
-  color: #274C5B;
+  color: var(--primary-color);
   font-family: Roboto;
   font-size: 1.875rem;
   font-style: normal;
@@ -2087,7 +2313,7 @@ footer .contacts h2{
 
 footer .contacts p{
   width: 16.8125rem;
-  color: #525C60;
+  color: var(--text-color);
   font-family: "Open Sans";
   font-size: 1.125rem;
   font-style: normal;
@@ -2097,7 +2323,7 @@ footer .contacts p{
 }
 
 .contacts-first-column h3{
-  color: #525C60;
+  color: var(--text-color);
   font-family: "Open Sans";
   font-size: 1.125rem;
   font-style: normal;
@@ -2152,7 +2378,7 @@ footer .contacts .icon-group-round{
   width: 3.75rem;
   height: 3.75rem;
   border-radius: 6.25rem;
-  background: #EFF6F1;
+  background: var(--light-bg);
 }
 
 footer .contacts .icon-group-round img{
@@ -2175,7 +2401,7 @@ footer .contacts .contacts-third-column p{
 .vertical-line{
   width: 0.0625rem;
   height: 23.0625rem;
-  background-color: #D5D5D5;
+  background-color: --divider-color;
 }
 
 .copyright .full-line{
@@ -2183,14 +2409,14 @@ footer .contacts .contacts-third-column p{
   margin-bottom: 1.4rem;
   width: 100%;
   height: 0.0625rem;
-  background-color: #D5D5D5;
+  background-color: --divider-color;
 }
 
 .copyright p{
   min-width: 637px;
   white-space: pre;
   padding-left: 28.5889%;
-  color: #525C60;
+  color: var(--text-color);
   /* text-align: center; */
   font-family: "Open Sans";
   font-size: 1.125rem;
