@@ -1,4 +1,5 @@
 // Загрузка и отображение продуктов
+console.log(1);
 document.addEventListener('DOMContentLoaded', function() {
     // Сначала получаем данные о покупках
     fetch('http://localhost:3000/purchase_products')
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Получаем массив уникальных ID товаров
             const purchasedProductIds = Object.keys(purchaseSummary);
+            
             
             // Загружаем все продукты
             return fetch('http://localhost:3000/products')

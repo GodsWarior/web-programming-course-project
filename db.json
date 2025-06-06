@@ -151,7 +151,18 @@
       "ratingImage": "./assets/five_star.png"
     }
   ],
-  "purchase_products": [],
+  "purchase_products": [
+    {
+      "id": "b65a",
+      "productId": "2",
+      "amount": 1
+    },
+    {
+      "id": "2f47",
+      "productId": "3",
+      "amount": 1
+    }
+  ],
   "orders": [
     {
       "id": "60b4",

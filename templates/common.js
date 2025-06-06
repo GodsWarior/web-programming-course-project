@@ -353,7 +353,6 @@ function initLanguageSwitcher() {
     updatePageText();
 }
 
-// Инициализация модального окна версии для слабовидящих
 function initAccessibilityModal() {
     const settingsButton = document.getElementById('settings-button');
     const sideSettingsButton = document.getElementById('side-settings-button');
@@ -449,9 +448,11 @@ function initAccessibilityModal() {
 
         // Цветовая схема
         const savedColorScheme = localStorage.getItem('colorScheme') || 'default';
-        document.documentElement.setAttribute('data-color-scheme', savedColorScheme);
-        const colorSchemeBtn = document.querySelector(`.color-scheme-btn[data-scheme="${savedColorScheme}"]`);
-        if (colorSchemeBtn) colorSchemeBtn.classList.add('active');
+            if (savedColorScheme!='default'){
+            document.documentElement.setAttribute('data-color-scheme', savedColorScheme);
+            const colorSchemeBtn = document.querySelector(`.color-scheme-btn[data-scheme="${savedColorScheme}"]`);
+            if (colorSchemeBtn) colorSchemeBtn.classList.add('active');
+        }
 
         // Изображения
         const showImages = localStorage.getItem('showImages') !== 'false';
