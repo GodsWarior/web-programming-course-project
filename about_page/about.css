@@ -282,7 +282,7 @@ label{
 }
 
 @media screen and (min-width: 320px) and (max-width: 1245px){
-  
+
   label{
     right: 20px; /* Фиксированное положение от края */
     margin-right: 0;
@@ -349,6 +349,13 @@ label{
 }
 
 @media screen and (min-width: 320px) and (max-width: 1000px){
+  html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
   header .container .contacts{
       display: none;
       
@@ -1116,7 +1123,7 @@ footer .organic_logo img {
 .base-rectangle .product-image{
   position: absolute;
   width: 100%;
-  height: 80%;
+  height: 70%;
   top: 0.1875rem;
   left: 0rem;
 }
@@ -1223,8 +1230,9 @@ footer .organic_logo img {
 
 
   .base-rectangle .five-star-image{
-      top: 24rem;
-      left: 13rem;
+    width: 30%;
+    top: 24rem;
+    left: 13rem;
   }
 
 
@@ -1257,7 +1265,7 @@ footer .organic_logo img {
 }
 
 .sixth-section-label{
-  text-align: center;
+  text-align: left;
   display: flex;
   position: relative;
   width: 95.82%;
@@ -1329,7 +1337,15 @@ footer .organic_logo img {
 
 
 /* Конец 4 блока -------------------------------------------- */
-
+#google-map {
+    width: 100%;
+    border: 0;
+    display: block;
+    margin: 0;
+    padding: 0;
+    height: 400px;
+}
+/* Карты */
 
 
 footer{

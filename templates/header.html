@@ -81,7 +81,7 @@
             
             <!-- Настройки в боковом меню -->
             <a href="#" class="side-settings" id="side-settings-button">
-                <img src="templates/settings.svg" alt="Settings">
+                <img src="/templates/settings.svg" alt="Settings">
                 <span data-translate="settings">Settings</span>
             </a>
         </nav>
@@ -104,27 +104,28 @@
             <div class="setting-group">
                 <h3 data-translate="colorScheme">Цветовая схема</h3>
                 <div class="color-scheme-options">
-                    <button class="color-scheme-btn" data-scheme="default" data-translate="blackOnWhite">Черный на белом</button>
+                    <button class="color-scheme-btn" data-scheme="default" data-translate="blackOnWhite">Оригинал</button>
                     <button class="color-scheme-btn" data-scheme="dark" data-translate="whiteOnBlack">Белый на черном</button>
                     <button class="color-scheme-btn" data-scheme="green" data-translate="blackOnGreen">Черный на зеленом</button>
                     <button class="color-scheme-btn" data-scheme="brown" data-translate="beigeOnBrown">Бежевый на коричневом</button>
                     <button class="color-scheme-btn" data-scheme="blue" data-translate="blueOnLightBlue">Синий на голубом</button>
                 </div>
             </div>
-            
+
             <div class="setting-group">
                 <h3 data-translate="images">Изображения</h3>
-                <div class="toggle-switch">
-                    <input type="checkbox" id="images-toggle" checked>
-                    <label for="images-toggle">
-                        <span class="on" data-translate="on">Вкл</span>
-                        <span class="off" data-translate="off">Выкл</span>
+                <div class="toggle-container">
+                    <span class="toggle-label" data-translate="showImages">Показывать</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="images-toggle" checked>
+                        <span class="toggle-slider"></span>
                     </label>
                 </div>
             </div>
-            
+
             <div class="accessibility-buttons">
                 <button id="apply-accessibility" data-translate="apply">Применить</button>
+                <button id="reset-accessibility" data-translate="reset">Сбросить</button>
                 <button id="close-accessibility" data-translate="close">Закрыть</button>
             </div>
         </div>

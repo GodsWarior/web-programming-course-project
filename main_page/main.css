@@ -48,8 +48,7 @@
 
   --font-size-small: 14px;
   --font-size-medium: 16px;
-  --font-size-large: 18px;
-  --font-size-xlarge: 20px;
+  --font-size-large: 20px;
 }
 
 html[data-font-size="small"] {
@@ -635,6 +634,24 @@ footer .organic_logo img {
 
 
 /* Стили для модального окна версии для слабовидящих */
+.images-setting {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.images-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toggle-label {
+    margin-right: 10px;
+    font-weight: 500;
+}
+
 .accessibility-modal {
     display: none;
     position: fixed;
@@ -682,11 +699,25 @@ footer .organic_logo img {
     border-color: #3498db;
 }
 
+/* Стили для контейнера переключателя */
+.toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.toggle-label {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Стили для самого переключателя */
 .toggle-switch {
     position: relative;
     display: inline-block;
     width: 60px;
-    height: 30px;
+    height: 34px;
 }
 
 .toggle-switch input {
@@ -695,7 +726,7 @@ footer .organic_logo img {
     height: 0;
 }
 
-.toggle-switch label {
+.toggle-slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -704,14 +735,14 @@ footer .organic_logo img {
     bottom: 0;
     background-color: #ccc;
     transition: .4s;
-    border-radius: 30px;
+    border-radius: 34px;
 }
 
-.toggle-switch label:before {
+.toggle-slider:before {
     position: absolute;
     content: "";
-    height: 22px;
-    width: 22px;
+    height: 26px;
+    width: 26px;
     left: 4px;
     bottom: 4px;
     background-color: white;
@@ -719,37 +750,16 @@ footer .organic_logo img {
     border-radius: 50%;
 }
 
-.toggle-switch input:checked + label {
-    background-color: #3498db;
+input:checked + .toggle-slider {
+    background-color: #2196F3;
 }
 
-.toggle-switch input:checked + label:before {
-    transform: translateX(30px);
+input:checked + .toggle-slider:before {
+    transform: translateX(26px);
 }
 
-.toggle-switch .on, .toggle-switch .off {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    color: white;
-    font-size: 12px;
-}
-
-.toggle-switch .on {
-    left: 8px;
-    display: none;
-}
-
-.toggle-switch .off {
-    right: 8px;
-}
-
-.toggle-switch input:checked + label .on {
-    display: block;
-}
-
-.toggle-switch input:checked + label .off {
-    display: none;
+input:focus + .toggle-slider {
+    box-shadow: 0 0 1px #2196F3;
 }
 
 .accessibility-buttons {
@@ -789,35 +799,64 @@ footer .organic_logo img {
     font-size: 18px;
 }
 
-[data-color-scheme="default"] {
-    --text-color: #333;
-    --bg-color: #fff;
-    --primary-color: #4CAF50;
-}
+/* Цветовые схемы */
 
 [data-color-scheme="dark"] {
-    --text-color: #fff;
-    --bg-color: #333;
-    --primary-color: #8BC34A;
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+[data-color-scheme="dark"] * {
+  background-color: inherit !important;
+  color: #ffffff !important;
 }
 
 [data-color-scheme="green"] {
-    --text-color: #000;
-    --bg-color: #e8f5e9;
-    --primary-color: #2E7D32;
+  background-color: #0b3d0b !important;
+  color: #000000 !important;
+}
+
+[data-color-scheme="green"] * {
+  background-color: inherit !important;
+  color: #000000 !important;
 }
 
 [data-color-scheme="brown"] {
-    --text-color: #5D4037;
-    --bg-color: #EFEBE9;
-    --primary-color: #6D4C41;
+  background-color: #4b2e2e !important;
+  color: #f5f5dc !important;
+}
+
+[data-color-scheme="brown"] * {
+  background-color: inherit !important;
+  color: #f5f5dc !important;
 }
 
 [data-color-scheme="blue"] {
-    --text-color: #0D47A1;
-    --bg-color: #E3F2FD;
-    --primary-color: #1976D2;
+  background-color: #d0e7ff !important;
+  color: #003366 !important;
 }
+
+[data-color-scheme="blue"] * {
+  background-color: inherit !important;
+  color: #003366 !important;
+}
+
+/* Размер шрифта */
+[data-font-size="small"] {
+  font-size: 14px;
+}
+
+[data-font-size="medium"] {
+  font-size: 16px;
+}
+
+[data-font-size="large"] {
+  font-size: 20px;
+}
+
+
+
+
 
 [data-images="hide"] img:not(.keep-visible) {
     display: none;

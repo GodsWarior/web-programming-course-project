@@ -85,57 +85,6 @@ fetch('/templates/header.html')
     })
     .catch(error => console.error('Ошибка загрузки header:', error));
 
-// Отдельная функция для инициализации переключателя темы
-function initThemeToggle() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const htmlElement = document.documentElement;
-    
-    if (!themeToggle) {
-        console.error('Theme toggle element not found!');
-        return;
-    }
-
-    function setTheme(isDark) {
-        if (isDark) {
-            htmlElement.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
-            themeToggle.checked = true;
-            console.log('Dark theme applied');
-        } else {
-            htmlElement.setAttribute('data-theme', 'light');
-            localStorage.setItem('theme', 'light');
-            themeToggle.checked = false;
-            console.log('Light theme applied');
-        }
-    }
-    
-    // Проверяем сохранённую тему
-    const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme) {
-        setTheme(savedTheme === 'dark');
-    } else if (systemPrefersDark) {
-        setTheme(true);
-    } else {
-        setTheme(false);
-    }
-    
-    themeToggle.addEventListener('change', function() {
-        setTheme(this.checked);
-        console.log('Theme changed to:', this.checked ? 'dark' : 'light');
-    });
-    
-    // Отслеживание изменений системных предпочтений
-    if (window.matchMedia) {
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-            if (!localStorage.getItem('theme')) {
-                setTheme(e.matches);
-            }
-        });
-    }
-}
-
 
 //footer
 fetch('/templates/footer.html')
@@ -165,19 +114,6 @@ document.getElementById('view-all-products-btn').addEventListener('click', funct
 window.location.href = '/shop_page/shop_page.html';
 });
 
-//burger-menu
-document.addEventListener("DOMContentLoaded", () => {
-  const menuToggle = document.getElementById("menu-toggle");
-  const body = document.body;
-
-  menuToggle.addEventListener("change", () => {
-    if (menuToggle.checked) {
-      body.classList.add("menu-open");
-    } else {
-      body.classList.remove("menu-open");
-    }
-  });
-});
 
 // Функция для обновления счётчика корзины из purchase_products
 async function updateCartCounterFromDB() {
@@ -353,6 +289,60 @@ function initLanguageSwitcher() {
     updatePageText();
 }
 
+// Отдельная функция для инициализации переключателя темы
+function initThemeToggle() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    
+    if (!themeToggle) {
+        console.error('Theme toggle element not found!');
+        return;
+    }
+
+    function setTheme(isDark) {
+        if (isDark) {
+            htmlElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+            themeToggle.checked = true;
+            console.log('Dark theme applied');
+        } else {
+            htmlElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+            themeToggle.checked = false;
+            console.log('Light theme applied');
+        }
+    }
+    
+    // Проверяем сохранённую тему
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme) {
+        setTheme(savedTheme === 'dark');
+    } else if (systemPrefersDark) {
+        setTheme(true);
+    } else {
+        setTheme(false);
+    }
+    
+    themeToggle.addEventListener('change', function() {
+        setTheme(this.checked);
+        console.log('Theme changed to:', this.checked ? 'dark' : 'light');
+    });
+    
+    // Отслеживание изменений системных предпочтений
+    if (window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (!localStorage.getItem('theme')) {
+                setTheme(e.matches);
+            }
+        });
+    }
+}
+
+
+
+
 function initAccessibilityModal() {
     const settingsButton = document.getElementById('settings-button');
     const sideSettingsButton = document.getElementById('side-settings-button');
@@ -362,6 +352,54 @@ function initAccessibilityModal() {
     const fontSizeButtons = document.querySelectorAll('.font-size-btn');
     const colorSchemeButtons = document.querySelectorAll('.color-scheme-btn');
     const imagesToggle = document.getElementById('images-toggle');
+    const resetAccessibility = document.getElementById('reset-accessibility');
+
+
+     let hiddenImageElements = [];
+
+  // Скрыть изображения вне header и footer
+  function hideImages() {
+    hiddenImageElements = [];
+    const allElements = document.body.querySelectorAll('*');
+
+    allElements.forEach(el => {
+      if (el.closest('#header-container') || el.closest('#footer-container')) return;
+
+      // Скрытие <img>
+      if (el.tagName === 'IMG') {
+        el.dataset._wasDisplayed = el.style.display || '';
+        el.style.display = 'none';
+        hiddenImageElements.push(el);
+      }
+
+      // Скрытие background-image
+      const computedStyle = getComputedStyle(el);
+      if (computedStyle.backgroundImage && computedStyle.backgroundImage !== 'none') {
+        el.dataset._hadBg = 'true';
+        el.dataset._originalBg = el.style.backgroundImage || '';
+        el.style.backgroundImage = 'none';
+        hiddenImageElements.push(el);
+      }
+    });
+  }
+
+  // Показать изображения
+  function showImages() {
+    hiddenImageElements.forEach(el => {
+      if (el.tagName === 'IMG') {
+        el.style.display = el.dataset._wasDisplayed || '';
+        delete el.dataset._wasDisplayed;
+      }
+
+      if (el.dataset._hadBg) {
+        el.style.backgroundImage = el.dataset._originalBg || '';
+        delete el.dataset._hadBg;
+        delete el.dataset._originalBg;
+      }
+    });
+
+    hiddenImageElements = [];
+  }
 
     function openAccessibilityModal() {
         accessibilityModal.style.display = 'flex';
@@ -409,6 +447,33 @@ function initAccessibilityModal() {
         });
     });
 
+    // Обработчик сброса настроек
+    if (resetAccessibility) {
+        resetAccessibility.addEventListener('click', function() {
+            // Удаляем все настройки из localStorage
+            localStorage.removeItem('fontSize');
+            localStorage.removeItem('colorScheme');
+            localStorage.removeItem('showImages');
+
+            // Сбрасываем атрибуты на элементе <html>
+            document.documentElement.removeAttribute('data-font-size');
+            document.documentElement.removeAttribute('data-color-scheme');
+            document.documentElement.setAttribute('data-images', 'show');
+
+            // Сброс активных классов
+            fontSizeButtons.forEach(btn => btn.classList.remove('active'));
+            const mediumFont = document.querySelector('.font-size-btn[data-size="medium"]');
+            if (mediumFont) mediumFont.classList.add('active');
+
+            colorSchemeButtons.forEach(btn => btn.classList.remove('active'));
+            const defaultScheme = document.querySelector('.color-scheme-btn[data-scheme="default"]');
+            if (defaultScheme) defaultScheme.classList.add('active');
+
+            showImages();
+            imagesToggle.checked = true;
+        });
+    }
+
     // Обработчик для применения настроек
     if (applyAccessibility) {
         applyAccessibility.addEventListener('click', function() {
@@ -417,16 +482,27 @@ function initAccessibilityModal() {
             document.documentElement.setAttribute('data-font-size', activeFontSize);
             localStorage.setItem('fontSize', activeFontSize);
 
-            // Применение цветовой схемы
+            // Применение цветовой схемы (с обработкой дефолтной схемы)
             const activeColorScheme = document.querySelector('.color-scheme-btn.active').dataset.scheme;
-            document.documentElement.setAttribute('data-color-scheme', activeColorScheme);
-            localStorage.setItem('colorScheme', activeColorScheme);
+            if (activeColorScheme === 'default') {
+                document.documentElement.removeAttribute('data-color-scheme');
+                localStorage.removeItem('colorScheme');
+            } else {
+                document.documentElement.setAttribute('data-color-scheme', activeColorScheme);
+                localStorage.setItem('colorScheme', activeColorScheme);
+            }
 
-            // Применение настроек изображений
-            const showImages = imagesToggle.checked;
-            document.documentElement.setAttribute('data-images', showImages ? 'show' : 'hide');
-            localStorage.setItem('showImages', showImages);
-
+            const showImgs = imagesToggle.checked;
+            if (showImgs) {
+                showImages();
+                localStorage.setItem('showImages', 'true');
+            } else {
+                hideImages();
+                localStorage.setItem('showImages', 'false');
+            }
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+            
             closeAccessibilityModal();
         });
     }
@@ -446,19 +522,27 @@ function initAccessibilityModal() {
         const fontSizeBtn = document.querySelector(`.font-size-btn[data-size="${savedFontSize}"]`);
         if (fontSizeBtn) fontSizeBtn.classList.add('active');
 
-        // Цветовая схема
-        const savedColorScheme = localStorage.getItem('colorScheme') || 'default';
-            if (savedColorScheme!='default'){
+        // Цветовая схема (с обработкой дефолтной схемы)
+        const savedColorScheme = localStorage.getItem('colorScheme');
+        if (savedColorScheme) {
             document.documentElement.setAttribute('data-color-scheme', savedColorScheme);
             const colorSchemeBtn = document.querySelector(`.color-scheme-btn[data-scheme="${savedColorScheme}"]`);
             if (colorSchemeBtn) colorSchemeBtn.classList.add('active');
+        } else {
+            const defaultSchemeBtn = document.querySelector('.color-scheme-btn[data-scheme="default"]');
+            if (defaultSchemeBtn) defaultSchemeBtn.classList.add('active');
         }
 
-        // Изображения
-        const showImages = localStorage.getItem('showImages') !== 'false';
-        if (imagesToggle) imagesToggle.checked = showImages;
-        document.documentElement.setAttribute('data-images', showImages ? 'show' : 'hide');
-    }
+        const savedShowImages = localStorage.getItem('showImages') !== 'false';
+         if (savedShowImages) {
+            showImages();
+        } else {
+            hideImages();
+        }
+
+        imagesToggle.checked = savedShowImages;
+
+        }
 
     // Вызываем при загрузке
     loadAccessibilitySettings();

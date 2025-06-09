@@ -161,6 +161,11 @@
       "id": "2f47",
       "productId": "3",
       "amount": 1
+    },
+    {
+      "id": "bd21",
+      "productId": "2",
+      "amount": 1
     }
   ],
   "orders": [
